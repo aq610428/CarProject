@@ -34,7 +34,7 @@ android {
         ]
     }
 
-    f6YZAeTE05WahNK/jYeykJroDWNWNK3eOpxH3SkbF+8 aq610428
+
     //签名信息
     signingConfigs {
         release {
