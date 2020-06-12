@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/activity_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/colorWhite"
+            android:cursorVisible="true"
+            android:gravity="center|left"
+            android:hint="@string/prompt_email"
+            android:importantForAutofill="no"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="#677E9C"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/dive_line" />
+
+        <EditText
+            android:id="@+id/e_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorWhite"
+            android:cursorVisible="true"
+            android:gravity="center|left"
+            android:hint="请输入新密码"
+            android:inputType="textPassword"
+            android:textColor="#677E9C"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/dive_line" />
+
+        <EditText
+            android:id="@+id/e_password_again"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorWhite"
+            android:cursorVisible="true"
+            android:gravity="center|left"
+            android:hint="请再次输入新密码"
+            android:inputType="textPassword"
+            android:textColor="#677E9C"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/dive_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp">
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@+id/btn_code"
+                android:layout_toLeftOf="@+id/btn_code"
+                android:background="@color/colorWhite"
+                android:cursorVisible="true"
+                android:gravity="center|left"
+                android:hint="@string/prompt_password"
+                android:inputType="number"
+                android:textColor="#677E9C"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+            <TextView
+                android:id="@+id/btn_code"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="@string/send_code"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </RelativeLayout>
+
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/dive_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/next_shape"
+                android:gravity="center"
+                android:text="重置密码"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/ctv_sizen_15" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#3F80F4"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:text="点火时间"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:text="熄火时间"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="行驶公里数"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@color/dive_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_tab1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_initiation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:text="点火时间"
+            android:textColor="#949494"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+        <View
+            android:layout_width="0.7dp"
+            android:layout_height="match_parent"
+            android:background="@color/dive_line" />
+
+        <TextView
+            android:id="@+id/text_flameout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:text="熄火时间"
+            android:textColor="#949494"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+        <View
+            android:layout_width="0.7dp"
+            android:layout_height="match_parent"
+            android:background="@color/dive_line" />
+
+        <TextView
+            android:id="@+id/text_kilometre"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="行驶公里数"
+            android:textColor="#949494"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+    </LinearLayout>
+
+</LinearLayout>

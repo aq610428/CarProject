@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center|left"
+                android:lineSpacingExtra="5dp"
+                android:lineSpacingMultiplier="1"
+                android:text="一、创建门店
+   \n1. 我的页面，点击我的门店，在门店列表中点击右上角添加门店.
+  \n1. 添加门店页面点击上传门头照，填写门店基础资料（备注:门店地址中涉及地图，需要获取手机定位权限，务必点击同意获取定位权限,以确保门店定位准确）.
+  \n2. 提交门店资料，创建门店完成.
+\n二、完善门店资质
+   \n1. 门店创建完成后，跳转到门店资质页面.
+   \n2. 上传法人身份证照片，门店营业执照，提交门店资质，等待审核.
+    \n3. 审核通过后，可在门店列表中查看门店，点击详情查看门店资料，点击门店相册可完善门店照片.
+"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

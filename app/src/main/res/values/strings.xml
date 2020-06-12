@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">惠保养</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">请输入手机号</string>
+    <string name="prompt_password">请输入验证码</string>
+    <string name="action_sign_in">登录/注册</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="camera_permission_required">本功能需要相机权限！</string>
+    <string name="register_name">注册车振账户</string>
+    <string name="send_code">获取验证码</string>
+</resources>

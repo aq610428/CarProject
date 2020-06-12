@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.lihang.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="15dp"
+        app:hl_cornerRadius="3dp"
+        app:hl_shadowBackColor="#fff"
+        app:hl_shadowColor="#2A696969"
+        app:hl_shadowLimit="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/base_press"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center|left"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="门店：南山科技有限公司"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="2.5dp"
+                    android:gravity="center"
+                    android:text="2020-06-09 18:48:53"
+                    android:textColor="@color/black66"
+                    android:textSize="@dimen/ctv_sizen_12" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_Mechanical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/colorWhite"
+                android:gravity="center|right"
+                android:text="+10000"
+                android:textColor="#32D1A6"
+                android:textSize="@dimen/ctv_sizen_21"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </com.lihang.ShadowLayout>
+</LinearLayout>

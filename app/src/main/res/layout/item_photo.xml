@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/ic_bg_bus">
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:src="@mipmap/ic_add_photo" />
+
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="170dp"
+            android:layout_marginLeft="7.5dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="7.5dp"
+            android:scaleType="centerCrop"
+            android:layout_height="104dp"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="110dp"
+            android:paddingLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_jcompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:text="企业门牌照"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+
+            <TextView
+                android:id="@+id/text_explain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_jcompany"
+                android:paddingRight="10dp"
+                android:gravity="center|left"
+                android:paddingTop="4dp"
+                android:text="开户账户开户账户开户账户开户账"
+                android:textColor="@color/black7e"
+                android:textSize="@dimen/ctv_sizen_13" />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

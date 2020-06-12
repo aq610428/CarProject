@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/app_blg"
+                    android:drawableLeft="@mipmap/ic_basic_msg"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|left"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="企业基本信息"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="企业名称"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_cardNmae"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请输入企业名称"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="联系人"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_contacts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请输入联系人姓名"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="联系电话"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_contactsPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请输入联系电话"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="营业时间"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:id="@+id/text_business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请选择营业时间"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="门店地址"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请选择门店地址"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/app_blg"
+                    android:drawableLeft="@mipmap/ic_basic_msg"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|left"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="协议信息"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="协议期限"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:id="@+id/tv_begin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请选择日期"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:text="至"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:id="@+id/tv_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="请选择日期"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/app_blg"
+                    android:drawableLeft="@mipmap/ic_basic_msg"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|left"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="账户信息"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="开户名称"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="对公账户"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="开户银行"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_blank"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="开户银行"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="开户账户"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <EditText
+                        android:id="@+id/et_blankName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="开户账户"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/app_blg"
+                    android:drawableLeft="@mipmap/ic_basic_msg"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|left"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="行业资质"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/dive_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="20dp"
+                        android:text="*"
+                        android:textColor="@color/google_red"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="10dp"
+                        android:text="运输资质类型"
+                        android:textColor="#898C8E"
+                        android:textSize="@dimen/ctv_sizen_14" />
+
+                    <TextView
+                        android:id="@+id/et_transport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/colorWhite"
+                        android:hint="运输资质类型"
+                        android:inputType="phone"
+                        android:lines="1"
+                        android:textColor="@color/black33"
+                        android:textSize="@dimen/ctv_sizen_14" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:gravity="center|left"
+                android:textColor="@color/google_red"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/next_shape"
+            android:gravity="center"
+            android:text="是"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/next_shape_bg"
+            android:gravity="center"
+            android:text="否"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

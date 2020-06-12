@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_tab1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@mipmap/ic_card_ipo" />
+
+                <TextView
+                    android:id="@+id/tv_tab1"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/store_shape"
+                    android:gravity="center"
+                    android:text="上传法人身份证正面"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_tab2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:src="@mipmap/ic_card_npo" />
+
+                <TextView
+                    android:id="@+id/tv_tab2"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/store_shape"
+                    android:gravity="center"
+                    android:text="上传法人身份证反面"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_tab3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_license"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:src="@mipmap/ic_card_npo" />
+
+                <TextView
+                    android:id="@+id/tv_tab3"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/store_shape"
+                    android:gravity="center"
+                    android:text="上传营业执照"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/next_shape"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/ctv_sizen_15" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

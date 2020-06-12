@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_gray">#BBBBBB</color>
+    <color name="keyboard_bg_color">#D2D4DA</color>
+    <color name="keyboard_dark_cell_bg_color">#ADB2BF</color>
+    <color name="app_blg">#F8F8F8</color>
+    <color name="colorAccent">#3F80F4</color>
+    <color name="colorF1f2">#F1F2F2</color>
+    <color name="colorCCC">#cccccc</color>
+    <color name="tab_line">#DEDEDE</color>
+    <color name="tab_vg">#F3F2F2</color>
+    <color name="dive_line">#EEEEEE</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteb4">#CFE0FF</color>
+    <color name="transparenc">#70000000</color>
+    <color name="black30">#99000000</color>
+    <color name="black">#000000</color>
+    <color name="black99">#999999</color>
+    <color name="black58">#585858</color>
+    <color name="black33">#333333</color>
+    <color name="black9c">#677E9C</color>
+    <color name="black6a">#6a6c6e</color>
+    <color name="blacka4">#a4a6aa</color>
+    <color name="black79">#797979</color>
+    <color name="blackf5">#F5A623</color>
+    <color name="blackd8">#D88C0F</color>
+    <color name="black96">#969696</color>
+    <color name="black54">#545454</color>
+    <color name="blacka5">#A5A5A5</color>
+    <color name="blue">#81c2f4</color>
+    <color name="default_shadow_color">#2a000000</color>
+
+    <color name="blue03">#036eb7</color>
+    <color name="blackef">#EFEFEF</color>
+    <color name="black7e">#7E7E7E</color>
+    <color name="black55">#444444</color>
+    <color name="black31">#313437</color>
+    <color name="black66">#666666</color>
+    <color name="black5e">#5E5E5E</color>
+    <color name="black3F">#3F3F3F</color>
+    <color name="black6e">#6e6e6e</color>
+    <color name="Text_3377E1">#3F80F4</color>
+    <color name="activity_ui_bg">#EDEDED</color>
+    <color name="red">#F61B00</color>
+    <color name="red_dc">#DC3934</color>
+    <color name="divider_1">#e2e2e2</color>
+    <color name="divider_2">#e6e6e6</color>
+    <color name="divider_3">#FFF0F0F0</color>
+    <color name="google_blue">#3F80F4</color>
+    <color name="google_red">#FB2D2D</color>
+    <color name="red56">#CD5C56</color>
+    <color name="google_green">#34A853</color>
+    <color name="green">#4FB053</color>
+    <color name="google_yellow">#F5A623</color>
+    <color name="yellow_d8">#D88C0F</color>
+    <color name="style_window_background">#212121</color>
+    <color name="style_window_background_light">#ffffff</color>
+    <color name="project_main">#5189f5</color>
+    <color name="person_center_my_promotion">#23B8D9</color>
+    <color name="person_D5">#2D0975</color>
+    <color name="business_text_color">#FF950A</color>
+    <color name="promotion_text_color">#3BB0BD</color>
+    <color name="merchant_text_color">#5189F5</color>
+    <color name="netWork_text_color">#5B5FD2</color>
+    <color name="default_text_color">#f9f9fc</color>
+    <color name="transparency">#00000000</color>
+    <color name="colorPrimary">#DB3A33</color>
+
+
+    <color name="book_1">#F4F3EE</color>
+    <color name="book_2">#00000000</color>
+    <color name="book_3">#00000000</color>
+    <color name="chant_text_color">#FF5722</color>
+    <color name="E1E1E1">#E1E1E1</color>
+
+</resources>

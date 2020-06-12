@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/text_top_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="我的资产"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_16"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/text_right_name"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:drawableLeft="@mipmap/icon_road"
+            android:paddingLeft="20dp"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_16" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/text_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/rl_top"
+        android:background="@color/dive_line" />
+
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/text_line"
+        android:layout_gravity="center"
+        app:swipe_style="classic">
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_google_hook_header" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/swipe_target"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/ll_bottom"
+                    layout="@layout/order_me_top" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_bottom"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="市场"
+                            android:textColor="#4D4D4D"
+                            android:textSize="@dimen/ctv_sizen_14" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="价格"
+                            android:textColor="#4D4D4D"
+                            android:textSize="@dimen/ctv_sizen_14" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="涨幅"
+                            android:textColor="#4D4D4D"
+                            android:textSize="@dimen/ctv_sizen_14" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/mListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:divider="@color/transparency"
+                        android:fadingEdge="none"
+                        android:scrollbars="none" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/btn_next"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerInParent="true"
+                            android:background="@mipmap/btn_sumber_mine"
+                            android:gravity="center"
+                            android:text="积分兑换"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/ctv_sizen_15" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+
+
+</RelativeLayout>

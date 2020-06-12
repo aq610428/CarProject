@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/base_press"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/text_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_ling"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:text="关于链上钱包"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_15"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="20200604"
+                android:textColor="#717171"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/text_verify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="已审核"
+            android:textColor="#717171"
+            android:textSize="@dimen/ctv_sizen_14" />
+    </LinearLayout>
+
+
+</LinearLayout>

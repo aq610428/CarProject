@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_route"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/base_press">
+
+        <ImageView
+            android:id="@+id/iv_route"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_route" />
+
+        <TextView
+            android:id="@+id/text_route"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/iv_route"
+            android:drawableRight="@mipmap/ic_right"
+            android:gravity="center|left"
+            android:paddingLeft="15dp"
+            android:text="账户问题"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_trajectory"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/base_press">
+
+        <ImageView
+            android:id="@+id/iv_trajectory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_trajectory" />
+
+        <TextView
+            android:id="@+id/text_trajectory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/iv_trajectory"
+            android:drawableRight="@mipmap/ic_right"
+            android:gravity="center|left"
+            android:paddingLeft="15dp"
+            android:text="门店创建"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_subtract"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/base_press">
+
+        <ImageView
+            android:id="@+id/iv_subtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_subtract" />
+
+        <TextView
+            android:id="@+id/text_subtract"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/iv_subtract"
+            android:drawableRight="@mipmap/ic_right"
+            android:gravity="center|left"
+            android:paddingLeft="15dp"
+            android:text="开单指南"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_path"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/base_press">
+
+        <ImageView
+            android:id="@+id/iv_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/ic_path" />
+
+        <TextView
+            android:id="@+id/text_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/iv_path"
+            android:drawableRight="@mipmap/ic_right"
+            android:gravity="center|left"
+            android:paddingLeft="15dp"
+            android:text="其它问题"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+    </RelativeLayout>
+</LinearLayout>

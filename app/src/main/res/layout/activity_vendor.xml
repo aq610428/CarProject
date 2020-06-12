@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_blg"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/dialog_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0.6dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@color/dive_line" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="供货商名称"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_Mechanical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="机滤"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:id="@+id/text_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="联系人"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="A20722688"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="手机号码"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="九州狮王"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="联系电话"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_specifications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="22元"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="地址"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="个"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="主营业务"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="本田，大众"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="欠款金额"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/text_use"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="22元"
+                    android:textColor="@color/google_red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/dive_line" />
+
+</LinearLayout>

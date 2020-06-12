@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center|left"
+                android:lineSpacingExtra="5dp"
+                android:lineSpacingMultiplier="1"
+                android:text="一、怎么登录、注册账号？
+\n启动APP即可进行注册操作
+  \n1. 请注意用户名由手机号码构成，密码长度至少为6位并请将密码严格保密.
+  \n2. 注册前请确保您已满18周岁.
+\n二、忘记密码怎么办？
+\n在登陆页面点击“忘记密码”按键。填写手机号码发送验证码，设置新密码，确认提交."
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

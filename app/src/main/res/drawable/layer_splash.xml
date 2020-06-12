@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 整体的背景颜色 -->
+    <item android:drawable="@mipmap/ic_end" />
+    <item>
+        <!-- 中间的图片 -->
+        <bitmap android:gravity="top"
+            android:scaleType="center" android:src="@mipmap/ic_logo_start" />
+
+        <bitmap android:gravity="bottom"
+            android:scaleType="center" android:src="@mipmap/ic_bottom" />
+    </item>
+</layer-list>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_tab0"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:background="#3F80F4"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="序号"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="车牌号"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="车主姓名"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="手机号"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_13" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/dive_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_tab1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="点火时间"
+            android:textColor="#808080"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:id="@+id/text_license"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="熄火时间"
+            android:textColor="#808080"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:id="@+id/text_brand"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="行驶公里数"
+            android:textColor="#808080"
+            android:textSize="@dimen/ctv_sizen_13" />
+
+
+        <TextView
+            android:id="@+id/text_traveled"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="行驶公里数"
+            android:textColor="#808080"
+            android:textSize="@dimen/ctv_sizen_13" />
+    </LinearLayout>
+
+</LinearLayout>

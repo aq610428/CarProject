@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="13dp"
+        android:text="* 前页面展示的企业形象照效果和保宝车服公众号中展示 的效果一样； "
+        android:textColor="@color/black7e"
+        android:textSize="@dimen/ctv_sizen_14" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13dp"
+        android:lineSpacingExtra="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="13dp"
+        android:text="* 您的企业形象照是车主了解维修厂的第一途径，良好的企 业形象照有助于提高企业的品牌价值，有助于车主直观了 解企业的整体面貌，为企业获取更多的订单带来帮助。"
+        android:textColor="@color/black7e"
+        android:textSize="@dimen/ctv_sizen_14" />
+
+
+</LinearLayout>

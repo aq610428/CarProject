@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.lihang.ShadowLayout
+        app:hl_cornerRadius="3dp"
+        app:hl_shadowBackColor="#fff"
+        app:hl_shadowColor="#2A696969"
+        app:hl_shadowLimit="4dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="2020年5月15日 09:00—18:00"
+                    android:textColor="#212121"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+                <TextView
+                    android:id="@+id/tv_make"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center|left"
+                    android:text="保养"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center|left"
+                            android:text="车牌号码"
+                            android:textColor="#212121"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                        <TextView
+                            android:id="@+id/tv_license"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorWhite"
+                            android:gravity="center|left"
+                            android:text="粤B-157R9"
+                            android:textColor="#929292"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center|left"
+                            android:text="电话号码"
+                            android:textColor="@color/black33"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                        <TextView
+                            android:id="@+id/tv_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorWhite"
+                            android:gravity="center|left"
+                            android:text="18988246540"
+                            android:textColor="#929292"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center|left"
+                            android:text="预约时间"
+                            android:textColor="@color/black33"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                        <TextView
+                            android:id="@+id/text_order_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorWhite"
+                            android:gravity="center|left"
+                            android:text="18988246540"
+                            android:textColor="#929292"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/ic_mobile" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="取消预约"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:visibility="gone" />
+
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/dive_line"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/text_receiving"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="接受预约"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.lihang.ShadowLayout>
+</LinearLayout>

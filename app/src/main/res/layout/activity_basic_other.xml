@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center|left"
+                android:lineSpacingExtra="5dp"
+                android:lineSpacingMultiplier="1"
+                android:text="其它功能
+   \n1. 我的资产中可以查看虚拟货币的实时价格.
+  \n2. 我的清单中，可以查看门店的消费记录，预约记录，保养到期记录等等.
+  \n3. 我的页面，消息中心可以查看系统消息.
+   \n4. 加入社区，可以添加微信，QQ群来共同讨论本产品.
+   \n5. 我的团队中可以查看用户协议，更新app最新版本.
+"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

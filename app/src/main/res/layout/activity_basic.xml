@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center|left"
+                android:lineSpacingExtra="5dp"
+                android:lineSpacingMultiplier="1"
+                android:text="一、如何接受预约？
+\n启动app，打开首页点击预约按钮,点击接受预约即可接受卡贝用户发出的预约订单.
+  \n1. 预约订单中，可拨打电话联系客户咨询预约相关信息.
+  \n2. 预约订单中，可查看当前订单的状态.
+\n二、如何开单？
+\n接受预约订单后，即可点击开单按钮，进行开单.
+   \n1. 开单页面中，需要填写需支付的现金，和要抵扣的积分，并且选择完工时间.
+   \n2. 开单页面中，如果是维修，保养项目则需要填写维修方案，更换配件的名称，数量.
+    \n3. 开单页面中，上述内容填写完成后即可点击开单按钮，完成开单操作.
+    \n4. 开单列表中，已完成的预约均可查看开单详情.
+"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

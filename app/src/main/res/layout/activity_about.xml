@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78dp"
+            android:layout_marginBottom="75dp"
+            android:src="@mipmap/icon_car_bar" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_edition"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:text="版本更新"
+                android:textColor="#232323"
+                android:textSize="@dimen/ctv_sizen_15" />
+
+            <TextView
+                android:id="@+id/text_edition"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:text="暂无新版本"
+                android:textColor="#232323"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/dive_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_tab"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:text="用户协议"
+                android:textColor="#232323"
+                android:textSize="@dimen/ctv_sizen_15" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/ic_right"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:textColor="#19304E"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

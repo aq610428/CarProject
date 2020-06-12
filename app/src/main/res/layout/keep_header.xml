@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/icon_keep">
+
+        <TextView
+            android:id="@+id/title_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="保养到期提醒"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/text_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:paddingRight="45dp"
+            android:text="29"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="12dp"
+        android:background="@drawable/shape_keep"
+        android:lineSpacingExtra="1.5dp"
+        android:padding="12dp"
+        android:text="亲爱的车主，您的爱车自上次保养以后已行驶接近5000公里 为了您的爱车和您的安全，请于近期来中福快保南山区珠光 路218号做全车检查，有惊喜等着你哟。"
+        android:textColor="@color/black7e"
+        android:textSize="@dimen/ctv_sizen_13" />
+
+
+    <TextView
+        android:id="@+id/text_remind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="12dp"
+        android:background="@mipmap/icon_remind"
+        android:gravity="center"
+        android:text="一键发送保养提醒"
+        android:textColor="@color/colorAccent"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:background="#F3F5F9"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="车牌号"
+            android:textColor="#808080"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="品牌型号"
+            android:textColor="#808080"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="初始里程"
+            android:textColor="#808080"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="累积里程"
+            android:textColor="#808080"
+            android:textSize="13sp" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="上次保养里程"
+            android:textColor="#808080"
+            android:textSize="13sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

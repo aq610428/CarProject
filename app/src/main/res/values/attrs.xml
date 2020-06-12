@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleProgressBar">
+        <attr name="mlpb_inner_radius" format="dimension" />
+        <attr name="mlpb_background_color" format="color" />
+        <attr name="mlpb_progress_color" format="color" />
+        <attr name="mlpb_progress_stoke_width" format="dimension" />
+        <attr name="mlpb_show_arrow" format="boolean" />
+        <attr name="mlpb_enable_circle_background" format="boolean" />
+        <attr name="mlpb_arrow_width" format="dimension" />
+        <attr name="mlpb_arrow_height" format="dimension" />
+
+        <attr name="mlpb_progress" format="integer" />
+        <attr name="mlpb_max" format="integer" />
+
+
+        <attr name="mlpb_progress_text_size" format="dimension" />
+        <attr name="mlpb_progress_text_color" format="color" />
+
+        <!--<attr name="mlpb_progress_text_offset" format="dimension"/>-->
+
+        <attr name="mlpb_progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="GoogleCircleProgressView">
+        <attr name="gcp_inner_radius" format="dimension" />
+        <attr name="gcp_background_color" format="color" />
+        <attr name="gcp_progress_color" format="color" />
+        <attr name="gcp_progress_stoke_width" format="dimension" />
+        <attr name="gcp_show_arrow" format="boolean" />
+        <attr name="gcp_enable_circle_background" format="boolean" />
+        <attr name="gcp_arrow_width" format="dimension" />
+        <attr name="gcp_arrow_height" format="dimension" />
+
+        <attr name="gcp_progress" format="integer" />
+        <attr name="gcp_max" format="integer" />
+
+
+        <attr name="gcp_progress_text_size" format="dimension" />
+        <attr name="gcp_progress_text_color" format="color" />
+
+        <!--<attr name="gcp_progress_text_offset" format="dimension"/>-->
+
+        <attr name="gcp_progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ShadowLayout">
+        <!--阴影的圆角大小-->
+        <attr name="yc_cornerRadius" format="dimension" />
+        <!--阴影的扩散范围(也可以理解为扩散程度)-->
+        <attr name="yc_shadowLimit" format="dimension" />
+        <!--阴影颜色-->
+        <attr name="yc_shadowColor" format="color" />
+        <!--x轴的偏移量-->
+        <attr name="yc_dx" format="dimension" />
+        <!--y轴的偏移量-->
+        <attr name="yc_dy" format="dimension" />
+        <!--左边是否显示阴影-->
+        <attr name="yc_leftShow" format="boolean" />
+        <!--右边是否显示阴影-->
+        <attr name="yc_rightShow" format="boolean" />
+        <!--上边是否显示阴影-->
+        <attr name="yc_topShow" format="boolean" />
+        <!--下面是否显示阴影-->
+        <attr name="yc_bottomShow" format="boolean" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="180dp"
+                android:drawableLeft="@mipmap/icon_car_login"
+                android:drawablePadding="10dp"
+                android:text="欢迎来到惠保养"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_17"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorWhite"
+            android:cursorVisible="true"
+            android:gravity="center|left"
+            android:hint="@string/prompt_email"
+            android:inputType="phone"
+            android:textColor="#677E9C"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+        <View
+            android:id="@+id/et_line_1"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="#EDEDED" />
+
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toStartOf="@+id/btn_code"
+            android:layout_toLeftOf="@+id/btn_code"
+            android:background="@color/colorWhite"
+            android:cursorVisible="true"
+            android:gravity="center|left"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:textColor="#677E9C"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+        <View
+            android:id="@+id/et_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:background="@color/dive_line" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/next_shape"
+            android:gravity="center"
+            android:text="登录"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <TextView
+                android:id="@+id/btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:text="注册"
+                android:textColor="@color/black9c"
+                android:textSize="@dimen/ctv_sizen_15" />
+
+
+            <TextView
+                android:id="@+id/btn_forget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:gravity="center"
+                android:text="忘记密码"
+                android:textColor="@color/black9c"
+                android:textSize="@dimen/ctv_sizen_15" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_agreement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_check_op"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:text="同意"
+            android:textColor="@color/black33"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+
+        <TextView
+            android:id="@+id/text_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="《门店用户服务及隐私协议》"
+            android:textColor="@color/black9c"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

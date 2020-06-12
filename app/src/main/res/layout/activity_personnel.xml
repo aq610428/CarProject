@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <GridLayout
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:rowCount="5"
+        android:alignmentMode="alignBounds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_margin="1dp"
+            android:background="#f68904"
+            android:gravity="center"
+            android:text="="
+            android:textColor="#ffffff"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_margin="1dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="%"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_margin="1dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="0"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_margin="1dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="."
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+    </GridLayout>
+
+</LinearLayout>

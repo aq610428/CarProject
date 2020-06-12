@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
+        app:swipe_style="classic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_google_hook_header" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/swipe_target"
+            android:layout_marginLeft="13dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorWhite" />
+
+
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_google_hook_footer" />
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+</LinearLayout>

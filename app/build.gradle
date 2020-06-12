@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+    defaultConfig {
+        applicationId "com.car.notver"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 5
+        versionName "1.0.4"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        flavorDimensions "versionCode"
+        multiDexEnabled true
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
+        packagingOptions {
+            exclude 'META-INF/rxjava.properties'
+        }
+
+        lintOptions {
+            checkReleaseBuilds false
+            abortOnError false
+        }
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "858b357d94ecb1e15965c6b2", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+    f6YZAeTE05WahNK/jYeykJroDWNWNK3eOpxH3SkbF+8 aq610428
+    //签名信息
+    signingConfigs {
+        release {
+            storeFile file('becca.jks')
+            storePassword 'becca2020'
+            keyAlias 'becca'
+            keyPassword 'becca2020'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false //混淆
+            zipAlignEnabled true  //压缩优化
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${variant.productFlavors[0].name}.apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    productFlavors {
+        release1001 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "1001"]
+        }
+        release1002 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "1002"]
+        }
+        release1003 {
+            manifestPlaceholders = [UMENG_CHANNEL_VALUE: "1003"]
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.lzy.net:okrx:1.0.2'
+    implementation 'com.lzy.net:okserver:2.0.5'
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    implementation 'com.github.bumptech.glide:compiler:4.4.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation project(path: ':library1')
+    implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'com.amap.api:3dmap:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.yanzhenjie:album:2.1.3'
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+    implementation files('libs/ocr-sdk.jar')
+    implementation 'com.github.crossoverone:StatusBarUtil:1.3.4'
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'cn.jiguang.sdk:jpush:3.6.4'  // 此处以JPush 3.6.4 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:2.3.6'  // 此处以JCore 2.3.6 版本为例。
+    implementation 'top.zibin:Luban:1.1.3'
+    implementation 'com.github.lihangleo2:ShadowLayout:2.0.1'
+}

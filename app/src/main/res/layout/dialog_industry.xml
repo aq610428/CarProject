@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/app_blg"
+        android:gravity="center"
+        android:text="行业资质"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/ctv_sizen_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dive_line" />
+
+
+    <TextView
+        android:id="@+id/text_lab1"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="一类资质"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/ctv_sizen_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dive_line" />
+
+    <TextView
+        android:id="@+id/text_lab2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="二类资质"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/ctv_sizen_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dive_line" />
+
+    <TextView
+        android:id="@+id/text_lab3"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="三类资质"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/ctv_sizen_14" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dive_line" />
+
+    <TextView
+        android:id="@+id/text_lab4"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="无资质"
+        android:textColor="@color/black33"
+        android:textSize="@dimen/ctv_sizen_14" />
+</LinearLayout>

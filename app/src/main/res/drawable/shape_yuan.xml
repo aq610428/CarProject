@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    >
+    <!--渐变填充-->
+    <gradient
+        android:endColor="#FFFFFF"
+        android:startColor="#FFFFFF"
+        android:type="linear"
+        android:angle="135"
+        android:useLevel="true" />
+    <!--单色填充-->
+    <!--<solid android:color="#ffffff"/>-->
+    <!--宽高比1:2是垂直半圆，宽高比2:1是水平半圆-->
+    <size
+        android:width="40dp"
+        android:height="20dp" />
+    <!--4个角的任意两个角度（不小于宽高最小值）相同，且在同一边（上下左右）
+      如bottomLeftRadius，topLeftRadius都在左边，则为左半圆-->
+    <corners
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp"
+        android:topLeftRadius="20dp"
+        android:topRightRadius="20dp" />
+</shape>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:paddingRight="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="车  牌  号:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_license"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="粤B-157R9"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="电话号码:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:drawableRight="@mipmap/ic_phone"
+                    android:gravity="center|left"
+                    android:text="18988246540"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="预约内容:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_make"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="保养"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="时        间:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:gravity="center|left"
+                    android:text="2020年5月15日 09:00—18:00"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="门店名称:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="深圳加多宝维修中心"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="地        址:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:drawableRight="@mipmap/ic_address"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|left"
+                    android:text="景源羽毛球馆"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="门店电话:"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+                <TextView
+                    android:id="@+id/tv_marke"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@mipmap/ic_phone"
+                    android:gravity="center|left"
+                    android:text="029365515"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

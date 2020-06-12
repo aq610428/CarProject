@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/activity_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:fadingEdge="none"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_repair"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="车牌号码"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_license"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center|left"
+                    android:text="贵BD3189"
+                    android:textColor="@color/black7e"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="客户电话"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_repair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:drawablePadding="5dp"
+                    android:gravity="center|right"
+                    android:text="请选择完工时间"
+                    android:textColor="@color/black7e"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/text_finish"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="完工时间"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:drawableRight="@mipmap/icon_right_arrwo"
+                    android:drawablePadding="5dp"
+                    android:gravity="center|right"
+                    android:text="请选择完工时间"
+                    android:textColor="@color/black7e"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="现金"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/et_cash"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="70dp"
+                    android:background="@color/colorWhite"
+                    android:cursorVisible="true"
+                    android:gravity="center|right"
+                    android:hint="请输入维修价格"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="积分"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/et_integral"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="70dp"
+                    android:background="@color/colorWhite"
+                    android:cursorVisible="true"
+                    android:drawablePadding="5dp"
+                    android:gravity="center|right"
+                    android:hint="请输入要抵扣的积分(1000)"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left"
+                    android:text="门店"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_storeId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="70dp"
+                    android:background="@color/colorWhite"
+                    android:cursorVisible="true"
+                    android:drawableRight="@mipmap/icon_right_arrwo"
+                    android:drawablePadding="5dp"
+                    android:gravity="center|right"
+                    android:hint="请选择门店"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_14" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/dive_line" />
+
+            <TextView
+                android:id="@+id/text_project"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorWhite"
+                android:gravity="center|left"
+                android:text="维修方案"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@mipmap/icon_bg_card"
+                android:padding="20dp"
+                android:layout_marginBottom="15dp">
+
+                <EditText
+                    android:id="@+id/et_parts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:gravity="top|left"
+                    android:hint="洗车、保养"
+                    android:minLines="5"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/text_commodity"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/colorWhite"
+                android:gravity="center|left"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                android:text="更换配件"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="20dp"
+                android:background="@mipmap/icon_bg_card"
+                android:layout_marginBottom="15dp">
+
+                <EditText
+                    android:id="@+id/et_accessory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:cursorVisible="true"
+                    android:gravity="top|left"
+                    android:hint="跟换刹车片"
+                    android:minLines="5"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/text_number"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/colorWhite"
+                android:gravity="center|left"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                android:text="配件数量"
+                android:textColor="@color/black33"
+                android:textSize="@dimen/ctv_sizen_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="20dp"
+                android:background="@mipmap/icon_bg_card"
+                android:layout_marginBottom="15dp">
+                <EditText
+                    android:id="@+id/et_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:cursorVisible="true"
+                    android:gravity="top|left"
+                    android:hint="1个"
+                    android:minLines="5"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_billing"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/Text_3377E1"
+                android:gravity="center"
+                android:text="开单"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/ctv_sizen_15" />
+
+
+            <Button
+                android:id="@+id/btn_code"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/Text_3377E1"
+                android:gravity="center"
+                android:text="支付积分"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/ctv_sizen_15"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_code"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparenc"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_card_npo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_code"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="15dp"
+            android:text="扫描二维码支付积分(点击空白处关闭)"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/ctv_sizen_14" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
