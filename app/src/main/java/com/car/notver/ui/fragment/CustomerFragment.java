@@ -2,7 +2,10 @@ package com.car.notver.ui.fragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -97,6 +100,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private String project = "";
     private LinearLayout ll_top;
     private NestedScrollView nestedScrollView;
+    private DynamicReceiver dynamicReceiver;
 
 
     @Nullable
@@ -107,8 +111,17 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             initView();
             isPrepared = true;
             lazyLoad();
+            initFilter();
         }
         return rootView;
+    }
+
+
+    public void initFilter() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("panhouye");
+        dynamicReceiver = new DynamicReceiver();
+        getActivity().registerReceiver(dynamicReceiver, filter);
     }
 
     private void initView() {
@@ -184,6 +197,14 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                 clealFocus();
             }
         });
+    }
+
+
+    class DynamicReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+              onRefresh();
+        }
     }
 
 
@@ -388,6 +409,11 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(dynamicReceiver);
+    }
 
     /**
      * 以license文件方式初始化

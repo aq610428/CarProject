@@ -260,6 +260,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             params.put("rescuePhone", mobile);
 
             params.put("sign", Md5Util.encode(sign));
+            LogUtils.e("sign="+sign);
             okHttpModel.get(Api.GET_STOREINFO, params, Api.GET_STOREINFO_ID, this);
         }
     }

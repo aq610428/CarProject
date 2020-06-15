@@ -22,6 +22,9 @@ public class PushMessageReceiver extends JPushMessageReceiver {
     public void onNotifyMessageOpened(Context context, NotificationMessage message) {
         LogUtils.e("[notificationContent=] " + message.notificationContent+"notificationTitle="+message.notificationTitle);
         try {
+            Intent intent=new Intent();
+            intent.setAction("com.push.msg");
+            context.sendBroadcast(intent);
             //打开自定义的Activity
 //            Intent i = new Intent(context, TestActivity.class);
 //            Bundle bundle = new Bundle();
