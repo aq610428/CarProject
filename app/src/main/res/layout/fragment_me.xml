@@ -101,11 +101,19 @@
                 android:paddingTop="18dp"
                 android:paddingRight="30dp"
                 android:paddingBottom="18dp"
-                android:text="我的资产"
+                android:text="门店审核"
                 android:textColor="#2C2C2C"
                 android:textSize="@dimen/ctv_sizen_14"
                 android:visibility="gone" />
 
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@color/dive_line"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/text_rescue"

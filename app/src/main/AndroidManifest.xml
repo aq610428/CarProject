@@ -166,6 +166,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.activity.AdministrationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.activity.PayActivit"
             android:screenOrientation="portrait" />
         <activity

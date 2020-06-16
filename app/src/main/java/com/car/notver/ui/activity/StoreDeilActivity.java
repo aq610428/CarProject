@@ -1,5 +1,6 @@
 package com.car.notver.ui.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity1;
@@ -20,14 +22,30 @@ import com.car.notver.config.okHttpModel;
 import com.car.notver.glide.GlideUtils;
 import com.car.notver.util.Constants;
 import com.car.notver.util.DateUtils;
+import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
+import com.car.notver.weight.MediaLoader;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
+import com.yanzhenjie.album.Album;
+import com.yanzhenjie.album.AlbumConfig;
+import com.yanzhenjie.album.AlbumFile;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * @author: zt
@@ -75,6 +93,7 @@ public class StoreDeilActivity extends BaseActivity1 implements NetWorkListener 
         text_start.setOnClickListener(this);
         text_end.setOnClickListener(this);
         btn_next.setOnClickListener(this);
+        lv_logo.setOnClickListener(this);
     }
 
     @Override
@@ -156,14 +175,15 @@ public class StoreDeilActivity extends BaseActivity1 implements NetWorkListener 
         } else if (Utility.isEmpty(work)) {
             ToastUtil.showToast("主营业务不能为空");
         } else {
-            String sign=null;
-             sign = "address=" + address + "&area=" + info.getArea() + "&brandName=" + brand + "&businessScope=" + work + "&city=" + info.getCity() + "&contactPerson=" + contacts
+            String sign = null;
+            sign = "address=" + address + "&area=" + info.getArea() + "&brandName=" + brand + "&businessScope=" + work + "&city=" + info.getCity() + "&contactPerson=" + contacts
                     + "&id=" + info.getId() + "&lat=" + info.getLat() + "&lng=" + info.getLng() + "&logo=" + info.getLogo() + "&memberId=" + SaveUtils.getSaveInfo().getId() + "&name=" + name + "&operTime=" + start + "-" + end
-                    + "&partnerid=" + Constants.PARTNERID + "&phone=" + phone + "&province=" + info.getProvince() ;
-             if (!Utility.isEmpty(mobile)){
-                 sign=sign+ "&rescuePhone=" + mobile;
-             }
-            sign=sign+ Constants.SECREKEY;;
+                    + "&partnerid=" + Constants.PARTNERID + "&phone=" + phone + "&province=" + info.getProvince();
+            if (!Utility.isEmpty(mobile)) {
+                sign = sign + "&rescuePhone=" + mobile;
+            }
+            sign = sign + Constants.SECREKEY;
+            ;
             showProgressDialog(this, false);
             Map<String, String> params = okHttpModel.getParams();
             params.put("apptype", Constants.TYPE);
@@ -183,7 +203,7 @@ public class StoreDeilActivity extends BaseActivity1 implements NetWorkListener 
             params.put("partnerid", Constants.PARTNERID);
             params.put("phone", phone);
             params.put("province", info.getProvince() + "");
-            if (!Utility.isEmpty(mobile)){
+            if (!Utility.isEmpty(mobile)) {
                 params.put("rescuePhone", mobile);
             }
             params.put("sign", Md5Util.encode(sign));
@@ -232,6 +252,10 @@ public class StoreDeilActivity extends BaseActivity1 implements NetWorkListener 
             case R.id.title_left_btn:
                 finish();
                 break;
+            case R.id.lv_logo:
+                requestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
+                break;
+
             case R.id.text_start:
                 type = 1;
                 pvTime1.show();
@@ -252,4 +276,89 @@ public class StoreDeilActivity extends BaseActivity1 implements NetWorkListener 
                 break;
         }
     }
+
+    @Override
+    public void permissinSucceed(int code) {
+        super.permissinSucceed(code);
+        selectPhoto();
+
+    }
+
+    private void selectPhoto() {
+        Album.initialize(AlbumConfig.newBuilder(this)
+                .setAlbumLoader(new MediaLoader())
+                .build());
+        ArrayList<AlbumFile> albumFiles = new ArrayList<>();
+        Album.image(this) // Image selection.
+                .multipleChoice()
+                .camera(true)
+                .columnCount(3)
+                .selectCount(3)
+                .checkedList(albumFiles)
+                .onResult(result -> {
+                    if (result != null && result.size() > 0) {
+                        String path = result.get(0).getPath();
+                        initLuban(path);
+                    }
+                })
+                .onCancel(result -> LogUtils.e("已"))
+                .start();
+    }
+
+
+    /*****图片压缩*****/
+    private void initLuban(String path) {
+        Luban.with(this).load(new File(path)).ignoreBy(100)
+                .setCompressListener(new OnCompressListener() { //设置回调
+                    @Override
+                    public void onStart() {
+                        // TODO 压缩开始前调用，可以在方法内启动 loading UI
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        if (file != null) {
+                            upLoad(file);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // TODO 当压缩过程出现问题时调用
+                    }
+                }).launch();
+    }
+
+
+    private void upLoad(File file) {
+        String sign = "partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        showProgressDialog(this, false);
+        Map<String, String> params = okHttpModel.getParams();
+        params.put("apptype", Constants.TYPE);
+        params.put("partnerid", Constants.PARTNERID);
+        params.put("sign", Md5Util.encode(sign));
+        OkGo.<String>post(Api.GET_UPDATELOAD).isMultipart(true).tag(BaseApplication.getContext()).params(params).params("file", file).execute(new StringCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                if (response.body() != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body());
+                        String result = jsonObject.optString("result");
+                        info.setLogo(result);
+                        GlideUtils.setImageUrl(info.getLogo(), lv_logo);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                stopProgressDialog();
+            }
+
+            @Override
+            public void onError(Response<String> response) {
+                super.onError(response);
+                stopProgressDialog();
+            }
+        });
+    }
+
 }

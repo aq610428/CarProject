@@ -16,6 +16,7 @@ import com.car.notver.base.BaseFragment;
 import com.car.notver.bean.UserInfo;
 import com.car.notver.ui.activity.AboutActivity;
 import com.car.notver.ui.activity.AddClientActivity;
+import com.car.notver.ui.activity.AdministrationActivity;
 import com.car.notver.ui.activity.AssetsActivity;
 import com.car.notver.ui.activity.CommunityActivity;
 import com.car.notver.ui.activity.ForgetActivity;
@@ -115,7 +116,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
                 startActivity(new Intent(getContext(), AddClientActivity.class));
                 break;
             case R.id.text_personne:
-                startActivity(new Intent(getContext(), AssetsActivity.class));
+                startActivity(new Intent(getContext(), AdministrationActivity.class));
                 break;
             case R.id.text_me:
                 startActivity(new Intent(getContext(), AboutActivity.class));
