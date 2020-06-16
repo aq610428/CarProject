@@ -1,7 +1,9 @@
 package com.car.notver.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +11,8 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.car.notver.R;
+import com.car.notver.adapter.AdministrationAdapter;
+import com.car.notver.adapter.StoreAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.StoreInfo;
@@ -23,6 +27,8 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.NoDataView;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +46,8 @@ public class AdministrationActivity extends BaseActivity implements OnLoadMoreLi
     private boolean isRefresh;
     private UserInfo info;
     private NoDataView mNoDataView;
+    private List<StoreInfo> voList=new ArrayList<>();
+    private AdministrationAdapter adapter;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -65,7 +73,7 @@ public class AdministrationActivity extends BaseActivity implements OnLoadMoreLi
 
     @Override
     protected void initData() {
-
+        qury();
     }
 
 
@@ -131,7 +139,17 @@ public class AdministrationActivity extends BaseActivity implements OnLoadMoreLi
     }
 
     private void setAdapter(List<StoreInfo> infos) {
-
+        mNoDataView.setVisibility(View.GONE);
+        swipe_target.setVisibility(View.VISIBLE);
+        if (!isRefresh) {
+            voList.clear();
+            voList.addAll(infos);
+            adapter = new AdministrationAdapter(this, voList);
+            swipe_target.setAdapter(adapter);
+        } else {
+            voList.addAll(infos);
+            adapter.setData(infos);
+        }
     }
 
     @Override

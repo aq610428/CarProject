@@ -17,7 +17,6 @@ import com.car.notver.bean.UserInfo;
 import com.car.notver.ui.activity.AboutActivity;
 import com.car.notver.ui.activity.AddClientActivity;
 import com.car.notver.ui.activity.AdministrationActivity;
-import com.car.notver.ui.activity.AssetsActivity;
 import com.car.notver.ui.activity.CommunityActivity;
 import com.car.notver.ui.activity.ForgetActivity;
 import com.car.notver.ui.activity.HelpActivity;
