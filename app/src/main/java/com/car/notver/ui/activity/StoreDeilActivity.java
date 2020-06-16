@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity1;
@@ -25,9 +24,7 @@ import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
-
 import org.json.JSONObject;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
