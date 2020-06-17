@@ -26,9 +26,16 @@ import com.car.notver.bean.UserInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
+import com.car.notver.ocr.lljjcoder.Interface.OnCityItemClickListener;
+import com.car.notver.ocr.lljjcoder.bean.CityBean;
+import com.car.notver.ocr.lljjcoder.bean.DistrictBean;
+import com.car.notver.ocr.lljjcoder.bean.ProvinceBean;
+import com.car.notver.ocr.lljjcoder.citywheel.CityConfig;
+import com.car.notver.ocr.lljjcoder.style.citypickerview.CityPickerView;
 import com.car.notver.util.Constants;
 import com.car.notver.util.DateUtils;
 import com.car.notver.util.JsonParse;
+import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
@@ -52,11 +59,13 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
     private EditText et_name, et_phone, et_discern, et_oss;
     private UserInfo info;
     private List<StoreInfo> infos = new ArrayList<>();
+    CityPickerView mCityPickerView = new CityPickerView();
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_addclient);
         BaseApplication.activityTaskManager.putActivity("AddClientActivity", this);
+        mCityPickerView.init(this);
     }
 
     @Override
@@ -99,10 +108,10 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
                 showDialog();
                 break;
             case R.id.text_license:
-                pvTime1.show();
+                pvTime.show();
                 break;
             case R.id.text_city:
-                
+                showAddress();
                 break;
         }
     }
@@ -170,8 +179,40 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         stopProgressDialog();
     }
 
+
+    private void showAddress() {
+        CityConfig cityConfig = new CityConfig.Builder()
+                .title("选择城市")
+                .visibleItemsCount(5)
+                .province("广东省")
+                .city("深圳市")
+                .district("南山区")
+                .provinceCyclic(false)
+                .cityCyclic(false)
+                .districtCyclic(false)
+                .setCityWheelType( CityConfig.WheelType.PRO_CITY_DIS)
+                .setCustomItemLayout(R.layout.item_city)//自定义item的布局
+                .setCustomItemTextViewId(R.id.item_city_name_tv)
+                .setShowGAT(true)
+                .build();
+        mCityPickerView.setConfig(cityConfig);
+        mCityPickerView.setOnCityItemClickListener(new OnCityItemClickListener() {
+            @Override
+            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+                text_city.setText(province.getName()+city.getName() +district.getName() );
+            }
+
+            @Override
+            public void onCancel() {
+                ToastUtil.showToast("已取消");
+            }
+        });
+        mCityPickerView.showCityPicker();
+    }
+
+
+    private TimePickerView pvTime;
     private Calendar startDate, endDate;
-    private TimePickerView pvTime1;
 
     protected void initDataTime() {
         Calendar selectedDate = Calendar.getInstance();
@@ -179,7 +220,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         startDate.set(2013, 0, 23);
         endDate = Calendar.getInstance();
         endDate.set(2033, 11, 28);
-        pvTime1 = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+        pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 text_license.setText(DateUtils.getTimes(date) + "");
