@@ -110,13 +110,11 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
     @Override
     protected void initData() {
-        if (info != null) {
-            if (!Utility.isEmpty(cardNum)) {
-                editText.setText(cardNum);
-                query1();
-            } else {
-                query();
-            }
+        if (!Utility.isEmpty(cardNum)) {
+            editText.setText(cardNum);
+            query1();
+        } else {
+            query();
         }
     }
 
@@ -152,7 +150,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     /*******查询
      * @param ********/
     public void query1() {
-        String sign = "cardNum=" + editText.getText().toString() + "&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        String sign = "carcard=" + editText.getText().toString() + "&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("apptype", Constants.TYPE);

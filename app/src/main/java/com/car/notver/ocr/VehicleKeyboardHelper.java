@@ -118,6 +118,10 @@ public class VehicleKeyboardHelper {
                 } else {
                     // 除功能键以外的键
                     if (primaryCode != Keyboard.KEYCODE_DELETE && s.length() >= 8) {
+                        Intent intent=new Intent(mContext,DepositoryActivity.class);
+                        intent.putExtra("name",s);
+                        intent.putExtra("title", "维修开单");
+                        mContext.startActivity(intent);
                         hideCustomInput(et);
                         return true;// 车牌号到最长长度了
                     }
