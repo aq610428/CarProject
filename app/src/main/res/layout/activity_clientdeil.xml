@@ -304,31 +304,38 @@
         </LinearLayout>
     </com.lihang.ShadowLayout>
 
-
-    <Button
-        android:id="@+id/btn_next"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/next_shape"
-        android:gravity="center"
-        android:text="确认修改"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/ctv_sizen_15" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_car"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/next_shape"
-        android:gravity="center"
-        android:text="添加车辆"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/ctv_sizen_15" />
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@mipmap/btn_sumber_mine"
+            android:gravity="center"
+            android:text="确认修改"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/ctv_sizen_14" />
+
+        <Button
+            android:id="@+id/btn_car"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@mipmap/btn_sumber_mine"
+            android:gravity="center"
+            android:text="添加车辆"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/ctv_sizen_14" />
+    </LinearLayout>
+
 
 </LinearLayout>

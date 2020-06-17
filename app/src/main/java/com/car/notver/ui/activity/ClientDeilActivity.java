@@ -1,6 +1,7 @@
 package com.car.notver.ui.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -275,7 +276,9 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
                 showDialog1();
                 break;
             case R.id.btn_car:
-
+                Intent intent=new Intent(this,VehicleActivity.class);
+                intent.putExtra("keep",keepInfo);
+                startActivity(intent);
                 break;
 
         }

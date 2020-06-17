@@ -108,7 +108,7 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         keepInfo = (KeepInfo) getIntent().getSerializableExtra("keep");
         if (keepInfo != null) {
             text_license.setText(keepInfo.getCarcard());
-            text_repair.setText(keepInfo.getLoginname());
+            text_repair.setText(keepInfo.getMobile());
         }
     }
 

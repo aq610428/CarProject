@@ -1,9 +1,7 @@
 package com.car.notver.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +10,6 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.car.notver.R;
 import com.car.notver.adapter.AdministrationAdapter;
-import com.car.notver.adapter.StoreAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.StoreInfo;
