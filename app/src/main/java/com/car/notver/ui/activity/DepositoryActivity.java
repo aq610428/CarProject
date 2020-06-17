@@ -110,6 +110,13 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
     @Override
     protected void initData() {
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (!Utility.isEmpty(cardNum)) {
             editText.setText(cardNum);
             query1();
