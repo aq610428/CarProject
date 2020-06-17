@@ -49,6 +49,8 @@
                         android:layout_height="match_parent"
                         android:layout_toRightOf="@+id/text_name"
                         android:background="@null"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
                         android:gravity="center|right"
                         android:hint="请您输入客户姓名"
                         android:paddingLeft="10dp"
@@ -83,6 +85,8 @@
                         android:layout_toRightOf="@+id/text_phone"
                         android:background="@null"
                         android:gravity="center|right"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
                         android:hint="请您输入客户电话号码"
                         android:paddingLeft="10dp"
                         android:textColor="@color/black33"
@@ -122,6 +126,8 @@
                         android:layout_height="match_parent"
                         android:layout_toRightOf="@+id/text_license"
                         android:background="@null"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
                         android:gravity="center|right"
                         android:hint="请您输入车牌号"
                         android:paddingLeft="10dp"
@@ -155,6 +161,8 @@
                         android:layout_height="match_parent"
                         android:layout_toRightOf="@+id/text_discern"
                         android:background="@null"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
                         android:gravity="center|right"
                         android:hint="请您输入车辆识别代码"
                         android:paddingLeft="10dp"
@@ -189,6 +197,8 @@
                         android:layout_toRightOf="@+id/text_model"
                         android:background="@null"
                         android:gravity="center|right"
+                        android:cursorVisible="true"
+                        android:textCursorDrawable="@null"
                         android:hint="请您输入车辆品牌型号"
                         android:paddingLeft="10dp"
                         android:textColor="@color/black33"
@@ -199,9 +209,18 @@
             </LinearLayout>
 
 
-            <View
+            <Button
+                android:id="@+id/btn_next"
                 android:layout_width="match_parent"
-                android:layout_height="90dp" />
+                android:layout_height="45dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/next_shape"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/ctv_sizen_15" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
