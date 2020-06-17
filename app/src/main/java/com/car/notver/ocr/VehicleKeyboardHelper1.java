@@ -3,7 +3,6 @@ package com.car.notver.ocr;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.inputmethodservice.Keyboard;
 import android.os.IBinder;
 import android.text.Editable;
@@ -20,11 +19,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.PopupWindow;
-
 import androidx.annotation.Nullable;
-
 import com.car.notver.R;
-import com.car.notver.ui.activity.DepositoryActivity;
 
 
 /**

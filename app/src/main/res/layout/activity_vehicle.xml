@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -62,6 +62,38 @@
                 android:layout_height="0.5dp"
                 android:background="@color/dive_line" />
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="车架号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+                <EditText
+                    android:id="@+id/et_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:gravity="center|right"
+                    android:hint="请您输入车架号"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -71,7 +103,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="里程"
+                    android:text="发动机号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+                <EditText
+                    android:id="@+id/et_engine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:gravity="center|right"
+                    android:hint="请您输入发动机号"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="初始里程"
                     android:textColor="@color/black"
                     android:textSize="@dimen/ctv_sizen_14" />
 
@@ -83,7 +148,7 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:hint="请您输入车牌号"
+                    android:hint="请您输入初始里程"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -91,34 +156,34 @@
 
             </RelativeLayout>
 
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/dive_line" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp">
 
                 <TextView
-                    android:id="@+id/text_discern"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="车辆识别代码"
+                    android:text="累计里程"
                     android:textColor="@color/black"
                     android:textSize="@dimen/ctv_sizen_14" />
 
 
                 <EditText
-                    android:id="@+id/et_discern"
+                    android:id="@+id/et_oss_total"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/text_discern"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:hint="请您输入车辆识别代码"
+                    android:hint="请您输入累计里程"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -130,6 +195,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/dive_line" />
+
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -161,7 +228,56 @@
 
             </RelativeLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="备注"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+                <EditText
+                    android:id="@+id/et_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:drawableRight="@mipmap/ic_right"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|right"
+                    android:hint="请输入车辆备注"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </RelativeLayout>
+
         </LinearLayout>
     </com.lihang.ShadowLayout>
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@mipmap/btn_sumber_mine"
+        android:gravity="center"
+        android:text="确认添加"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/ctv_sizen_14" />
 
 </LinearLayout>
