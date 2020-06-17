@@ -15,8 +15,8 @@ import com.car.notver.ocr.VehicleKeyboardHelper1;
  * @name:添加客户
  */
 public class AddClientActivity extends BaseActivity {
-    private TextView title_text_tv, title_left_btn, title_right_btn;
-    private EditText et_license,et_name,et_phone,et_discern,et_model,et_oss;
+    private TextView title_text_tv, title_left_btn, title_right_btn,text_mode;
+    private EditText et_license,et_name,et_phone,et_discern,et_oss;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class AddClientActivity extends BaseActivity {
         et_name= getView(R.id.et_name);
         et_phone= getView(R.id.et_phone);
         et_discern= getView(R.id.et_discern);
-        et_model= getView(R.id.et_model);
+        text_mode= getView(R.id.text_mode);
         et_license = getView(R.id.et_license);
         title_right_btn = getView(R.id.title_right_btn);
         title_text_tv = getView(R.id.title_text_tv);
@@ -39,6 +39,7 @@ public class AddClientActivity extends BaseActivity {
         title_left_btn.setOnClickListener(this);
         title_right_btn.setOnClickListener(this);
         VehicleKeyboardHelper1.bind(et_license, this);
+        text_mode.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +55,9 @@ public class AddClientActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.title_left_btn:
                 finish();
+                break;
+            case R.id.text_mode:
+
                 break;
         }
     }

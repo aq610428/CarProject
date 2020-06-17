@@ -12,9 +12,9 @@
     <com.lihang.ShadowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="10dp"
         app:hl_cornerRadius="3dp"
         app:hl_shadowBackColor="#fff"
         app:hl_shadowColor="#2A696969"
@@ -54,7 +54,7 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
 
@@ -84,12 +84,13 @@
                     android:layout_toRightOf="@+id/text_phone"
                     android:background="@null"
                     android:cursorVisible="true"
+                    android:inputType="phone"
                     android:gravity="center|right"
                     android:hint="请您输入客户电话号码"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -98,9 +99,9 @@
     <com.lihang.ShadowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="10dp"
         app:hl_cornerRadius="3dp"
         app:hl_shadowBackColor="#fff"
         app:hl_shadowColor="#2A696969"
@@ -139,7 +140,7 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
 
@@ -173,7 +174,7 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
             <View
@@ -206,7 +207,7 @@
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
 
@@ -220,7 +221,6 @@
                 android:layout_height="45dp">
 
                 <TextView
-                    android:id="@+id/text_model"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -229,19 +229,20 @@
                     android:textSize="@dimen/ctv_sizen_14" />
 
 
-                <EditText
-                    android:id="@+id/et_model"
+                <TextView
+                    android:id="@+id/text_mode"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/text_model"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:hint="请您输入车辆品牌型号"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/ic_right"
+                    android:hint="请选择车辆品牌型号"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_14" />
+                    android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
 
