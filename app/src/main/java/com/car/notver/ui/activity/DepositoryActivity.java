@@ -100,6 +100,8 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
             }
         });
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store,0,0,0);
+        title_right_btn.setOnClickListener(this);
     }
 
     @Override
@@ -135,6 +137,9 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         switch (v.getId()) {
             case R.id.title_left_btn:
                 finish();
+                break;
+            case R.id.title_right_btn:
+                startActivity(new Intent(this,AddClientActivity.class));
                 break;
         }
     }
