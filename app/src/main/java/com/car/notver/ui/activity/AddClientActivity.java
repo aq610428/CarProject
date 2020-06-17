@@ -1,31 +1,24 @@
 package com.car.notver.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CommonalityModel;
-import com.car.notver.bean.KeepInfo;
 import com.car.notver.bean.UserInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.ocr.VehicleKeyboardHelper1;
 import com.car.notver.util.Constants;
-import com.car.notver.util.JsonParse;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
-
 import org.json.JSONObject;
-
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -116,11 +109,11 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     public void onFail() {
-
+        stopProgressDialog();
     }
 
     @Override
     public void onError(Exception e) {
-
+        stopProgressDialog();
     }
 }
