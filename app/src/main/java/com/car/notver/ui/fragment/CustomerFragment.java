@@ -214,6 +214,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
 
     /*******查询预约列表********/
     public void query() {
+        clealFocus();
         String sign = "";
         if (!Utility.isEmpty(project)) {
             sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + "&project=" + project + Constants.SECREKEY;

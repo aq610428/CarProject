@@ -67,14 +67,14 @@ import static com.car.notver.util.LocationUtils.getDefaultOption;
  */
 public class StoreListActivity extends BaseActivity implements NetWorkListener {
     private TimePickerView pvTime1;
-    private TextView text_cover, text_start, text_end, et_address;
+    private TextView text_cover, text_start, text_end;
     private TextView title_text_tv, title_left_btn;
     private Calendar startDate, endDate;
     private Button btn_next;
     private RelativeLayout rl_photo;
-    private ImageView iv_photo;
+    private ImageView iv_photo,iv_address;
     private String result;
-    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile;
+    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile,et_address;
     private UserInfo userInfo;
 
 
@@ -88,6 +88,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initView() {
+        iv_address = getView(R.id.iv_address);
         et_work = getView(R.id.et_work);
         et_mobile = getView(R.id.et_mobile);
         et_brand = getView(R.id.et_brand);
@@ -109,7 +110,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         rl_photo.setOnClickListener(this);
         title_text_tv.setText("添加门店");
         title_left_btn.setOnClickListener(this);
-        et_address.setOnClickListener(this);
+        iv_address.setOnClickListener(this);
     }
 
 
@@ -166,7 +167,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             case R.id.title_left_btn:
                 finish();
                 break;
-            case R.id.et_address:
+            case R.id.iv_address:
                 Intent intent = new Intent(this, LocationActivity.class);
                 startActivityForResult(intent, 100);
                 break;

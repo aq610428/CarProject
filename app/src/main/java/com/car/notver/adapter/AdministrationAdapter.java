@@ -36,7 +36,7 @@ public class AdministrationAdapter extends AutoRVAdapter {
         vh.getTextView(R.id.text_open).setText(storeInfo.getOperTime());
         vh.getTextView(R.id.text_address).setText(storeInfo.getAddress());
         vh.getTextView(R.id.text_contoct).setText(storeInfo.getContactPerson());
-        vh.getTextView(R.id.text_brand).setText(storeInfo.getReviewContent());
+        vh.getTextView(R.id.text_brand).setText(storeInfo.getBusinessScope());
 
 
 
