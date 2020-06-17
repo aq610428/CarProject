@@ -26,6 +26,7 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
+import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
@@ -183,8 +184,11 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_CAR_SAVE_ID, this);
+        LogUtils.e("sign="+sign);
+        okHttpModel.get(Api.GET_USER_LIST, params, Api.GET_USER_LIST_ID, this);
     }
+
+
 
 
     @Override
@@ -192,7 +196,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
-                    case Api.GET_CAR_SAVE_ID:
+                    case Api.GET_USER_LIST_ID:
                         List<KeepInfo> infos = JsonParse.getKeepInfo(object);
                         if (infos != null && infos.size() > 0) {
                             setAdapter(infos);
@@ -233,12 +237,15 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = null;
                 if (!"客户管理".equals(name)) {
-                    Intent intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
-                    intent.putExtra("keep", keepInfos.get(position));
+                    intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
                     intent.putExtra("project", name);
-                    startActivity(intent);
+                } else {
+                    intent = new Intent(DepositoryActivity.this, ClientDeilActivity.class);
                 }
+                intent.putExtra("keep", keepInfos.get(position));
+                startActivity(intent);
             }
         });
     }

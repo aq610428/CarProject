@@ -135,4 +135,19 @@ public interface Api {
     String GET_USER_VERSION = Config.getOpenNewApi() + "/store/saveStoreUserInfo";
     int GET_USER_VERSION_ID = 100031;
 
+
+    /******添加客户******/
+    String GET_USER_DATA = Config.getOpenNewApi() + "/store/getStoreUserInfoData";
+    int GET_USER_DATA_ID = 100032;
+
+
+    /******客户列表******/
+    String GET_USER_LIST = Config.getOpenNewApi() + "/store/queryStoreUserInfoData";
+    int GET_USER_LIST_ID = 100033;
+
+    /******客户列表******/
+    String GET_USER_CAR = Config.getOpenNewApi() + "/store/queryStoreUserCarData";
+    int GET_USER_CAR_ID = 100034;
+
+
 }

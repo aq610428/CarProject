@@ -81,7 +81,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:paddingTop="5dp"
-                                android:text="我的客户"
+                                android:text="我的车辆"
                                 android:textColor="#BED4FF"
                                 android:textSize="@dimen/ctv_sizen_13" />
 

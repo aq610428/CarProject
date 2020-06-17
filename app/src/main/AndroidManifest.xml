@@ -121,6 +121,11 @@
             android:name=".ui.activity.AssetsActivity"
             android:screenOrientation="portrait" />
 
+
+        <activity
+            android:name=".ui.activity.ClientDeilActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.activity.OrderActivity"
             android:screenOrientation="portrait"

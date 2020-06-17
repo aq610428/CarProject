@@ -35,7 +35,7 @@ public class DepositoryAdapter extends AutoRVAdapter {
             vh.getTextView(R.id.text_name).setText("匿名");
         }
 
-        vh.getTextView(R.id.text_phone).setText(info.getLoginname());
+        vh.getTextView(R.id.text_phone).setText(info.getMobile());
         vh.getTextView(R.id.text_license).setText(info.getCarcard());
         vh.getTextView(R.id.text_make).setText(info.getFactory());
 

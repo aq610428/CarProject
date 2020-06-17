@@ -87,6 +87,7 @@
                     android:gravity="center|right"
                     android:hint="请您输入客户电话号码"
                     android:inputType="phone"
+                    android:maxLength="11"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -118,7 +119,6 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:drawableRight="@mipmap/ic_right"
                     android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="请选择您的生日"
@@ -153,7 +153,6 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:drawableRight="@mipmap/ic_right"
                     android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="请选择性别"
@@ -189,7 +188,6 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:drawableRight="@mipmap/ic_right"
                     android:gravity="center|right"
                     android:hint="请选择省市区"
                     android:paddingLeft="10dp"
@@ -275,7 +273,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="45dp">
+                android:layout_height="45dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -292,7 +291,6 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:drawableRight="@mipmap/ic_right"
                     android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="请选择门店"
@@ -310,13 +308,26 @@
     <Button
         android:id="@+id/btn_next"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/next_shape"
         android:gravity="center"
-        android:text="提交"
+        android:text="确认修改"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/ctv_sizen_15" />
+
+    <Button
+        android:id="@+id/btn_car"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/next_shape"
+        android:gravity="center"
+        android:text="添加车辆"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/ctv_sizen_15" />
 

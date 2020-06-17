@@ -62,6 +62,17 @@ public class StoreInfo implements Serializable {
     private String stringCreateTime;
     private String stringUpdateTime;
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    private String sex;
+
+
     public String getId() {
         return id;
     }

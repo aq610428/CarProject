@@ -24,7 +24,7 @@ public class KeepInfo implements Serializable {
     private String loginname;
     private String carcard;
     private String imeicode;
-    private String nickname;
+    private String username;
     private String model;
     private String memberId;
     private String initmileage;//": 3000.0, 初始里程
@@ -35,6 +35,98 @@ public class KeepInfo implements Serializable {
     private String alarms;
     private String faults;
     private String mileages;
+    private String mobile;
+    private String birthday;
+    private String sex;
+    private String id; //": "bf4135aa3ebd4fa4ba69a9faf851b264",
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    private String province; //": "广东省",
+    private String city; //": "深圳市",
+    private String area; //": "福田区",
+    private String address; //": "机器猫",
+    private String remark; //": "",
+
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
 
 
     public String getOils() {
@@ -155,11 +247,11 @@ public class KeepInfo implements Serializable {
     }
 
     public String getNickname() {
-        return nickname;
+        return username;
     }
 
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.username = nickname;
     }
 
     public String getModel() {

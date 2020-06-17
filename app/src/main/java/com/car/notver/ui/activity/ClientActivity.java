@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -24,7 +25,9 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.FinishActivityManager;
 import com.car.notver.weight.NoDataView;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +52,7 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_client);
-        BaseApplication.activityTaskManager.putActivity("ClientActivity",this);
+        BaseApplication.activityTaskManager.putActivity("ClientActivity", this);
         info = SaveUtils.getSaveInfo();
         if (info != null) {
             query();
@@ -66,7 +69,7 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         title_left_btn.setOnClickListener(this);
-        title_text_tv.setText("我的客户");
+        title_text_tv.setText("我绑定的车辆");
         mNoDataView.textView.setText("门店暂无绑定车辆");
     }
 
@@ -112,7 +115,7 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_CAR_SAVE_ID, this);
+        okHttpModel.get(Api.GET_USER_CAR, params, Api.GET_USER_CAR_ID, this);
     }
 
 
@@ -121,8 +124,8 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
         if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
-                    case Api.GET_CAR_SAVE_ID:
-                        List<KeepInfo> infos= JsonParse.getKeepInfo(object);
+                    case Api.GET_USER_CAR_ID:
+                        List<KeepInfo> infos = JsonParse.getKeepInfo(object);
                         if (infos != null && infos.size() > 0) {
                             setAdapter(infos);
                         } else {
@@ -140,7 +143,7 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
     }
 
 
-    private void setAdapter(List< KeepInfo > voList) {
+    private void setAdapter(List<KeepInfo> voList) {
         mNoDataView.setVisibility(View.GONE);
         if (!isRefresh) {
             infos.clear();
@@ -152,7 +155,6 @@ public class ClientActivity extends BaseActivity implements OnRefreshListener, O
             keepAdapter.setData(infos);
         }
     }
-
 
 
     @Override
