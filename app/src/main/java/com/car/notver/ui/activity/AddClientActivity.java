@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -35,7 +36,6 @@ import com.car.notver.ocr.lljjcoder.style.citypickerview.CityPickerView;
 import com.car.notver.util.Constants;
 import com.car.notver.util.DateUtils;
 import com.car.notver.util.JsonParse;
-import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
@@ -59,7 +59,8 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
     private EditText et_name, et_phone, et_discern, et_oss;
     private UserInfo info;
     private List<StoreInfo> infos = new ArrayList<>();
-    CityPickerView mCityPickerView = new CityPickerView();
+    private CityPickerView mCityPickerView = new CityPickerView();
+    private Button btn_next;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initView() {
+        btn_next = getView(R.id.btn_next);
         text_city = getView(R.id.text_city);
         et_oss = getView(R.id.et_oss);
         et_name = getView(R.id.et_name);
@@ -86,6 +88,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         text_mode.setOnClickListener(this);
         text_license.setOnClickListener(this);
         text_city.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
     }
 
     @Override
@@ -113,19 +116,14 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
             case R.id.text_city:
                 showAddress();
                 break;
+            case R.id.btn_next:
+                qury();
+                break;
         }
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-
-        }
-    }
-
-    /*******查询
+    /*******门店列表
      * @param ********/
     public void query() {
         String sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
@@ -139,16 +137,77 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
     }
 
     private void qury() {
-        String sign = "memberId=" + SaveUtils.getSaveInfo().getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        String username = et_name.getText().toString();
+        String mobile = et_phone.getText().toString();
+        String birthday = text_license.getText().toString();
+        String city = text_city.getText().toString();
+        String address = et_oss.getText().toString();
+        String remark = et_discern.getText().toString();
+        String mode = text_mode.getText().toString();
+        String sex="1";
+
+        if (!Utility.isEmpty(username)) {
+            ToastUtil.showToast("客户姓名不能为空");
+            return;
+        } else if (!Utility.isEmpty(mobile)) {
+            ToastUtil.showToast("手机号码不能为空");
+            return;
+        } else if (!Utility.isEmpty(mode)) {
+            ToastUtil.showToast("门店不能为空");
+            return;
+        }
+        String sign = null;
+        if (!Utility.isEmpty(area)) {
+            sign = "area=" + area;
+        }
+        if (!Utility.isEmpty(address)) {
+            sign = sign + "&address=" + address;
+        }
+        if (!Utility.isEmpty(birthday)) {
+            sign = sign + "&birthday=" + birthday;
+        }
+
+        if (!Utility.isEmpty(city)) {
+            sign = sign + "&city=" + city;
+        }
+        sign = sign + "&mobile=" + mobile+"&partnerid="+ Constants.PARTNERID ;
+
+        if (!Utility.isEmpty(province)) {
+            sign = sign + "&province=" + province;
+        }
+
+
+        if (!Utility.isEmpty(remark)) {
+            sign = sign + "&remark=" + remark;
+        }
+
+        if (!Utility.isEmpty(sex)) {
+            sign = sign + "&sex=" + sex;
+        }
+
+        if (!Utility.isEmpty(sex)) {
+            sign = sign + "&sex=" + sex;
+        }
+        sign = sign + "&storeid=" + storeId+"&storeMemberId="+info.getId()+"&username="+username+Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
-        params.put("apptype", Constants.TYPE);
-        params.put("memberId", SaveUtils.getSaveInfo().getId() + "");
-        params.put("limit", "10");
-        params.put("page", "1");
+        params.put("area", area);
+        params.put("address", address);
+        params.put("birthday", birthday);
+        params.put("city", city);
+        params.put("mobile", mobile);
+        params.put("province", province);
         params.put("partnerid", Constants.PARTNERID);
+        params.put("remark", remark);
+        params.put("sex", "1");
+
+        params.put("storeid", storeId);
+        params.put("storeMemberId", info.getId());
+        params.put("username", username);
+        params.put("apptype", Constants.TYPE);
+
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_INFO, params, Api.GET_INFOO_ID, this);
+        okHttpModel.get(Api.GET_USER_VERSION, params, Api.GET_USER_VERSION_ID, this);
     }
 
 
@@ -157,7 +216,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
-                    case Api.GET_CAR_SAVE_ID:
+                    case Api.GET_USER_VERSION_ID:
                         ToastUtil.showToast(commonality.getErrorDesc());
                         finish();
                         break;
@@ -180,6 +239,8 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
     }
 
 
+    private String province, city, area = "";
+
     private void showAddress() {
         CityConfig cityConfig = new CityConfig.Builder()
                 .title("选择城市")
@@ -190,7 +251,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
                 .provinceCyclic(false)
                 .cityCyclic(false)
                 .districtCyclic(false)
-                .setCityWheelType( CityConfig.WheelType.PRO_CITY_DIS)
+                .setCityWheelType(CityConfig.WheelType.PRO_CITY_DIS)
                 .setCustomItemLayout(R.layout.item_city)//自定义item的布局
                 .setCustomItemTextViewId(R.id.item_city_name_tv)
                 .setShowGAT(true)
@@ -198,8 +259,11 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         mCityPickerView.setConfig(cityConfig);
         mCityPickerView.setOnCityItemClickListener(new OnCityItemClickListener() {
             @Override
-            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
-                text_city.setText(province.getName()+city.getName() +district.getName() );
+            public void onSelected(ProvinceBean provinceBean, CityBean cityBean, DistrictBean districtBean) {
+                province = provinceBean.getName();
+                city = cityBean.getName();
+                area = districtBean.getName();
+                text_city.setText(province + city + area + "");
             }
 
             @Override

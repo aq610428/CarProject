@@ -129,4 +129,10 @@ public interface Api {
     /******注册成功******/
     String GET_MSG_VERSION = Config.getOpenNewApi() + "/member/getmembermessagelist";
     int GET_MSG_VERSION_ID = 100030;
+
+
+    /******添加客户******/
+    String GET_USER_VERSION = Config.getOpenNewApi() + "/store/saveStoreUserInfo";
+    int GET_USER_VERSION_ID = 100031;
+
 }
