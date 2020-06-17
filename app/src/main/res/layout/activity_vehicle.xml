@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_blg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
 
     <include layout="@layout/activity_title" />
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
         app:hl_cornerRadius="3dp"
         app:hl_shadowBackColor="#fff"
@@ -27,100 +27,29 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp">
-
-                <TextView
-                    android:id="@+id/text_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="客户姓名"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/ctv_sizen_14" />
-
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/text_name"
-                    android:background="@null"
-                    android:cursorVisible="true"
-                    android:gravity="center|right"
-                    android:hint="请您输入客户姓名"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/black7e"
-                    android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_13" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dive_line" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp">
-
-                <TextView
-                    android:id="@+id/text_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="联系电话"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/ctv_sizen_14" />
-
-
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/text_phone"
-                    android:background="@null"
-                    android:cursorVisible="true"
-                    android:gravity="center|right"
-                    android:hint="请您输入客户电话号码"
-                    android:inputType="phone"
-                    android:paddingLeft="10dp"
-                    android:textColor="@color/black7e"
-                    android:textCursorDrawable="@null"
-                    android:textSize="@dimen/ctv_sizen_13" />
-
-            </RelativeLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dive_line" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="生日"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/ctv_sizen_14" />
-
 
                 <TextView
                     android:id="@+id/text_license"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="车牌号"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+                <EditText
+                    android:id="@+id/et_license"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/text_license"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:drawableRight="@mipmap/ic_right"
-                    android:drawablePadding="10dp"
-                    android:hint="请选择您的生日"
+                    android:hint="请您输入车牌号"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -142,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="详细地址"
+                    android:text="里程"
                     android:textColor="@color/black"
                     android:textSize="@dimen/ctv_sizen_14" />
 
@@ -154,7 +83,7 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:hint="请输入您的详细地址"
+                    android:hint="请您输入车牌号"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -176,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="客户备注"
+                    android:text="车辆识别代码"
                     android:textColor="@color/black"
                     android:textSize="@dimen/ctv_sizen_14" />
 
@@ -189,7 +118,7 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:gravity="center|right"
-                    android:hint="请您输入客户备注"
+                    android:hint="请您输入车辆识别代码"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -210,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="请选择门店"
+                    android:text="车辆品牌型号"
                     android:textColor="@color/black"
                     android:textSize="@dimen/ctv_sizen_14" />
 
@@ -224,7 +153,7 @@
                     android:drawableRight="@mipmap/ic_right"
                     android:drawablePadding="10dp"
                     android:gravity="center|right"
-                    android:hint="请选择门店"
+                    android:hint="请选择车辆品牌型号"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"
@@ -234,19 +163,5 @@
 
         </LinearLayout>
     </com.lihang.ShadowLayout>
-
-
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/next_shape"
-        android:gravity="center"
-        android:text="提交"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/ctv_sizen_15" />
 
 </LinearLayout>

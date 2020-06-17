@@ -50,11 +50,10 @@
     <permission
         android:name="com.car.notver.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.car.notver.permission.JPUSH_MESSAGE" />
 
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
-
 
 
     <application
@@ -69,8 +68,8 @@
 
         <activity
             android:name=".ui.activity.LoginActivity"
-            android:theme="@style/AppTheme1"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".ui.activity.StoreListActivity"
             android:screenOrientation="portrait"
@@ -124,8 +123,8 @@
 
         <activity
             android:name=".ui.activity.OrderActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".ui.activity.StoreActivity"
             android:screenOrientation="portrait" />
@@ -158,8 +157,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.DepositoryActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
 
         <activity
             android:name=".ui.activity.CommodityActivity"
@@ -254,14 +253,20 @@
             android:name=".ui.activity.PersonnelActivity"
             android:screenOrientation="portrait" />
 
+
+        <activity
+            android:name=".ui.activity.BrandActivity"
+            android:screenOrientation="portrait" />
+
+
         <activity
             android:name=".ui.activity.ConfirmationActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
-        <activity android:name=".ui.activity.StartActivity"
-            android:theme="@style/FullScreenTheme"
-            >
+        <activity
+            android:name=".ui.activity.StartActivity"
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -289,7 +294,8 @@
         <!-- Since JCore2.0.0 Required SDK核心功能-->
         <!-- 可配置android:process参数将Service放在其他进程中；android:enabled属性不能是false -->
         <!-- 这个是自定义Service，要继承极光JCommonService，可以在更多手机平台上使得推送通道保持的更稳定 -->
-        <service android:name=".config.XService"
+        <service
+            android:name=".config.XService"
             android:enabled="true"
             android:exported="false"
             android:process=":pushcore">
@@ -308,12 +314,15 @@
         </receiver>
 
 
-
         <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
+        <receiver
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
 
         <!-- 3.5.0新增，用于定时展示功能 -->
-        <receiver android:name="cn.jpush.android.service.SchedulerReceiver" android:exported="false"/>
+        <receiver
+            android:name="cn.jpush.android.service.SchedulerReceiver"
+            android:exported="false" />
 
 
         <receiver
@@ -351,10 +360,9 @@
 
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
-            android:authorities="${applicationId}.DownloadProvider"
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:exported="true"
-            />
+            android:authorities="${applicationId}.DownloadProvider"
+            android:exported="true" />
 
 
         <!-- Required SDK 核心功能-->
@@ -372,11 +380,10 @@
 
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
-            android:authorities="${applicationId}.DataProvider"
             android:name="cn.jpush.android.service.DataProvider"
-            android:process=":pushcore"
+            android:authorities="${applicationId}.DataProvider"
             android:exported="false"
-            />
+            android:process=":pushcore" />
     </application>
 
 </manifest>
