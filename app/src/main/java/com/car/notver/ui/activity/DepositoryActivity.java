@@ -7,8 +7,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -28,9 +30,10 @@ import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
-import com.car.notver.weight.FinishActivityManager;
 import com.car.notver.weight.NoDataView;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -60,7 +63,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         setContentView(R.layout.activity_depository);
         info = SaveUtils.getSaveInfo();
         cardNum = getIntent().getStringExtra("name");
-        BaseApplication.activityTaskManager.putActivity("DepositoryActivity",this);
+        BaseApplication.activityTaskManager.putActivity("DepositoryActivity", this);
     }
 
     @Override
@@ -95,12 +98,13 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                     query();
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
 
             }
         });
-        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store,0,0,0);
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
         title_right_btn.setOnClickListener(this);
     }
 
@@ -139,7 +143,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                 finish();
                 break;
             case R.id.title_right_btn:
-                startActivity(new Intent(this,AddClientActivity.class));
+                startActivity(new Intent(this, AddClientActivity.class));
                 break;
         }
     }
@@ -158,7 +162,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_CAR_SAVE_ID, this);
+        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_COINS_DAILY_BILL_ID, this);
     }
 
 
@@ -191,6 +195,14 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                             if (page == 1 && !isRefresh) {
                                 mNoDataView.setVisibility(View.VISIBLE);
                             }
+                        }
+                        break;
+                    case Api.GET_COINS_DAILY_BILL_ID:
+                        List<KeepInfo> keepInfo = JsonParse.getKeepInfo(object);
+                        if (keepInfo != null && keepInfo.size() > 0) {
+                            setAdapter(keepInfo);
+                        } else {
+                            startActivity(new Intent(this, AddClientActivity.class));
                         }
                         break;
                 }

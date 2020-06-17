@@ -26,7 +26,6 @@ public class AddClientActivity extends BaseActivity {
         title_right_btn = getView(R.id.title_right_btn);
         title_text_tv = getView(R.id.title_text_tv);
         title_left_btn = getView(R.id.title_left_btn);
-        title_right_btn.setText("提交");
         title_text_tv.setText("添加客户");
         title_left_btn.setOnClickListener(this);
         title_right_btn.setOnClickListener(this);
