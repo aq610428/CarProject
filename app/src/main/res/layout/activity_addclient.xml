@@ -93,6 +93,7 @@
                     android:textSize="@dimen/ctv_sizen_13" />
 
             </RelativeLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -117,10 +118,45 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:gravity="center|right"
                     android:drawableRight="@mipmap/ic_right"
                     android:drawablePadding="10dp"
+                    android:gravity="center|right"
                     android:hint="请选择您的生日"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black7e"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/ctv_sizen_13" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="省市区"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/ctv_sizen_14" />
+
+
+                <TextView
+                    android:id="@+id/text_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:gravity="center|right"
+                    android:drawableRight="@mipmap/ic_right"
+                    android:hint="请选择省市区"
                     android:paddingLeft="10dp"
                     android:textColor="@color/black7e"
                     android:textCursorDrawable="@null"

@@ -48,7 +48,7 @@ import java.util.Map;
  * @name:添加客户
  */
 public class AddClientActivity extends BaseActivity implements NetWorkListener {
-    private TextView title_text_tv, title_left_btn, title_right_btn, text_mode, text_license;
+    private TextView title_text_tv, title_left_btn, title_right_btn, text_mode, text_license, text_city;
     private EditText et_name, et_phone, et_discern, et_oss;
     private UserInfo info;
     private List<StoreInfo> infos = new ArrayList<>();
@@ -61,6 +61,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initView() {
+        text_city = getView(R.id.text_city);
         et_oss = getView(R.id.et_oss);
         et_name = getView(R.id.et_name);
         et_phone = getView(R.id.et_phone);
@@ -75,6 +76,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         title_right_btn.setOnClickListener(this);
         text_mode.setOnClickListener(this);
         text_license.setOnClickListener(this);
+        text_city.setOnClickListener(this);
     }
 
     @Override
@@ -94,10 +96,13 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
                 finish();
                 break;
             case R.id.text_mode:
-               showDialog();
+                showDialog();
                 break;
             case R.id.text_license:
                 pvTime1.show();
+                break;
+            case R.id.text_city:
+                
                 break;
         }
     }
@@ -167,6 +172,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
 
     private Calendar startDate, endDate;
     private TimePickerView pvTime1;
+
     protected void initDataTime() {
         Calendar selectedDate = Calendar.getInstance();
         startDate = Calendar.getInstance();
