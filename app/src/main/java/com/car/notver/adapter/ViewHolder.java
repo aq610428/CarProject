@@ -13,6 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.car.notver.weight.NoDataView;
+import com.lihang.ShadowLayout;
+
 
 /**
  * 作者：zt on 2017/2/17.
@@ -55,7 +58,15 @@ public class ViewHolder {
         return get(id);
     }
 
+    public ShadowLayout getShadowLayout(int id) {
 
+        return get(id);
+    }
+
+    public NoDataView getNoDataView(int id) {
+
+        return get(id);
+    }
 
     public RatingBar getRatingBar(int id) {
 

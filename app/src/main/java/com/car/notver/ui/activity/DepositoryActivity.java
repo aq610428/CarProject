@@ -214,7 +214,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                         if (keepInfo != null && keepInfo.size() > 0) {
                             setAdapter(keepInfo);
                         } else {
-                            startActivity(new Intent(this, AddClientActivity.class));
+
                         }
                         break;
                 }

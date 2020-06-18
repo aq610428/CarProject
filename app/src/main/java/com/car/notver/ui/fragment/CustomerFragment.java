@@ -15,13 +15,16 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -58,13 +61,17 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
+import com.car.notver.weight.EmptyDataView;
 import com.car.notver.weight.NoDataView;
 import com.car.notver.weight.RecognizeService;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import crossoverone.statuslib.StatusUtil;
 
 /****
@@ -90,10 +97,9 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private UserInfo info;
     private SwipeToLoadLayout swipeToLoadLayout;
     private boolean isRefresh;
-    private LinearLayout ll_term, ll_client,ll_tab1;
-    private NoDataView mNoDataView;
+    private LinearLayout ll_term, ll_client, ll_tab1;
     private String project = "";
-    private LinearLayout ll_top;
+    private RelativeLayout ll_top;
     private NestedScrollView nestedScrollView;
     private DynamicReceiver dynamicReceiver;
 
@@ -120,7 +126,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initView() {
-        ll_tab1= getView(rootView, R.id.ll_tab1);
+        ll_tab1 = getView(rootView, R.id.ll_tab1);
         text_msg = getView(rootView, R.id.text_msg);
         nestedScrollView = getView(rootView, R.id.swipe_target);
         ll_top = getView(rootView, R.id.ll_top);
@@ -129,7 +135,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         text_master = getView(rootView, R.id.text_master);
         text_couster = getView(rootView, R.id.text_couster);
         text_num = getView(rootView, R.id.text_num);
-        mNoDataView = getView(rootView, R.id.mNoDataView);
         ll_client = getView(rootView, R.id.ll_client);
         ll_term = getView(rootView, R.id.ll_term);
         swipeToLoadLayout = getView(rootView, R.id.swipeToLoadLayout);
@@ -186,7 +191,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             }
         });
         VehicleKeyboardHelper.bind(cardNum, getContext());
-        mNoDataView.textView.setText("暂无预约订单");
         nestedScrollView.setFocusableInTouchMode(true);
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
@@ -200,7 +204,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     class DynamicReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-              onRefresh();
+            onRefresh();
         }
     }
 
@@ -278,8 +282,10 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                             setAdapter(infos);
                         } else {
                             if (page == 1 && !isRefresh) {
-                                recyclerView.setVisibility(View.GONE);
-                                mNoDataView.setVisibility(View.VISIBLE);
+                                bespokes = new ArrayList<>();
+                                bespokes.add(new Bespoke());
+                                adapter = new OwnerAdapter(this, bespokes);
+                                recyclerView.setAdapter(adapter);
                             }
                         }
                         break;
@@ -309,8 +315,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void setAdapter(List<Bespoke> voList) {
-        recyclerView.setVisibility(View.VISIBLE);
-        mNoDataView.setVisibility(View.GONE);
         if (!isRefresh) {
             bespokes.clear();
             bespokes.addAll(voList);

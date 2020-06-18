@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_top"
     android:layout_width="match_parent"
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         app:swipe_style="classic">
 
         <include
@@ -105,8 +106,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="30dp"
-                            android:layout_toRightOf="@+id/ll_client"
                             android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/ll_client"
                             android:orientation="vertical">
 
                             <TextView
@@ -137,9 +138,9 @@
                             android:id="@+id/ll_term"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/ll_tab1"
                             android:layout_marginLeft="30dp"
                             android:layout_marginTop="5dp"
+                            android:layout_toRightOf="@+id/ll_tab1"
                             android:orientation="vertical">
 
                             <TextView
@@ -341,14 +342,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" />
-
-
-                <com.car.notver.weight.NoDataView
-                    android:id="@+id/mNoDataView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp" />
-
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
@@ -357,4 +350,6 @@
             android:id="@id/swipe_load_more_footer"
             layout="@layout/layout_google_hook_footer" />
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
-</LinearLayout>
+
+
+</RelativeLayout>
