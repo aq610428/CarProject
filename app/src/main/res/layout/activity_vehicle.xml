@@ -197,7 +197,6 @@
                 android:background="@color/dive_line" />
 
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp">
@@ -215,6 +214,7 @@
                     android:id="@+id/text_mode"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="80dp"
                     android:background="@null"
                     android:cursorVisible="true"
                     android:drawableRight="@mipmap/ic_right"
@@ -252,8 +252,6 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:cursorVisible="true"
-                    android:drawableRight="@mipmap/ic_right"
-                    android:drawablePadding="10dp"
                     android:gravity="center|right"
                     android:hint="请输入车辆备注"
                     android:paddingLeft="10dp"

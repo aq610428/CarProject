@@ -79,7 +79,12 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         title_text_tv = getView(R.id.title_text_tv);
         title_left_btn = getView(R.id.title_left_btn);
         title_left_btn.setOnClickListener(this);
-        title_text_tv.setText(name + "");
+        if (Utility.isEmpty(name)) {
+            title_text_tv.setText("我的客户");
+        } else {
+            title_text_tv.setText(name + "");
+        }
+
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -184,11 +189,9 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        LogUtils.e("sign="+sign);
+        LogUtils.e("sign=" + sign);
         okHttpModel.get(Api.GET_USER_LIST, params, Api.GET_USER_LIST_ID, this);
     }
-
-
 
 
     @Override
@@ -238,7 +241,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                if (!"客户管理".equals(name)) {
+                if (!Utility.isEmpty(name)&&!"客户管理".equals(name)) {
                     intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
                     intent.putExtra("project", name);
                 } else {

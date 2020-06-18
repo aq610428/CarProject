@@ -100,12 +100,45 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:id="@+id/ll_tab1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@+id/ll_client"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:paddingTop="5dp"
+                                android:text="我的客户"
+                                android:textColor="#BED4FF"
+                                android:textSize="@dimen/ctv_sizen_13" />
+
+                            <TextView
+                                android:id="@+id/text_client"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:drawableLeft="@mipmap/ic_group_main"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:paddingTop="5dp"
+                                android:text="0"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/ctv_sizen_14" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_term"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="90dp"
+                            android:layout_toRightOf="@+id/ll_tab1"
+                            android:layout_marginLeft="30dp"
                             android:layout_marginTop="5dp"
                             android:orientation="vertical">
 

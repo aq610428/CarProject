@@ -149,5 +149,21 @@ public interface Api {
     String GET_USER_CAR = Config.getOpenNewApi() + "/store/queryStoreUserCarData";
     int GET_USER_CAR_ID = 100034;
 
+    /******品牌列表******/
+    String GET_USER_BRAND = Config.getOpenNewApi() + "/resource/getcarbrandlist";
+    int GET_USER_BRAND_ID = 100035;
+
+    /******车型列表******/
+    String GET_USER_LISR = Config.getOpenNewApi() + "/resource/getcarmodellist";
+    int GET_USER_LISR_ID = 100036;
+
+
+    /******年款车型******/
+    String GET_YEAR_LISR = Config.getOpenNewApi() + "/resource/getcarmodelyearlist";
+    int GET_YEAR_LISR_ID = 100037;
+
+    /******年款车型******/
+    String GET_MODEL_LISR = Config.getOpenNewApi() + "/store/saveStoreUserCar";
+    int GET_MODEL_LISR_ID = 100038;
 
 }

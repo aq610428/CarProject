@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.car.notver.bean.Bespoke;
+import com.car.notver.bean.Brand;
+import com.car.notver.bean.BrandInfo;
+import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.FileInfo;
 import com.car.notver.bean.Integral;
@@ -15,6 +18,7 @@ import com.car.notver.bean.Ordered;
 import com.car.notver.bean.StoreInfo;
 import com.car.notver.bean.UserInfo;
 import com.car.notver.bean.Verison;
+import com.car.notver.bean.YearCar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -61,22 +65,16 @@ public class JsonParse {
         return infos;
     }
 
-
-    public String getJson(Context context, String fileName) {
-        StringBuilder stringBuilder = new StringBuilder();
-        try {
-            AssetManager assetManager = context.getAssets();
-            BufferedReader bf = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName)));
-            String line;
-            while ((line = bf.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static List<Brand> getBespokebrandsJson(JSONObject object) {
+        List<Brand> infos = new ArrayList<>();
+        JSONArray jsonArray = object.optJSONArray("result");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            Brand info = (Brand) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), Brand.class);
+            infos.add(info);
         }
-        return stringBuilder.toString();
+        return infos;
     }
+
 
 
     public static List<FileInfo> getStoreFileJson(JSONObject object) {
@@ -174,6 +172,43 @@ public class JsonParse {
         JSONArray jsonArray = jsonObject.optJSONArray("items");
         for (int i = 0; i < jsonArray.length(); i++) {
             Massage info = (Massage) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), Massage.class);
+            infos.add(info);
+        }
+        return infos;
+    }
+
+    public static BrandInfo getBrandInfo(JSONObject object) {
+        BrandInfo info=new BrandInfo();
+        JSONArray jsonArray = object.optJSONArray("result");
+        JSONObject jsonObject=jsonArray.optJSONObject(0).optJSONObject("business");
+        BrandInfo.BusinessBean bean = (BrandInfo.BusinessBean) JsonUtilComm.jsonToBean(jsonObject.toString(), BrandInfo.BusinessBean.class);
+        info.setBusinessX(bean);
+        List<BrandInfo.ItemsBean> itemsX=new ArrayList<>();
+        JSONArray array=jsonArray.optJSONObject(0).optJSONArray("items");
+        for (int i = 0; i < array.length(); i++) {
+            BrandInfo.ItemsBean userInfo = (BrandInfo.ItemsBean) JsonUtilComm.jsonToBean(array.optJSONObject(i).toString(), BrandInfo.ItemsBean.class);
+            itemsX.add(userInfo);
+        }
+        info.setItemsX(itemsX);
+        return info;
+    }
+
+    public static List<YearCar> getbrandList(JSONObject object) {
+        List<YearCar> infos = new ArrayList<>();
+        JSONArray jsonArray = object.optJSONArray("result");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            YearCar info = (YearCar) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), YearCar.class);
+            infos.add(info);
+        }
+        return infos;
+    }
+
+    public static List<ClientVo> getBespokeJSONObject(JSONObject object) {
+        List<ClientVo> infos = new ArrayList<>();
+        JSONObject jsonObject = object.optJSONObject("result");
+        JSONArray jsonArray = jsonObject.optJSONArray("caritems");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            ClientVo info = (ClientVo) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), ClientVo.class);
             infos.add(info);
         }
         return infos;

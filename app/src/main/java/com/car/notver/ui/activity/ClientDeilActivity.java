@@ -11,14 +11,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
+import com.car.notver.adapter.BrandDeilAdapter;
 import com.car.notver.adapter.OrderListAdapter;
 import com.car.notver.base.BaseActivity;
+import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.bean.StoreInfo;
@@ -34,6 +34,7 @@ import com.car.notver.ocr.lljjcoder.citywheel.CityConfig;
 import com.car.notver.ocr.lljjcoder.style.citypickerview.CityPickerView;
 import com.car.notver.util.Constants;
 import com.car.notver.util.DateUtils;
+import com.car.notver.util.JsonParse;
 import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
@@ -56,8 +57,12 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
     private TextView title_text_tv, title_left_btn, title_right_btn, text_license, text_city, text_sex;
     private EditText et_name, et_phone, et_discern, et_oss;
     private KeepInfo keepInfo;
-    private Button btn_next,btn_car;
+    private Button btn_next, btn_car;
     private CityPickerView mCityPickerView = new CityPickerView();
+    private RecyclerView recyclerView;
+    private BrandDeilAdapter adapter;
+    private List<ClientVo> clientVos = new ArrayList<>();
+
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -67,6 +72,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
 
     @Override
     protected void initView() {
+        recyclerView = getView(R.id.recyclerView);
         btn_car = getView(R.id.btn_car);
         btn_next = getView(R.id.btn_next);
         text_sex = getView(R.id.text_sex);
@@ -87,6 +93,9 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
         btn_next.setOnClickListener(this);
         text_sex.setOnClickListener(this);
         btn_car.setOnClickListener(this);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -113,6 +122,12 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
 
         }
         initDataTime();
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         query();
     }
 
@@ -131,6 +146,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
 
 
     private String sex = "1";
+
     private void qury() {
         String username = et_name.getText().toString();
         String mobile = et_phone.getText().toString();
@@ -151,29 +167,29 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
         }
         if (!Utility.isEmpty(area)) {
             if (Utility.isEmpty(sign)) {
-                sign ="area=" + area;
-            }else{
+                sign = "area=" + area;
+            } else {
                 sign = sign + "&area=" + area;
             }
         }
 
         if (!Utility.isEmpty(birthday)) {
             if (Utility.isEmpty(sign)) {
-                sign ="birthday=" + birthday;
-            }else{
+                sign = "birthday=" + birthday;
+            } else {
                 sign = sign + "&birthday=" + birthday;
             }
         }
         if (!Utility.isEmpty(city)) {
             if (Utility.isEmpty(sign)) {
-                sign ="city=" + city;
-            }else{
+                sign = "city=" + city;
+            } else {
                 sign = sign + "&city=" + city;
             }
         }
-        if (Utility.isEmpty(sign)){
-            sign =  "id=" + keepInfo.getId();
-        }else{
+        if (Utility.isEmpty(sign)) {
+            sign = "id=" + keepInfo.getId();
+        } else {
             sign = sign + "&id=" + keepInfo.getId();
         }
 
@@ -196,16 +212,16 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
         sign = sign + "&storeid=" + keepInfo.getStoreid() + "&storeMemberId=" + info.getId() + "&username=" + username + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
-        if (!Utility.isEmpty(address)){
+        if (!Utility.isEmpty(address)) {
             params.put("address", address + "");
         }
-        if (!Utility.isEmpty(area)){
+        if (!Utility.isEmpty(area)) {
             params.put("area", area + "");
         }
-        if (!Utility.isEmpty(birthday)){
+        if (!Utility.isEmpty(birthday)) {
             params.put("birthday", birthday + "");
         }
-        if (!Utility.isEmpty(city)){
+        if (!Utility.isEmpty(city)) {
             params.put("city", city + "");
         }
 
@@ -214,14 +230,14 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
 
         params.put("partnerid", Constants.PARTNERID);
 
-        if (!Utility.isEmpty(province)){
+        if (!Utility.isEmpty(province)) {
             params.put("province", province + "");
         }
 
-        if (!Utility.isEmpty(remark)){
+        if (!Utility.isEmpty(remark)) {
             params.put("remark", remark + "");
         }
-        if (!Utility.isEmpty(sex)){
+        if (!Utility.isEmpty(sex)) {
             params.put("sex", sex + "");
         }
 
@@ -241,18 +257,36 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
                     case Api.GET_USER_DATA_ID:
-
+                        clientVos= JsonParse.getBespokeJSONObject(object);
+                        if (clientVos!=null&&clientVos.size()>0){
+                            setAdapter();
+                        }
                         break;
                     case Api.GET_USER_VERSION_ID:
                         ToastUtil.showToast(commonality.getErrorDesc());
                         finish();
                         break;
                 }
-            }else{
+            } else {
                 ToastUtil.showToast(commonality.getErrorDesc());
             }
         }
         stopProgressDialog();
+    }
+
+    private void setAdapter() {
+        adapter=new BrandDeilAdapter(this,clientVos);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ClientDeilActivity.this, VehicleActivity.class);
+                intent.putExtra("keep", keepInfo);
+                intent.putExtra("clientVo", clientVos.get(position));
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -276,8 +310,8 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
                 showDialog1();
                 break;
             case R.id.btn_car:
-                Intent intent=new Intent(this,VehicleActivity.class);
-                intent.putExtra("keep",keepInfo);
+                Intent intent = new Intent(this, VehicleActivity.class);
+                intent.putExtra("keep", keepInfo);
                 startActivity(intent);
                 break;
 

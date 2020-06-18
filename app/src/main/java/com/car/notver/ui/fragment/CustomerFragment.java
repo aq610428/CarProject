@@ -90,7 +90,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private UserInfo info;
     private SwipeToLoadLayout swipeToLoadLayout;
     private boolean isRefresh;
-    private LinearLayout ll_term, ll_client;
+    private LinearLayout ll_term, ll_client,ll_tab1;
     private NoDataView mNoDataView;
     private String project = "";
     private LinearLayout ll_top;
@@ -120,6 +120,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initView() {
+        ll_tab1= getView(rootView, R.id.ll_tab1);
         text_msg = getView(rootView, R.id.text_msg);
         nestedScrollView = getView(rootView, R.id.swipe_target);
         ll_top = getView(rootView, R.id.ll_top);
@@ -154,6 +155,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         text_tab5.setOnClickListener(this);
         ll_term.setOnClickListener(this);
         ll_client.setOnClickListener(this);
+        ll_tab1.setOnClickListener(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -326,6 +328,9 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         switch (v.getId()) {
             case R.id.text_msg:
                 startActivity(new Intent(getContext(), MassageActivity.class));
+                break;
+            case R.id.ll_tab1:
+                startActivity(new Intent(getContext(), DepositoryActivity.class));
                 break;
 
             case R.id.ll_top:
