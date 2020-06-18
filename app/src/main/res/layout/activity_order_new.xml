@@ -346,42 +346,45 @@
             </LinearLayout>
 
 
-            <Button
-                android:id="@+id/btn_billing"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@color/Text_3377E1"
-                android:gravity="center"
-                android:text="开单"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/ctv_sizen_15" />
-
-
-            <Button
-                android:id="@+id/btn_code"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="30dp"
-                android:background="@color/Text_3377E1"
-                android:gravity="center"
-                android:text="支付积分"
-                android:textColor="#FFFFFF"
-                android:textSize="@dimen/ctv_sizen_15"
-                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="100dp" />
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
 
 
+    <Button
+        android:id="@+id/btn_billing"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@color/Text_3377E1"
+        android:gravity="center"
+        android:text="开单"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/ctv_sizen_15" />
+
+
+    <Button
+        android:id="@+id/btn_code"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:background="@color/Text_3377E1"
+        android:gravity="center"
+        android:text="支付积分"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/ctv_sizen_15"
+        android:visibility="gone" />
     <RelativeLayout
         android:id="@+id/rl_code"
         android:layout_width="match_parent"

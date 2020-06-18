@@ -69,13 +69,39 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center|left"
+                            android:text="门店名称"
+                            android:textColor="#212121"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                        <TextView
+                            android:id="@+id/tv_store"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorWhite"
+                            android:gravity="center|left"
+                            android:text="粤B-157R9"
+                            android:textColor="#929292"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="70dp"
                             android:layout_height="match_parent"
                             android:gravity="center|left"
                             android:text="车牌号码"
@@ -100,7 +126,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
                             android:layout_height="match_parent"
                             android:gravity="center|left"
                             android:text="电话号码"
@@ -126,7 +152,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="80dp"
+                            android:layout_width="70dp"
                             android:layout_height="match_parent"
                             android:gravity="center|left"
                             android:text="预约时间"
