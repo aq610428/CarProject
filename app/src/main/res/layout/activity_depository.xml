@@ -52,11 +52,34 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="未搜索到客户信息"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/ctv_sizen_14" />
 
 
+        <TextView
+            android:id="@+id/btn_code"
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/btn_sumber_mine"
+            android:gravity="center"
+            android:text="添加新客户"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/ctv_sizen_14" />
 
     </LinearLayout>
 

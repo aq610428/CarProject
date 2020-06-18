@@ -6,9 +6,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -30,7 +33,9 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
 import com.car.notver.weight.NoDataView;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +48,7 @@ import java.util.Map;
 public class DepositoryActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
     private SwipeToLoadLayout swipeToLoadLayout;
     private RecyclerView recyclerView;
-    private TextView title_text_tv, title_left_btn, title_right_btn;
+    private TextView title_text_tv, title_left_btn, title_right_btn, text_msg;
     private List<KeepInfo> keepInfos = new ArrayList<>();
     private DepositoryAdapter adapter;
     private String name;
@@ -51,9 +56,10 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     private int limit = 10;
     private int page = 1;
     private boolean isRefresh;
-    private NoDataView mNoDataView;
     private ClearEditText editText;
     private String cardNum;
+    private LinearLayout ll_add;
+    private TextView btn_code;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -65,9 +71,10 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
     @Override
     protected void initView() {
+        btn_code = getView(R.id.btn_code);
+        text_msg = getView(R.id.text_msg);
+        ll_add = getView(R.id.ll_add);
         editText = getView(R.id.et_search);
-        mNoDataView = getView(R.id.mNoDataView);
-        mNoDataView.textView.setText("暂无客户列表");
         title_right_btn = getView(R.id.title_right_btn);
         name = getIntent().getStringExtra("title");
         swipeToLoadLayout = getView(R.id.swipeToLoadLayout);
@@ -108,6 +115,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         });
         title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
         title_right_btn.setOnClickListener(this);
+        btn_code.setOnClickListener(this);
     }
 
     @Override
@@ -121,8 +129,10 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         super.onResume();
         if (!Utility.isEmpty(cardNum)) {
             editText.setText(cardNum);
+            text_msg.setText("未搜索到客户信息");
             query1();
         } else {
+            text_msg.setText("暂无客户信息");
             query();
         }
     }
@@ -149,9 +159,11 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             case R.id.title_left_btn:
                 finish();
                 break;
+            case R.id.btn_code:
             case R.id.title_right_btn:
                 startActivity(new Intent(this, AddClientActivity.class));
                 break;
+
         }
     }
 
@@ -185,7 +197,6 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        LogUtils.e("sign=" + sign);
         okHttpModel.get(Api.GET_USER_LIST, params, Api.GET_USER_LIST_ID, this);
     }
 
@@ -201,7 +212,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                             setAdapter(infos);
                         } else {
                             if (page == 1 && !isRefresh) {
-                                mNoDataView.setVisibility(View.VISIBLE);
+                                ll_add.setVisibility(View.VISIBLE);
                             }
                         }
                         break;
@@ -210,7 +221,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                         if (keepInfo != null && keepInfo.size() > 0) {
                             setAdapter(keepInfo);
                         } else {
-
+                            ll_add.setVisibility(View.VISIBLE);
                         }
                         break;
                 }
@@ -222,7 +233,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     }
 
     private void setAdapter(List<KeepInfo> voList) {
-        mNoDataView.setVisibility(View.GONE);
+        ll_add.setVisibility(View.GONE);
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);
@@ -237,7 +248,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                if (!Utility.isEmpty(name)&&!"客户管理".equals(name)) {
+                if (!Utility.isEmpty(name) && !"客户管理".equals(name)) {
                     intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
                     intent.putExtra("project", name);
                 } else {
