@@ -38,7 +38,7 @@ import cn.jpush.android.api.JPushInterface;
 
 /*****
  *
- *  优贝卡首页    惠养车
+ *  惠养车
  *
  *
  */
