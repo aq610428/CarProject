@@ -1,11 +1,9 @@
 package com.car.notver.adapter;
 
 import android.content.Context;
-
 import com.car.notver.R;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.util.Utility;
-
 import java.util.List;
 
 /**
