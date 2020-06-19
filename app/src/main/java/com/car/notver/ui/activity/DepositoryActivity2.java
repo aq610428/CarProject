@@ -62,7 +62,8 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
     private boolean isRefresh;
     private String cardNum;
     private LinearLayout ll_add;
-    private TextView btn_code;
+    private TextView btn_code,text_search;
+    private ClearEditText et_search;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -74,6 +75,8 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initView() {
+        text_search= getView(R.id.text_search);
+        et_search= getView(R.id.et_search);
         btn_code = getView(R.id.btn_code);
         text_msg = getView(R.id.text_msg);
         ll_add = getView(R.id.ll_add);
@@ -90,11 +93,29 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         btn_code.setOnClickListener(this);
+        text_search.setOnClickListener(this);
+        et_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (Utility.isEmpty(et_search.getText().toString())) {
+                    query();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
     protected void initData() {
-        text_msg.setText("暂无车辆信息");
 
     }
 
@@ -131,6 +152,12 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
             case R.id.btn_code:
                 startActivity(new Intent(this, DepositoryActivity1.class));
                 break;
+            case R.id.text_search:
+                String name=et_search.getText().toString();
+                if (!Utility.isEmpty(name)){
+                    query1();
+                }
+                break;
 
         }
     }
@@ -165,6 +192,23 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
         okHttpModel.get(Api.GET_USER_CAR, params, Api.GET_USER_CAR_ID, this);
     }
 
+    /*******查询
+     * @param ********/
+    public void query1() {
+        String sign ="carcard=" + et_search.getText().toString()+ "&memberId=" + info.getId()+ "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        showProgressDialog(this, false);
+        Map<String, String> params = okHttpModel.getParams();
+        params.put("apptype", Constants.TYPE);
+        params.put("limit", limit + "");
+        params.put("page", page + "");
+        params.put("carcard", et_search.getText().toString() + "");
+        params.put("memberId", info.getId());
+        params.put("partnerid", Constants.PARTNERID);
+        params.put("sign", Md5Util.encode(sign));
+        okHttpModel.get(Api.GET_SERCHER_USER, params, Api.GET_COINS_DAILY_BILL_ID, this);
+    }
+
+
 
     @Override
     public void onSucceed(JSONObject object, int id, CommonalityModel commonality) {
@@ -185,6 +229,15 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
                     case Api.GET_DELETE_ID:
                         ToastUtil.showToast(commonality.getErrorDesc());
                         query();
+                        break;
+                    case Api.GET_COINS_DAILY_BILL_ID:
+                        List<ClientVo> keepInfo = JsonParse.getBespokeJSONObject1(object);
+                        if (keepInfo != null && keepInfo.size() > 0) {
+                            setAdapter(keepInfo);
+                        } else {
+                            ll_add.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        }
                         break;
                 }
             }

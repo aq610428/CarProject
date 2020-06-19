@@ -128,10 +128,8 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         super.onResume();
         if (!Utility.isEmpty(cardNum)) {
             editText.setText(cardNum);
-            text_msg.setText("未搜索到客户信息");
             query1();
         } else {
-            text_msg.setText("暂无客户信息");
             query();
         }
     }
@@ -185,7 +183,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_COINS_DAILY_BILL_ID, this);
+        okHttpModel.get(Api.GET_SERCHER_USER, params, Api.GET_COINS_DAILY_BILL_ID, this);
     }
 
 
@@ -241,6 +239,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                             setAdapter(keepInfo);
                         } else {
                             ll_add.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
                         }
                         break;
                     case Api.GET_DELETE_ID:

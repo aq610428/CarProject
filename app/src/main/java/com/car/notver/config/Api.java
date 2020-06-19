@@ -173,4 +173,7 @@ public interface Api {
     /******删除车辆******/
     String GET_DELETE_CAR = Config.getOpenNewApi() + "/store/removeStoreUserCar";
     int GET_DELETE_CAR_ID = 100040;
+    String GET_SERCHER_CAR = Config.getOpenNewApi() + "/store/queryStoreUserInfoData";
+    String GET_SERCHER_USER = Config.getOpenNewApi() + "/store/queryStoreUserCarData";
+
 }
