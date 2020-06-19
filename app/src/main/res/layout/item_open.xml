@@ -129,6 +129,7 @@
 
 
                     <RelativeLayout
+                        android:id="@+id/rl_tab1"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:orientation="horizontal">
@@ -156,6 +157,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/rl_tab2"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:orientation="horizontal">
@@ -184,6 +186,7 @@
 
 
                     <RelativeLayout
+                        android:id="@+id/rl_tab3"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:orientation="horizontal">

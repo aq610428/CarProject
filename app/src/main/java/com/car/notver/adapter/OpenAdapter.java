@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.car.notver.R;
@@ -67,6 +68,10 @@ public class OpenAdapter extends BaseAdapter {
             vh.tv_accessory = convertView.findViewById(R.id.tv_accessory);
             vh.tv_parts = convertView.findViewById(R.id.tv_parts);
             vh.btn_code = convertView.findViewById(R.id.btn_code);
+            vh.rl_tab1 = convertView.findViewById(R.id.rl_tab1);
+            vh.rl_tab2 = convertView.findViewById(R.id.rl_tab2);
+            vh.rl_tab3 = convertView.findViewById(R.id.rl_tab3);
+
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
@@ -91,9 +96,30 @@ public class OpenAdapter extends BaseAdapter {
 
         vh.tv_billing.setText(ordered.getIntegral() + "");
         vh.tv_cash.setText("￥" + ordered.getAmount() + "");
-        vh.tv_num.setText(ordered.getPartsNum() + "");
-        vh.tv_accessory.setText(ordered.getPartsReplace() + "");
-        vh.tv_parts.setText(ordered.getRepairPlan() + "");
+
+
+        if (Utility.isEmpty(ordered.getRepairPlan())){
+            vh.rl_tab1.setVisibility(View.GONE);
+        }else{
+            vh.tv_parts.setText(ordered.getRepairPlan() + "");
+            vh.rl_tab1.setVisibility(View.VISIBLE);
+        }
+
+        if (Utility.isEmpty(ordered.getPartsReplace())){
+            vh.rl_tab2.setVisibility(View.GONE);
+        }else{
+            vh.tv_accessory.setText(ordered.getPartsReplace() + "");
+            vh.rl_tab2.setVisibility(View.VISIBLE);
+        }
+
+        if (Utility.isEmpty(ordered.getPartsNum())){
+            vh.rl_tab3.setVisibility(View.GONE);
+        }else{
+            vh.tv_num.setText(ordered.getPartsNum() + "");
+            vh.rl_tab3.setVisibility(View.VISIBLE);
+        }
+
+
         if (!Utility.isEmpty(ordered.getOrderId())) {
             if (ordered.getIntegralFlag() == 1) {//待支付
                 vh.btn_code.setText("收取积分");
@@ -119,5 +145,6 @@ public class OpenAdapter extends BaseAdapter {
     class ViewHolder {
         private TextView tv_date, tv_make, tv_license, tv_phone, tv_billing, tv_cash, tv_num, tv_accessory, tv_parts, tv_finish;
         private TextView btn_code;
+        private RelativeLayout rl_tab1,rl_tab2,rl_tab3;
     }
 }
