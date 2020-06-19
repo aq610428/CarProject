@@ -26,7 +26,17 @@ public class KeepInfo implements Serializable {
     private String imeicode;
     private String username;
     private String model;
-    private String memberId;
+
+    public String getMemberid() {
+        return memberid;
+    }
+
+    public void setMemberid(String memberid) {
+        this.memberid = memberid;
+    }
+
+    private String memberid;
+
     private String initmileage;//": 3000.0, 初始里程
     private String totalmileage;//": 3902.95, 累积行驶里程
     private String storeid;//": "a3e0fd89e44a40dc95839f1c15139c28",
@@ -39,6 +49,15 @@ public class KeepInfo implements Serializable {
     private String birthday;
     private String sex;
     private String id; //": "bf4135aa3ebd4fa4ba69a9faf851b264",
+
+    public String getStoreMemberId() {
+        return storeMemberId;
+    }
+
+    public void setStoreMemberId(String storeMemberId) {
+        this.storeMemberId = storeMemberId;
+    }
+    private String storeMemberId;
 
     public String getUsername() {
         return username;
@@ -262,11 +281,4 @@ public class KeepInfo implements Serializable {
         this.model = model;
     }
 
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
 }

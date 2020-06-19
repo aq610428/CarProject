@@ -30,6 +30,7 @@ import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.DateUtils;
 import com.car.notver.util.JsonParse;
+import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
@@ -195,7 +196,7 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         String accessory = et_accessory.getText().toString();
         String number = et_number.getText().toString();
         String project = getIntent().getStringExtra("project");
-        String sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberId()
+        String sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid()
                 + "&partnerid=" + Constants.PARTNERID + "&partsNum=" + number + "&partsReplace=" + accessory
                 + "&project=" + project
                 + "&repairPlan=" + parts + "&storeId=" + storeId + Constants.SECREKEY;
@@ -204,7 +205,7 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         params.put("amount", cash + "");
         params.put("finishTime", finishTime + "");
         params.put("integral", integral + "");
-        params.put("memberId", keepInfo.getMemberId() + "");
+        params.put("memberId", keepInfo.getMemberid() + "");
         params.put("partnerid", Constants.PARTNERID);
         params.put("partsNum", number + "");
         params.put("partsReplace", accessory + "");
@@ -227,7 +228,7 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         String number = et_number.getText().toString();
         String project = getIntent().getStringExtra("project");
         String sign = null;
-        sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberId()
+        sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid()
                 + "&partnerid=" + Constants.PARTNERID;
         if (!Utility.isEmpty(number)) {
             sign = sign + "&partsNum=" + number;
@@ -240,12 +241,13 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
             sign = sign + "&repairPlan=" + parts;
         }
         sign = sign + "&storeId=" + storeId + Constants.SECREKEY;
+        LogUtils.e(sign);
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("amount", cash + "");
         params.put("finishTime", finishTime + "");
         params.put("integral", integral + "");
-        params.put("memberId", keepInfo.getMemberId() + "");
+        params.put("memberId", keepInfo.getMemberid()+ "");
         params.put("partnerid", Constants.PARTNERID);
         if (!Utility.isEmpty(number + "")) {
             params.put("partsNum", number + "");

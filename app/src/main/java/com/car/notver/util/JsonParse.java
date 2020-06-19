@@ -16,6 +16,7 @@ import com.car.notver.bean.Massage;
 import com.car.notver.bean.Money;
 import com.car.notver.bean.Ordered;
 import com.car.notver.bean.StoreInfo;
+import com.car.notver.bean.User;
 import com.car.notver.bean.UserInfo;
 import com.car.notver.bean.Verison;
 import com.car.notver.bean.YearCar;
@@ -74,7 +75,6 @@ public class JsonParse {
         }
         return infos;
     }
-
 
 
     public static List<FileInfo> getStoreFileJson(JSONObject object) {
@@ -178,13 +178,13 @@ public class JsonParse {
     }
 
     public static BrandInfo getBrandInfo(JSONObject object) {
-        BrandInfo info=new BrandInfo();
+        BrandInfo info = new BrandInfo();
         JSONArray jsonArray = object.optJSONArray("result");
-        JSONObject jsonObject=jsonArray.optJSONObject(0).optJSONObject("business");
+        JSONObject jsonObject = jsonArray.optJSONObject(0).optJSONObject("business");
         BrandInfo.BusinessBean bean = (BrandInfo.BusinessBean) JsonUtilComm.jsonToBean(jsonObject.toString(), BrandInfo.BusinessBean.class);
         info.setBusinessX(bean);
-        List<BrandInfo.ItemsBean> itemsX=new ArrayList<>();
-        JSONArray array=jsonArray.optJSONObject(0).optJSONArray("items");
+        List<BrandInfo.ItemsBean> itemsX = new ArrayList<>();
+        JSONArray array = jsonArray.optJSONObject(0).optJSONArray("items");
         for (int i = 0; i < array.length(); i++) {
             BrandInfo.ItemsBean userInfo = (BrandInfo.ItemsBean) JsonUtilComm.jsonToBean(array.optJSONObject(i).toString(), BrandInfo.ItemsBean.class);
             itemsX.add(userInfo);
@@ -223,5 +223,12 @@ public class JsonParse {
             infos.add(info);
         }
         return infos;
+    }
+
+    public static User getuserInfoSONObject(JSONObject object) {
+        JSONObject jsonObject = object.optJSONObject("result");
+        JSONObject object1=jsonObject.optJSONObject("userinfo");
+        User verison = (User) JsonUtilComm.jsonToBean(object1.toString(), User.class);
+        return verison;
     }
 }

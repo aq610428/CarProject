@@ -22,6 +22,7 @@ import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.bean.StoreInfo;
+import com.car.notver.bean.User;
 import com.car.notver.bean.UserInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
@@ -62,6 +63,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
     private RecyclerView recyclerView;
     private BrandDeilAdapter adapter;
     private List<ClientVo> clientVos = new ArrayList<>();
+    private User userInfo;
 
 
     @Override
@@ -258,6 +260,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
                 switch (id) {
                     case Api.GET_USER_DATA_ID:
                         clientVos= JsonParse.getBespokeJSONObject(object);
+                        userInfo= JsonParse.getuserInfoSONObject(object);
                         if (clientVos!=null&&clientVos.size()>0){
                             setAdapter();
                         }
@@ -282,7 +285,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ClientDeilActivity.this, VehicleActivity.class);
-                intent.putExtra("keep", keepInfo);
+                intent.putExtra("userInfo", userInfo);
                 intent.putExtra("clientVo", clientVos.get(position));
                 startActivity(intent);
             }
@@ -311,7 +314,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
                 break;
             case R.id.btn_car:
                 Intent intent = new Intent(this, VehicleActivity.class);
-                intent.putExtra("keep", keepInfo);
+                intent.putExtra("userInfo", userInfo);
                 startActivity(intent);
                 break;
 

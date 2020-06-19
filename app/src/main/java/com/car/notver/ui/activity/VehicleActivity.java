@@ -14,6 +14,8 @@ import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.KeepInfo;
+import com.car.notver.bean.User;
+import com.car.notver.bean.UserInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
@@ -38,7 +40,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
     private EditText et_license, et_frame, et_engine, et_oss, et_oss_total, et_discern, et_remark;
     private Button btn_next;
     private ClientVo clientVo;
-    private KeepInfo keepInfo;
+    private User userInfo;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -65,12 +67,12 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         VehicleKeyboardHelper1.bind(et_license, this);
     }
 
-    String memberid, storeid;
+    private String storeid, storeMemberId, memberId;
 
     @Override
     protected void initData() {
         clientVo = (ClientVo) getIntent().getSerializableExtra("clientVo");
-        keepInfo = (KeepInfo) getIntent().getSerializableExtra("keep");
+        userInfo = (User) getIntent().getSerializableExtra("userInfo");
         if (clientVo != null) {
             et_license.setText(clientVo.getCarcard() + "");
             et_frame.setText(clientVo.getVinno() + "");
@@ -83,14 +85,14 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
             factory = clientVo.getFactory();
             model = clientVo.getModel();
             yearmodel = clientVo.getYearmodel();
-            btn_next.setText("确认修改");
-            memberid = clientVo.getMemberid();
-            storeid = clientVo.getStoreid();
-        } else {
-            if (keepInfo != null) {
-                memberid = keepInfo.getMemberId();
-                storeid = keepInfo.getStoreid();
-            }
+            title_text_tv.setText("确认修改");
+            storeid=clientVo.getStoreid();
+            storeMemberId=clientVo.getStoreMemberId();
+            memberId=clientVo.getMemberid();
+        } else if (userInfo != null) {
+            storeid=userInfo.getStoreid();
+            storeMemberId=userInfo.getStoreMemberId();
+            memberId=userInfo.getId();
         }
     }
 
@@ -129,7 +131,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(initmileage)) {
             sign = sign + "&initmileage=" + initmileage;
         }
-        sign = sign + "&memberid=" + memberid;
+        sign = sign + "&memberid=" + memberId;
         if (!Utility.isEmpty(model)) {
             sign = sign + "&model=" + model;
         }
@@ -137,7 +139,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(remark)) {
             sign = sign + "&remark=" + remark;
         }
-        sign = sign + "&storeid=" + storeid + "&storeMemberId=" + SaveUtils.getSaveInfo().getId();
+        sign = sign + "&storeid=" + storeid + "&storeMemberId=" + storeMemberId;
 
         if (!Utility.isEmpty(totalmileage)) {
             sign = sign + "&totalmileage=" + totalmileage;
@@ -170,7 +172,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
             params.put("initmileage", initmileage);
         }
 
-        params.put("memberid", memberid);
+        params.put("memberid", memberId);
         if (!Utility.isEmpty(model)) {
             params.put("model", model);
         }
@@ -179,8 +181,8 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(remark)) {
             params.put("remark", remark);
         }
-        params.put("storeid",storeid+ "");
-        params.put("storeMemberId", SaveUtils.getSaveInfo().getId());
+        params.put("storeid", storeid + "");
+        params.put("storeMemberId", storeMemberId);
         if (!Utility.isEmpty(totalmileage)) {
             params.put("totalmileage", totalmileage);
         }
