@@ -103,7 +103,6 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         String engineno = et_engine.getText().toString();
         String initmileage = et_oss.getText().toString();
         String totalmileage = et_oss_total.getText().toString();
-        String factory = text_mode.getText().toString();
         String remark = et_remark.getText().toString();
         if (Utility.isEmpty(carcard)) {
             ToastUtil.showToast("请输入车牌号码");

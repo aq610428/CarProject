@@ -11,10 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
 import com.car.notver.adapter.OrderListAdapter;
@@ -23,7 +21,6 @@ import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.bean.StoreInfo;
-import com.car.notver.bean.UserInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
@@ -35,11 +32,7 @@ import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
-import com.car.notver.weight.ActivityTaskManager;
-import com.car.notver.weight.FinishActivityManager;
-
 import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;

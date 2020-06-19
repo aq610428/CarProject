@@ -259,7 +259,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.openDrawer(Gravity.END);
-                factory = brands.get(position - 1).getModelName();//厂商
+                factory = brands.get(position - 1).getFullName();//厂商
                 queryList(brands.get(position - 1).getId());
             }
         });
@@ -277,7 +277,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.openDrawer(Gravity.END);
-                factory = list.get(position).getModelName();//厂商
+                factory = list.get(position).getFullName();//厂商
                 queryList(list.get(position).getId());
             }
         });
