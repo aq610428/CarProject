@@ -38,9 +38,12 @@ import com.car.notver.util.JsonParse;
 import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
+import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
+
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -107,10 +110,11 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
             case R.id.title_left_btn:
                 finish();
                 break;
-                      case R.id.text_mode:
+            case R.id.text_mode:
                 showDialog();
                 break;
             case R.id.text_license:
+                SystemTools.hideKeyBoard(text_license);
                 pvTime.show();
                 break;
             case R.id.text_city:
@@ -162,39 +166,39 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
             return;
         }
 
-        String sign="";
-        if (!Utility.isEmpty(address)){
-            sign="address="+address;
+        String sign = "";
+        if (!Utility.isEmpty(address)) {
+            sign = "address=" + address;
         }
-        if (!Utility.isEmpty(area)){
-            sign=sign+"&area="+area;
-        }
-
-        if (!Utility.isEmpty(birthday)){
-            sign=sign+"&birthday="+birthday;
+        if (!Utility.isEmpty(area)) {
+            sign = sign + "&area=" + area;
         }
 
-        if (!Utility.isEmpty(city)){
-            sign=sign+"&city="+city;
+        if (!Utility.isEmpty(birthday)) {
+            sign = sign + "&birthday=" + birthday;
         }
 
-        if (!Utility.isEmpty(mobile)){
-            sign=sign+"&mobile="+mobile;
-        }
-        sign=sign+"&partnerid="+ Constants.PARTNERID;
-
-        if (!Utility.isEmpty(province)){
-            sign=sign+"&province="+province;
+        if (!Utility.isEmpty(city)) {
+            sign = sign + "&city=" + city;
         }
 
-        if (!Utility.isEmpty(remark)){
-            sign=sign+"&remark="+remark;
+        if (!Utility.isEmpty(mobile)) {
+            sign = sign + "&mobile=" + mobile;
+        }
+        sign = sign + "&partnerid=" + Constants.PARTNERID;
+
+        if (!Utility.isEmpty(province)) {
+            sign = sign + "&province=" + province;
         }
 
-        if (!Utility.isEmpty(sex)){
-            sign=sign+"&sex="+sex;
+        if (!Utility.isEmpty(remark)) {
+            sign = sign + "&remark=" + remark;
         }
-        sign=sign+ "&storeid=" + storeId + "&storeMemberId=" + info.getId()+"&username=" + username + Constants.SECREKEY;
+
+        if (!Utility.isEmpty(sex)) {
+            sign = sign + "&sex=" + sex;
+        }
+        sign = sign + "&storeid=" + storeId + "&storeMemberId=" + info.getId() + "&username=" + username + Constants.SECREKEY;
 
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
@@ -248,6 +252,7 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
 
 
     private String province, city, area = "";
+
     private void showAddress() {
         CityConfig cityConfig = new CityConfig.Builder()
                 .title("选择城市")
@@ -369,10 +374,10 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 text_sex.setText(infos.get(position).getName());
-                if (infos.get(position).getName().equals("男")){
-                    sex="1";
-                }else{
-                    sex="2";
+                if (infos.get(position).getName().equals("男")) {
+                    sex = "1";
+                } else {
+                    sex = "2";
                 }
                 dialog.dismiss();
             }
