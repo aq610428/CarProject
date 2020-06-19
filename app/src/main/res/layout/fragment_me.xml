@@ -104,7 +104,7 @@
                 android:text="门店审核"
                 android:textColor="#2C2C2C"
                 android:textSize="@dimen/ctv_sizen_14"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
 
             <View
@@ -113,7 +113,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@color/dive_line"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/text_rescue"

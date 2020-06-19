@@ -81,7 +81,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private List<Bespoke> bespokes = new ArrayList<>();
     private List<CustomerInfo> infos = new ArrayList<>();
     private TableAdapter tableAdapter;
-    private TextView iv_code, text_tab1, text_tab2, text_tab3, text_tab4, text_num, text_couster, text_master, text_tab5;
+    private TextView iv_code, text_tab1, text_tab2, text_tab3, text_tab4, text_num, text_couster, text_master, text_tab5,text_client;
     private static final int REQUEST_CODE_LICENSE_PLATE = 122;
     public EditText cardNum;
     private View view1, view2, view3, view4, view5;
@@ -119,6 +119,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initView() {
+        text_client = getView(rootView, R.id.text_client);
         ll_tab1 = getView(rootView, R.id.ll_tab1);
         text_msg = getView(rootView, R.id.text_msg);
         nestedScrollView = getView(rootView, R.id.swipe_target);
@@ -304,6 +305,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             text_num.setText(jsonObject1.optString("allsum") + "台");
             text_couster.setText(jsonObject1.optString("carsum") + "");
             text_master.setText(jsonObject1.optString("maintainsum") + "");
+            text_client.setText(jsonObject1.optString("usersum") + "");
         }
     }
 
