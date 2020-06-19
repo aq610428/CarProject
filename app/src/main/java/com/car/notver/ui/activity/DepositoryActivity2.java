@@ -17,8 +17,10 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.car.notver.R;
 import com.car.notver.adapter.DepositoryAdapter;
+import com.car.notver.adapter.DepositoryAdapter2;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
+import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.bean.UserInfo;
@@ -47,8 +49,8 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
     private SwipeToLoadLayout swipeToLoadLayout;
     private RecyclerView recyclerView;
     private TextView title_text_tv, title_left_btn, title_right_btn, text_msg;
-    private List<KeepInfo> keepInfos = new ArrayList<>();
-    private DepositoryAdapter adapter;
+    private List<ClientVo> keepInfos = new ArrayList<>();
+    private DepositoryAdapter2 adapter;
     private String name;
     private UserInfo info;
     private int limit = 10;
@@ -60,7 +62,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_depository);
+        setContentView(R.layout.activity_depository1);
         info = SaveUtils.getSaveInfo();
         cardNum = getIntent().getStringExtra("name");
         BaseApplication.activityTaskManager.putActivity("DepositoryActivity", this);
@@ -145,7 +147,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
                     case Api.GET_USER_CAR_ID:
-                        List<KeepInfo> infos = JsonParse.getKeepInfo(object);
+                        List<ClientVo> infos = JsonParse.getBespokeJSONObject1(object);
                         if (infos != null && infos.size() > 0) {
                             setAdapter(infos);
                         } else {
@@ -162,12 +164,12 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
         swipeToLoadLayout.setLoadingMore(false);
     }
 
-    private void setAdapter(List<KeepInfo> voList) {
+    private void setAdapter(List<ClientVo> voList) {
         ll_add.setVisibility(View.GONE);
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);
-            adapter = new DepositoryAdapter(this, keepInfos);
+            adapter = new DepositoryAdapter2(this, keepInfos);
             recyclerView.setAdapter(adapter);
         } else {
             keepInfos.addAll(voList);
@@ -178,7 +180,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(DepositoryActivity2.this, VehicleActivity.class);
-                intent.putExtra("keep", keepInfos.get(position));
+                intent.putExtra("clientVo", keepInfos.get(position));
                 startActivity(intent);
             }
         });

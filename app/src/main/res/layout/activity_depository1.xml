@@ -9,30 +9,11 @@
     <include layout="@layout/activity_title" />
 
 
-    <com.car.notver.weight.ClearEditText
-        android:id="@+id/et_search"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="8dp"
-        android:background="#F9F9F9"
-        android:cursorVisible="true"
-        android:drawableLeft="@mipmap/icon_search"
-        android:drawablePadding="10dp"
-        android:hint="请输入车牌号码"
-        android:paddingLeft="10dp"
-        android:textCursorDrawable="@null"
-        android:textSize="@dimen/ctv_sizen_13"
-        android:visibility="visible" />
-
-
     <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
         android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/et_search"
+        android:layout_marginTop="60dp"
         android:layout_gravity="center"
         app:swipe_style="classic">
 

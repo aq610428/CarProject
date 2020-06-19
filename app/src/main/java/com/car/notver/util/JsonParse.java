@@ -213,4 +213,15 @@ public class JsonParse {
         }
         return infos;
     }
+
+    public static List<ClientVo> getBespokeJSONObject1(JSONObject object) {
+        List<ClientVo> infos = new ArrayList<>();
+        JSONObject jsonObject = object.optJSONObject("result");
+        JSONArray jsonArray = jsonObject.optJSONArray("items");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            ClientVo info = (ClientVo) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), ClientVo.class);
+            infos.add(info);
+        }
+        return infos;
+    }
 }

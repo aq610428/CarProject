@@ -74,7 +74,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
             factory = clientVo.getFactory();
             model = clientVo.getModel();
             yearmodel = clientVo.getYearmodel();
-            title_text_tv.setText("确认修改");
+            btn_next.setText("确认修改");
         }
     }
 
