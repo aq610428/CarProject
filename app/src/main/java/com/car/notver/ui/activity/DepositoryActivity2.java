@@ -1,10 +1,13 @@
 package com.car.notver.ui.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
+import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
 
@@ -127,6 +131,20 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
 
     /*******查询
      * @param ********/
+    public void delete(String id) {
+        String sign = "id=" + id + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        showProgressDialog(this, false);
+        Map<String, String> params = okHttpModel.getParams();
+        params.put("apptype", Constants.TYPE);
+        params.put("id", id + "");
+        params.put("partnerid", Constants.PARTNERID);
+        params.put("sign", Md5Util.encode(sign));
+        okHttpModel.get(Api.GET_DELETE_CAR, params, Api.GET_DELETE_ID, this);
+    }
+
+
+    /*******查询
+     * @param ********/
     public void query() {
         String sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         showProgressDialog(this, false);
@@ -155,6 +173,10 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
                                 ll_add.setVisibility(View.VISIBLE);
                             }
                         }
+                        break;
+                    case Api.GET_DELETE_ID:
+                        ToastUtil.showToast(commonality.getErrorDesc());
+                        query();
                         break;
                 }
             }
@@ -198,5 +220,28 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
         stopProgressDialog();
         swipeToLoadLayout.setRefreshing(false);
         swipeToLoadLayout.setLoadingMore(false);
+    }
+
+    public void showDelete(String id) {
+        Dialog dialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout1, null);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(view);
+        ((TextView) view.findViewById(R.id.title)).setText("温馨提示");
+        ((TextView) view.findViewById(R.id.message)).setText("确定是否删除?");
+        view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        view.findViewById(R.id.confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(id);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

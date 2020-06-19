@@ -166,9 +166,11 @@ public interface Api {
     String GET_MODEL_LISR = Config.getOpenNewApi() + "/store/saveStoreUserCar";
     int GET_MODEL_LISR_ID = 100038;
 
-    /******年款车型******/
+    /******删除客户******/
     String GET_DELETE = Config.getOpenNewApi() + "/store/removeStoreUserInfo";
     int GET_DELETE_ID = 100039;
 
-
+    /******删除车辆******/
+    String GET_DELETE_CAR = Config.getOpenNewApi() + "/store/removeStoreUserCar";
+    int GET_DELETE_CAR_ID = 100040;
 }

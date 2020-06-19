@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="未搜索到客户信息"
+            android:text="未搜索到车辆信息"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/ctv_sizen_14" />
 
@@ -58,7 +58,7 @@
             android:layout_marginTop="20dp"
             android:background="@mipmap/btn_sumber_mine"
             android:gravity="center"
-            android:text="添加新客户"
+            android:text="添加车辆信息"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/ctv_sizen_14" />
 

@@ -1,10 +1,13 @@
 package com.car.notver.adapter;
 
 import android.content.Context;
+import android.view.View;
 
 import com.car.notver.R;
 import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.KeepInfo;
+import com.car.notver.ui.activity.DepositoryActivity;
+import com.car.notver.ui.activity.DepositoryActivity2;
 import com.car.notver.util.Utility;
 
 import java.util.List;
@@ -16,10 +19,12 @@ import java.util.List;
  */
 public class DepositoryAdapter2 extends AutoRVAdapter {
     private List<ClientVo> infos;
+    private DepositoryActivity2 activity;
 
-    public DepositoryAdapter2(Context context, List<ClientVo> list) {
-        super(context, list);
+    public DepositoryAdapter2(DepositoryActivity2 activity, List<ClientVo> list) {
+        super(activity, list);
         this.infos = list;
+        this.activity=activity;
     }
 
     @Override
@@ -39,6 +44,12 @@ public class DepositoryAdapter2 extends AutoRVAdapter {
         vh.getTextView(R.id.text_phone).setText(info.getMobile());
         vh.getTextView(R.id.text_license).setText(info.getCarcard());
         vh.getTextView(R.id.text_make).setText(info.getFactory());
+        vh.getTextView(R.id.text_store).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.showDelete(info.getId());
+            }
+        });
     }
 
     public void setData(List<ClientVo> keepInfos) {

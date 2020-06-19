@@ -65,7 +65,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_depository);
+        setContentView(R.layout.activity_depository2);
         info = SaveUtils.getSaveInfo();
         cardNum = getIntent().getStringExtra("name");
         BaseApplication.activityTaskManager.putActivity("DepositoryActivity", this);
