@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -30,16 +29,12 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
-import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
-import com.car.notver.weight.NoDataView;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +42,7 @@ import java.util.Map;
 /**
  * @author: zt
  * @date: 2020/5/20
- * @name:维修开单
+ * @name:我的客户
  */
 public class DepositoryActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
     private SwipeToLoadLayout swipeToLoadLayout;
@@ -63,7 +58,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     private ClearEditText editText;
     private String cardNum;
     private LinearLayout ll_add;
-    private TextView btn_code;
+    private TextView btn_code,text_search;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -75,6 +70,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
     @Override
     protected void initView() {
+        text_search= getView(R.id.text_search);
         btn_code = getView(R.id.btn_code);
         text_msg = getView(R.id.text_msg);
         ll_add = getView(R.id.ll_add);
@@ -118,6 +114,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             }
         });
         btn_code.setOnClickListener(this);
+        text_search.setOnClickListener(this);
     }
 
     @Override
@@ -164,6 +161,12 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             case R.id.btn_code:
                 startActivity(new Intent(this, DepositoryActivity1.class));
                 break;
+            case R.id.text_search:
+                String name=editText.getText().toString();
+                if (!Utility.isEmpty(name)){
+                    query1();
+                }
+                break;
 
         }
     }
@@ -172,7 +175,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     /*******查询
      * @param ********/
     public void query1() {
-        String sign = "carcard=" + editText.getText().toString() + "&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        String sign ="carcard=" + editText.getText().toString()+ "&memberId=" + info.getId()+ "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("apptype", Constants.TYPE);

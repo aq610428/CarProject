@@ -170,20 +170,37 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(address)) {
             sign = "address=" + address;
         }
+
         if (!Utility.isEmpty(area)) {
-            sign = sign + "&area=" + area;
+            if (Utility.isEmpty(sign)) {
+                sign = "area=" + area;
+            } else {
+                sign = sign + "&area=" + area;
+            }
         }
 
         if (!Utility.isEmpty(birthday)) {
-            sign = sign + "&birthday=" + birthday;
+            if (Utility.isEmpty(sign)) {
+                sign = "birthday=" + birthday;
+            } else {
+                sign = sign + "&birthday=" + birthday;
+            }
         }
 
         if (!Utility.isEmpty(city)) {
-            sign = sign + "&city=" + city;
+            if (Utility.isEmpty(sign)) {
+                sign = "city=" + city;
+            } else {
+                sign = sign + "&city=" + city;
+            }
         }
 
         if (!Utility.isEmpty(mobile)) {
-            sign = sign + "&mobile=" + mobile;
+            if (Utility.isEmpty(sign)) {
+                sign = "mobile=" + mobile;
+            } else {
+                sign = sign + "&mobile=" + mobile;
+            }
         }
         sign = sign + "&partnerid=" + Constants.PARTNERID;
 
@@ -199,19 +216,43 @@ public class AddClientActivity extends BaseActivity implements NetWorkListener {
             sign = sign + "&sex=" + sex;
         }
         sign = sign + "&storeid=" + storeId + "&storeMemberId=" + info.getId() + "&username=" + username + Constants.SECREKEY;
-
+        LogUtils.e(sign);
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
-        params.put("address", address + "");
-        params.put("area", area + "");
-        params.put("birthday", birthday + "");
-        params.put("city", city + "");
-        params.put("mobile", mobile);
+        if (!Utility.isEmpty(address)) {
+            params.put("address", address + "");
+        }
+        if (!Utility.isEmpty(area)) {
+            params.put("area", area + "");
+        }
+        if (!Utility.isEmpty(birthday)) {
+            params.put("birthday", birthday + "");
+        }
+
+        if (!Utility.isEmpty(city)) {
+            params.put("city", city + "");
+        }
+
+        if (!Utility.isEmpty(mobile)) {
+            params.put("mobile", mobile);
+        }
+
 
         params.put("partnerid", Constants.PARTNERID);
-        params.put("province", province + "");
-        params.put("remark", remark + "");
-        params.put("sex", sex + "");
+
+
+        if (!Utility.isEmpty(province)) {
+            params.put("province", province + "");
+        }
+
+        if (!Utility.isEmpty(remark)) {
+            params.put("remark", remark + "");
+        }
+
+        if (!Utility.isEmpty(sex)) {
+            params.put("sex", sex + "");
+        }
+
 
         params.put("storeid", storeId);
         params.put("storeMemberId", info.getId());

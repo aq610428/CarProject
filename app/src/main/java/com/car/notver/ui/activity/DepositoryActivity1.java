@@ -61,7 +61,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
     private ClearEditText editText;
     private String cardNum;
     private LinearLayout ll_add;
-    private TextView btn_code;
+    private TextView btn_code, text_search;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
 
     @Override
     protected void initView() {
+        text_search = getView(R.id.text_search);
         btn_code = getView(R.id.btn_code);
         text_msg = getView(R.id.text_msg);
         ll_add = getView(R.id.ll_add);
@@ -118,6 +119,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
         title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
         title_right_btn.setOnClickListener(this);
         btn_code.setOnClickListener(this);
+        text_search.setOnClickListener(this);
     }
 
     @Override
@@ -165,6 +167,12 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
             case R.id.title_right_btn:
                 startActivity(new Intent(this, AddClientActivity.class));
                 break;
+            case R.id.text_search:
+                String name = editText.getText().toString();
+                if (!Utility.isEmpty(name)) {
+                    query1();
+                }
+                break;
 
         }
     }
@@ -173,13 +181,13 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
     /*******查询
      * @param ********/
     public void query1() {
-        String sign = "carcard=" + editText.getText().toString() + "&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        String sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + "&querys=" + editText.getText().toString() + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("apptype", Constants.TYPE);
         params.put("limit", limit + "");
         params.put("page", page + "");
-        params.put("carcard", editText.getText().toString() + "");
+        params.put("querys", editText.getText().toString() + "");
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
@@ -229,6 +237,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
                         } else {
                             if (page == 1 && !isRefresh) {
                                 ll_add.setVisibility(View.VISIBLE);
+                                recyclerView.setVisibility(View.GONE);
                             }
                         }
                         break;
@@ -238,6 +247,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
                             setAdapter(keepInfo);
                         } else {
                             ll_add.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
                         }
                         break;
                     case Api.GET_DELETE_ID:
@@ -254,6 +264,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
 
     private void setAdapter(List<KeepInfo> voList) {
         ll_add.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);
