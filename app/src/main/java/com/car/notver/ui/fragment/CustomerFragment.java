@@ -47,6 +47,8 @@ import com.car.notver.ocr.camera.CameraActivity;
 import com.car.notver.ui.activity.ClientActivity;
 import com.car.notver.ui.activity.CommodityActivity;
 import com.car.notver.ui.activity.DepositoryActivity;
+import com.car.notver.ui.activity.DepositoryActivity1;
+import com.car.notver.ui.activity.DepositoryActivity2;
 import com.car.notver.ui.activity.FrontActivity;
 import com.car.notver.ui.activity.KeepActivity;
 import com.car.notver.ui.activity.MassageActivity;
@@ -173,12 +175,10 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                if ("前置仓".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), FrontActivity.class);
-                } else if ("商品管理".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), CommodityActivity.class);
-                } else {
+                if (!"客户管理".equals(infos.get(position).getName())) {
                     intent = new Intent(getContext(), DepositoryActivity.class);
+                } else {
+                    intent = new Intent(getContext(), DepositoryActivity1.class);
                 }
                 intent.putExtra("title", infos.get(position).getName());
                 startActivity(intent);
@@ -329,7 +329,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                 startActivity(new Intent(getContext(), MassageActivity.class));
                 break;
             case R.id.ll_tab1:
-                startActivity(new Intent(getContext(), DepositoryActivity.class));
+                startActivity(new Intent(getContext(), DepositoryActivity1.class));
                 break;
 
             case R.id.ll_top:
@@ -339,7 +339,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                 startActivity(new Intent(getContext(), KeepActivity.class));
                 break;
             case R.id.ll_client:
-                startActivity(new Intent(getContext(), ClientActivity.class));
+                startActivity(new Intent(getContext(), DepositoryActivity2.class));
                 break;
             case R.id.iv_code:
                 requestPermission(new String[]{Manifest.permission.CAMERA}, 4);

@@ -17,6 +17,7 @@ import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.car.notver.R;
 import com.car.notver.adapter.DepositoryAdapter;
+import com.car.notver.adapter.DepositoryAdapter1;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CommonalityModel;
@@ -27,12 +28,10 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
-import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
-import com.car.notver.weight.NoDataView;
 
 import org.json.JSONObject;
 
@@ -43,14 +42,14 @@ import java.util.Map;
 /**
  * @author: zt
  * @date: 2020/5/20
- * @name:维修开单
+ * @name:客户管理
  */
-public class DepositoryActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
+public class DepositoryActivity1 extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
     private SwipeToLoadLayout swipeToLoadLayout;
     private RecyclerView recyclerView;
     private TextView title_text_tv, title_left_btn, title_right_btn, text_msg;
     private List<KeepInfo> keepInfos = new ArrayList<>();
-    private DepositoryAdapter adapter;
+    private DepositoryAdapter1 adapter;
     private String name;
     private UserInfo info;
     private int limit = 10;
@@ -83,7 +82,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         title_left_btn = getView(R.id.title_left_btn);
         title_left_btn.setOnClickListener(this);
         if (Utility.isEmpty(name)) {
-            title_text_tv.setText("我的车辆");
+            title_text_tv.setText("我的客户");
         } else {
             title_text_tv.setText(name + "");
         }
@@ -113,6 +112,8 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
             }
         });
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
+        title_right_btn.setOnClickListener(this);
         btn_code.setOnClickListener(this);
     }
 
@@ -158,6 +159,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                 finish();
                 break;
             case R.id.btn_code:
+            case R.id.title_right_btn:
                 startActivity(new Intent(this, AddClientActivity.class));
                 break;
 
@@ -194,7 +196,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         params.put("memberId", info.getId());
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_USER_CAR, params, Api.GET_USER_CAR_ID, this);
+        okHttpModel.get(Api.GET_USER_LIST, params, Api.GET_USER_LIST_ID, this);
     }
 
 
@@ -203,7 +205,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
-                    case Api.GET_USER_CAR_ID:
+                    case Api.GET_USER_LIST_ID:
                         List<KeepInfo> infos = JsonParse.getKeepInfo(object);
                         if (infos != null && infos.size() > 0) {
                             setAdapter(infos);
@@ -234,7 +236,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);
-            adapter = new DepositoryAdapter(this, keepInfos);
+            adapter = new DepositoryAdapter1(this, keepInfos);
             recyclerView.setAdapter(adapter);
         } else {
             keepInfos.addAll(voList);
@@ -246,10 +248,10 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
                 if (!Utility.isEmpty(name) && !"客户管理".equals(name)) {
-                    intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
+                    intent = new Intent(DepositoryActivity1.this, OrderAutonomyActivity.class);
                     intent.putExtra("project", name);
                 } else {
-                    intent = new Intent(DepositoryActivity.this, ClientDeilActivity.class);
+                    intent = new Intent(DepositoryActivity1.this, ClientDeilActivity.class);
                 }
                 intent.putExtra("keep", keepInfos.get(position));
                 startActivity(intent);

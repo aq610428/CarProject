@@ -118,6 +118,14 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.activity.DepositoryActivity1"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.DepositoryActivity2"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.activity.PreviewActivity"
             android:screenOrientation="portrait" />
 

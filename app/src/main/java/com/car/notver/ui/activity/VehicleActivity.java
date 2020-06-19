@@ -6,14 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
-
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
-import com.car.notver.bean.KeepInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
@@ -23,9 +20,7 @@ import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
-
 import org.json.JSONObject;
-
 import java.util.Map;
 
 /**
@@ -34,7 +29,6 @@ import java.util.Map;
  * @name:添加车辆
  */
 public class VehicleActivity extends BaseActivity implements NetWorkListener {
-    private KeepInfo keepInfo;
     private TextView title_text_tv, title_left_btn, text_mode;
     private EditText et_license, et_frame, et_engine, et_oss, et_oss_total, et_discern, et_remark;
     private Button btn_next;
@@ -67,20 +61,20 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initData() {
-        keepInfo = (KeepInfo) getIntent().getSerializableExtra("keep");
         clientVo = (ClientVo) getIntent().getSerializableExtra("clientVo");
         if (clientVo != null) {
-            et_license.setText(clientVo.getCarcard()+"");
-            et_frame.setText(clientVo.getVinno()+"");
-            et_engine.setText(clientVo.getEngineno()+"");
-            et_oss.setText(clientVo.getInitmileage()+"");
-            et_oss_total.setText(clientVo.getTotalmileage()+"");
-            text_mode.setText(clientVo.getYearmodel()+"");
-            et_remark.setText(clientVo.getRemark()+"");
+            et_license.setText(clientVo.getCarcard() + "");
+            et_frame.setText(clientVo.getVinno() + "");
+            et_engine.setText(clientVo.getEngineno() + "");
+            et_oss.setText(clientVo.getInitmileage() + "");
+            et_oss_total.setText(clientVo.getTotalmileage() + "");
+            text_mode.setText(clientVo.getYearmodel() + "");
+            et_remark.setText(clientVo.getRemark() + "");
             business = clientVo.getBusiness();
             factory = clientVo.getFactory();
             model = clientVo.getModel();
             yearmodel = clientVo.getYearmodel();
+            title_text_tv.setText("确认修改");
         }
     }
 
@@ -112,14 +106,14 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(factory)) {
             sign = sign + "&factory=" + factory;
         }
-        if (clientVo!=null) {
+        if (clientVo != null) {
             sign = sign + "&id=" + clientVo.getId();
         }
 
         if (!Utility.isEmpty(initmileage)) {
             sign = sign + "&initmileage=" + initmileage;
         }
-        sign = sign + "&memberid=" + keepInfo.getId();
+        sign = sign + "&memberid=" +clientVo.getMemberid();
         if (!Utility.isEmpty(model)) {
             sign = sign + "&model=" + model;
         }
@@ -127,7 +121,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(remark)) {
             sign = sign + "&remark=" + remark;
         }
-        sign = sign + "&storeid=" + keepInfo.getStoreid() + "&storeMemberId=" + SaveUtils.getSaveInfo().getId();
+        sign = sign + "&storeid=" + clientVo.getStoreid() + "&storeMemberId=" + SaveUtils.getSaveInfo().getId();
 
         if (!Utility.isEmpty(totalmileage)) {
             sign = sign + "&totalmileage=" + totalmileage;
@@ -153,14 +147,14 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(factory)) {
             params.put("factory", factory);
         }
-        if (clientVo!=null) {
+        if (clientVo != null) {
             params.put("id", clientVo.getId());
         }
         if (!Utility.isEmpty(initmileage)) {
             params.put("initmileage", initmileage);
         }
 
-        params.put("memberid", keepInfo.getId());
+        params.put("memberid", clientVo.getMemberid());
         if (!Utility.isEmpty(model)) {
             params.put("model", model);
         }
@@ -169,7 +163,7 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
         if (!Utility.isEmpty(remark)) {
             params.put("remark", remark);
         }
-        params.put("storeid", keepInfo.getStoreid() + "");
+        params.put("storeid", clientVo.getStoreid() + "");
         params.put("storeMemberId", SaveUtils.getSaveInfo().getId());
         if (!Utility.isEmpty(totalmileage)) {
             params.put("totalmileage", totalmileage);

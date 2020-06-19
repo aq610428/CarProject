@@ -179,6 +179,14 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
                         brandList = JsonParse.getbrandList(object);
                         if (brandList != null && brandList.size() > 0) {
                             brandListAdapter();
+                        }else{
+                            Intent intent = new Intent();
+                            intent.putExtra("business", business);
+                            intent.putExtra("factory", factory);
+                            intent.putExtra("model", model);
+                            intent.putExtra("yearmodel", yearmodel);
+                            setResult(100, intent);
+                            finish();
                         }
                         break;
 

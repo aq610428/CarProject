@@ -27,12 +27,10 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
-import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
-import com.car.notver.weight.NoDataView;
 
 import org.json.JSONObject;
 
@@ -45,7 +43,7 @@ import java.util.Map;
  * @date: 2020/5/20
  * @name:维修开单
  */
-public class DepositoryActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
+public class DepositoryActivity2 extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
     private SwipeToLoadLayout swipeToLoadLayout;
     private RecyclerView recyclerView;
     private TextView title_text_tv, title_left_btn, title_right_btn, text_msg;
@@ -56,7 +54,6 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
     private int limit = 10;
     private int page = 1;
     private boolean isRefresh;
-    private ClearEditText editText;
     private String cardNum;
     private LinearLayout ll_add;
     private TextView btn_code;
@@ -74,7 +71,6 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         btn_code = getView(R.id.btn_code);
         text_msg = getView(R.id.text_msg);
         ll_add = getView(R.id.ll_add);
-        editText = getView(R.id.et_search);
         title_right_btn = getView(R.id.title_right_btn);
         name = getIntent().getStringExtra("title");
         swipeToLoadLayout = getView(R.id.swipeToLoadLayout);
@@ -82,58 +78,20 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         title_text_tv = getView(R.id.title_text_tv);
         title_left_btn = getView(R.id.title_left_btn);
         title_left_btn.setOnClickListener(this);
-        if (Utility.isEmpty(name)) {
-            title_text_tv.setText("我的车辆");
-        } else {
-            title_text_tv.setText(name + "");
-        }
-
+        title_text_tv.setText("我的车辆");
         swipeToLoadLayout.setOnRefreshListener(this);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
-        if (!Utility.isEmpty(cardNum)) {
-            editText.setText(cardNum);
-        }
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (Utility.isEmpty(editText.getText().toString())) {
-                    query();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         btn_code.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-
+        text_msg.setText("暂无车辆信息");
+        query();
     }
 
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!Utility.isEmpty(cardNum)) {
-            editText.setText(cardNum);
-            text_msg.setText("未搜索到客户信息");
-            query1();
-        } else {
-            text_msg.setText("暂无客户信息");
-            query();
-        }
-    }
 
     @Override
     public void onLoadMore() {
@@ -162,23 +120,6 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                 break;
 
         }
-    }
-
-
-    /*******查询
-     * @param ********/
-    public void query1() {
-        String sign = "carcard=" + editText.getText().toString() + "&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
-        showProgressDialog(this, false);
-        Map<String, String> params = okHttpModel.getParams();
-        params.put("apptype", Constants.TYPE);
-        params.put("limit", limit + "");
-        params.put("page", page + "");
-        params.put("carcard", editText.getText().toString() + "");
-        params.put("memberId", info.getId());
-        params.put("partnerid", Constants.PARTNERID);
-        params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_CAR_SAVE, params, Api.GET_COINS_DAILY_BILL_ID, this);
     }
 
 
@@ -213,14 +154,6 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                             }
                         }
                         break;
-                    case Api.GET_COINS_DAILY_BILL_ID:
-                        List<KeepInfo> keepInfo = JsonParse.getKeepInfo(object);
-                        if (keepInfo != null && keepInfo.size() > 0) {
-                            setAdapter(keepInfo);
-                        } else {
-                            ll_add.setVisibility(View.VISIBLE);
-                        }
-                        break;
                 }
             }
         }
@@ -244,13 +177,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
         adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = null;
-                if (!Utility.isEmpty(name) && !"客户管理".equals(name)) {
-                    intent = new Intent(DepositoryActivity.this, OrderAutonomyActivity.class);
-                    intent.putExtra("project", name);
-                } else {
-                    intent = new Intent(DepositoryActivity.this, ClientDeilActivity.class);
-                }
+                Intent intent = new Intent(DepositoryActivity2.this, VehicleActivity.class);
                 intent.putExtra("keep", keepInfos.get(position));
                 startActivity(intent);
             }
