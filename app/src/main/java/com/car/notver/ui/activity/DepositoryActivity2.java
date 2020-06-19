@@ -95,6 +95,13 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
     @Override
     protected void initData() {
         text_msg.setText("暂无车辆信息");
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         query();
     }
 
@@ -122,7 +129,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
                 finish();
                 break;
             case R.id.btn_code:
-                startActivity(new Intent(this, AddClientActivity.class));
+                startActivity(new Intent(this, DepositoryActivity1.class));
                 break;
 
         }
@@ -171,6 +178,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
                         } else {
                             if (page == 1 && !isRefresh) {
                                 ll_add.setVisibility(View.VISIBLE);
+                                recyclerView.setVisibility(View.GONE);
                             }
                         }
                         break;
@@ -188,6 +196,7 @@ public class DepositoryActivity2 extends BaseActivity implements OnRefreshListen
 
     private void setAdapter(List<ClientVo> voList) {
         ll_add.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);

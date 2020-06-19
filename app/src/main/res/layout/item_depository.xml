@@ -23,17 +23,34 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/text_store"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:drawableRight="@mipmap/ic_delete"
-                android:text="可用CC"
-                android:textColor="@color/black33"
-                android:textSize="@dimen/ctv_sizen_14"
-                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/text_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:text="可用CC"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:src="@mipmap/ic_delete" />
+
+            </RelativeLayout>
+
 
             <View
                 android:layout_width="match_parent"

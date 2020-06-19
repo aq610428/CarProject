@@ -162,7 +162,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                 finish();
                 break;
             case R.id.btn_code:
-                startActivity(new Intent(this, AddClientActivity.class));
+                startActivity(new Intent(this, DepositoryActivity1.class));
                 break;
 
         }
@@ -228,6 +228,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
                         } else {
                             if (page == 1 && !isRefresh) {
                                 ll_add.setVisibility(View.VISIBLE);
+                                recyclerView.setVisibility(View.GONE);
                             }
                         }
                         break;
@@ -253,6 +254,7 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
 
     private void setAdapter(List<KeepInfo> voList) {
         ll_add.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
         if (!isRefresh) {
             keepInfos.clear();
             keepInfos.addAll(voList);

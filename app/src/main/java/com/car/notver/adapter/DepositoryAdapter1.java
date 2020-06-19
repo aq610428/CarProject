@@ -41,7 +41,7 @@ public class DepositoryAdapter1 extends AutoRVAdapter {
 
         vh.getTextView(R.id.text_phone).setText(info.getMobile());
         vh.getTextView(R.id.text_store).setText(info.getStoreName());
-        vh.getTextView(R.id.text_store).setOnClickListener(new View.OnClickListener() {
+        vh.getImageView(R.id.iv_delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity1.showDelete(info.getId());
