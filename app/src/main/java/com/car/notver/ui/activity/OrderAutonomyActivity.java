@@ -140,17 +140,6 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         String accessory = et_accessory.getText().toString();
         String number = et_number.getText().toString();
         String project = getIntent().getStringExtra("project");
-
-        try {
-            parts = URLDecoder.decode(parts, "UTF-8");
-            accessory = URLDecoder.decode(accessory, "UTF-8");
-            number = URLDecoder.decode(number, "UTF-8");
-            project = URLDecoder.decode(project, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-
         if ("维修开单".equals(project) || "保养开单".equals(project)) {
             if (Utility.isEmpty(finishTime)) {
                 ToastUtil.showToast("完工时间不能为空");
@@ -189,16 +178,20 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         String accessory = et_accessory.getText().toString();
         String number = et_number.getText().toString();
         String project = getIntent().getStringExtra("project");
-        String sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid()
+        String sign = "amount=" + cash+ "&carcard="+ keepInfo.getCarcard()  + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid() + "&mobile=" + keepInfo.getMobile()
                 + "&partnerid=" + Constants.PARTNERID + "&partsNum=" + number + "&partsReplace=" + accessory
                 + "&project=" + project
                 + "&repairPlan=" + parts + "&storeId=" + storeId + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("amount", cash + "");
+        params.put("carcard", keepInfo.getCarcard() + "");
+
         params.put("finishTime", finishTime + "");
         params.put("integral", integral + "");
         params.put("memberId", keepInfo.getMemberid() + "");
+        params.put("mobile", keepInfo.getMobile() + "");
+
         params.put("partnerid", Constants.PARTNERID);
         params.put("partsNum", number + "");
         params.put("partsReplace", accessory + "");
@@ -221,7 +214,7 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
         String number = et_number.getText().toString();
         String project = getIntent().getStringExtra("project");
         String sign = null;
-        sign = "amount=" + cash + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid()
+        sign = "amount=" + cash+"&carcard=" + keepInfo.getCarcard() + "&finishTime=" + finishTime + "&integral=" + integral + "&memberId=" + keepInfo.getMemberid()+ "&mobile=" + keepInfo.getMobile()
                 + "&partnerid=" + Constants.PARTNERID;
         if (!Utility.isEmpty(number)) {
             sign = sign + "&partsNum=" + number;
@@ -234,13 +227,14 @@ public class OrderAutonomyActivity extends BaseActivity implements NetWorkListen
             sign = sign + "&repairPlan=" + parts;
         }
         sign = sign + "&storeId=" + storeId + Constants.SECREKEY;
-        LogUtils.e(sign);
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("amount", cash + "");
+        params.put("carcard", keepInfo.getCarcard() + "");
         params.put("finishTime", finishTime + "");
         params.put("integral", integral + "");
         params.put("memberId", keepInfo.getMemberid()+ "");
+        params.put("mobile", keepInfo.getMobile() + "");
         params.put("partnerid", Constants.PARTNERID);
         if (!Utility.isEmpty(number + "")) {
             params.put("partsNum", number + "");
