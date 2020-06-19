@@ -4,10 +4,7 @@ import android.content.Context;
 
 import com.car.notver.R;
 import com.car.notver.bean.Brand;
-import com.car.notver.bean.BrandInfo;
 import com.car.notver.bean.BrandVo;
-import com.car.notver.bean.KeepInfo;
-import com.car.notver.bean.YearCar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +14,11 @@ import java.util.List;
  * @date: 2020/5/26
  * @name:清单
  */
-public class RightAdapter1 extends AutoRVAdapter {
-    private List<BrandVo> inventories = new ArrayList<>();
+public class RightAdapter2 extends AutoRVAdapter {
+    private List<BrandVo.ItemsBean> inventories = new ArrayList<>();
     private Context mContext;
 
-    public RightAdapter1(Context context, List<BrandVo> inventories) {
+    public RightAdapter2(Context context, List<BrandVo.ItemsBean> inventories) {
         super(context,inventories);
         this.mContext = context;
         this.inventories = inventories;
@@ -45,8 +42,8 @@ public class RightAdapter1 extends AutoRVAdapter {
 
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
-        BrandVo inventory = inventories.get(position);
-        vh.getTextView(R.id.text_edition).setText(inventory.getBusiness().getFullName()+ "");
+        BrandVo.ItemsBean inventory = inventories.get(position);
+        vh.getTextView(R.id.text_edition).setText(inventory.getFullName()+ "");
     }
 
 

@@ -20,9 +20,12 @@ import com.car.notver.adapter.BrandAdapter;
 import com.car.notver.adapter.InventoryAdapter;
 import com.car.notver.adapter.RightAdapter;
 import com.car.notver.adapter.RightAdapter1;
+import com.car.notver.adapter.RightAdapter2;
+import com.car.notver.adapter.RightBrandAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.Brand;
 import com.car.notver.bean.BrandInfo;
+import com.car.notver.bean.BrandVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.YearCar;
 import com.car.notver.config.Api;
@@ -56,6 +59,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
     private InventoryAdapter adapter;
     private BrandAdapter brandAdapter1;
     private List<Brand> brands = new ArrayList<>();
+    private List<BrandVo> brandVoList = new ArrayList<>();
     private List<Brand> list = new ArrayList<>();
     private RecyclerView recyclerView;
     private SideBar slideBar;
@@ -63,9 +67,10 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
     private PinyinComparator pinyinComparator;
     private RightAdapter rightAdapter;
     private DrawerLayout mDrawerLayout;
-    private BrandInfo brandInfo;
     private List<YearCar> brandList = new ArrayList<>();
     private RightAdapter1 rightAdapter1;
+    private RightAdapter2 rightAdapter2;
+    private RightBrandAdapter brandAdapter;
 
 
     @Override
@@ -128,10 +133,9 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
     }
 
 
-
-    /*******车型列表
+    /*******查询厂商
      * @param ********/
-    public void queryList(String id) {
+    public void queryFactory(String id) {
         String sign = "modelid=" + id + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
@@ -139,7 +143,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
         params.put("modelid", id);
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
-        okHttpModel.get(Api.GET_USER_LISR, params, Api.GET_USER_LISR_ID, this);
+        okHttpModel.get(Api.GET_USER_LISR, params, Api.GET_PUSH_VERSION_ID, this);
     }
 
 
@@ -168,9 +172,9 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
                             setAdapter();
                         }
                         break;
-                    case Api.GET_USER_LISR_ID:
-                        brandInfo = JsonParse.getBrandInfo(object);
-                        if (brandInfo != null) {
+                    case Api.GET_PUSH_VERSION_ID:
+                        brandVoList = JsonParse.getBespokebrandsJson1(object);
+                        if (brandVoList != null && brandVoList.size() > 0) {
                             setRightAdapter();
                         }
                         break;
@@ -179,7 +183,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
                         brandList = JsonParse.getbrandList(object);
                         if (brandList != null && brandList.size() > 0) {
                             brandListAdapter();
-                        }else{
+                        } else {
                             Intent intent = new Intent();
                             intent.putExtra("business", business);
                             intent.putExtra("factory", factory);
@@ -202,10 +206,9 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
     private String business, factory, model, yearmodel;
 
     private void brandListAdapter() {
-        rightAdapter1 = new RightAdapter1(this, brandList);
-        rv_right.setAdapter(rightAdapter1);
-        text_brandNmae.setText(brandInfo.getBusinessX().getFullName());
-        rightAdapter1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        brandAdapter = new RightBrandAdapter(this, brandList);
+        rv_right.setAdapter(brandAdapter);
+        brandAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 yearmodel = brandList.get(position).getModelName();
@@ -220,23 +223,31 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
         });
     }
 
-    /******车型列表******/
+    /******厂商列表******/
     public void setRightAdapter() {
-        rightAdapter = new RightAdapter(this, brandInfo.getItemsX());
+        rightAdapter = new RightAdapter(this, brandVoList);
         rv_right.setAdapter(rightAdapter);
-        text_brandNmae.setText(brandInfo.getBusinessX().getFullName());
-        business = brandInfo.getBusinessX().getModelName();//厂商
-
         rightAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                queryYear(brandInfo.getItemsX().get(position).getId());
-                model = brandInfo.getItemsX().get(position).getModelName();
+                business = brandVoList.get(position).getBusiness().getFullName();//厂商
+                setBrandAdapter(brandVoList.get(position).getItems());
             }
         });
     }
 
-
+    /******品牌列表******/
+    public void setBrandAdapter(List<BrandVo.ItemsBean> itemsBeans) {
+        rightAdapter2 = new RightAdapter2(this, itemsBeans);
+        rv_right.setAdapter(rightAdapter2);
+        rightAdapter2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                model = itemsBeans.get(position).getModelName();//厂商
+                queryYear(itemsBeans.get(position).getId());
+            }
+        });
+    }
 
 
     /******品牌列表******/
@@ -259,14 +270,15 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.openDrawer(Gravity.END);
+                text_brandNmae.setText(brands.get(position - 1).getFullName());
                 factory = brands.get(position - 1).getFullName();//厂商
-                queryList(brands.get(position - 1).getId());
+                queryFactory(brands.get(position - 1).getId());
             }
         });
 
 
-        for (int i = 0; i <brands.size() ; i++) {
-            if ("1".equals(brands.get(i).getIscommonuse()+"")){
+        for (int i = 0; i < brands.size(); i++) {
+            if ("1".equals(brands.get(i).getIscommonuse() + "")) {
                 list.add(brands.get(i));
             }
         }
@@ -277,8 +289,9 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.openDrawer(Gravity.END);
-                factory = list.get(position).getFullName();//厂商
-                queryList(list.get(position).getId());
+                text_brandNmae.setText(brands.get(position).getFullName());
+                factory = brands.get(position - 1).getFullName();//厂商
+                queryFactory(list.get(position).getId());
             }
         });
     }

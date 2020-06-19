@@ -9,6 +9,14 @@ import java.io.Serializable;
  */
 public class ClientVo implements Serializable {
 
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
     /**
      * id : 3b3c24b83b9246a18a098cdcf2f7408d
      * imeicode :
@@ -34,7 +42,7 @@ public class ClientVo implements Serializable {
      * stringCreateTime : 2020-06-18 15:05:04
      * stringUpdateTime :
      */
-
+    private String storeName;
     private String id;
     private String imeicode;
     private String carcard;

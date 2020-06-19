@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import com.car.notver.bean.Bespoke;
 import com.car.notver.bean.Brand;
 import com.car.notver.bean.BrandInfo;
+import com.car.notver.bean.BrandVo;
 import com.car.notver.bean.ClientVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.FileInfo;
@@ -71,6 +72,17 @@ public class JsonParse {
         JSONArray jsonArray = object.optJSONArray("result");
         for (int i = 0; i < jsonArray.length(); i++) {
             Brand info = (Brand) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), Brand.class);
+            infos.add(info);
+        }
+        return infos;
+    }
+
+
+    public static List<BrandVo> getBespokebrandsJson1(JSONObject object) {
+        List<BrandVo> infos = new ArrayList<>();
+        JSONArray jsonArray = object.optJSONArray("result");
+        for (int i = 0; i < jsonArray.length(); i++) {
+            BrandVo info = (BrandVo) JsonUtilComm.jsonToBean(jsonArray.optJSONObject(i).toString(), BrandVo.class);
             infos.add(info);
         }
         return infos;

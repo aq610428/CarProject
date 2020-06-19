@@ -27,6 +27,16 @@ public class KeepInfo implements Serializable {
     private String username;
     private String model;
 
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    private String storeName;
+
     public String getMemberid() {
         return memberid;
     }

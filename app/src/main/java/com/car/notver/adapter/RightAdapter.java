@@ -3,6 +3,7 @@ package com.car.notver.adapter;
 import android.content.Context;
 import com.car.notver.R;
 import com.car.notver.bean.BrandInfo;
+import com.car.notver.bean.BrandVo;
 import com.car.notver.bean.KeepInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,10 @@ import java.util.List;
  * @name:清单
  */
 public class RightAdapter extends AutoRVAdapter {
-    private List<BrandInfo.ItemsBean> inventories = new ArrayList<>();
+    private List<BrandVo> inventories = new ArrayList<>();
     private Context mContext;
 
-    public RightAdapter(Context context, List<BrandInfo.ItemsBean> inventories) {
+    public RightAdapter(Context context, List<BrandVo> inventories) {
         super(context,inventories);
         this.mContext = context;
         this.inventories = inventories;
@@ -40,8 +41,8 @@ public class RightAdapter extends AutoRVAdapter {
 
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
-        BrandInfo.ItemsBean inventory = inventories.get(position);
-        vh.getTextView(R.id.text_edition).setText(inventory.getFullName()+ "");
+        BrandVo inventory = inventories.get(position);
+        vh.getTextView(R.id.text_edition).setText(inventory.getBusiness().getFullName()+ "");
     }
 
 

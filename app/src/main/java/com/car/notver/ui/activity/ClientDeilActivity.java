@@ -375,7 +375,7 @@ public class ClientDeilActivity extends BaseActivity implements NetWorkListener 
     protected void initDataTime() {
         Calendar selectedDate = Calendar.getInstance();
         startDate = Calendar.getInstance();
-        startDate.set(2013, 0, 23);
+        startDate.set(1980, 0, 23);
         endDate = Calendar.getInstance();
         endDate.set(2033, 11, 28);
         pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
