@@ -36,6 +36,8 @@ public class DepositoryAdapter1 extends AutoRVAdapter {
         }
 
         vh.getTextView(R.id.text_phone).setText(info.getMobile());
+        vh.getTextView(R.id.text_store).setText(info.getMobile());
+
     }
 
     public void setData(List<KeepInfo> keepInfos) {

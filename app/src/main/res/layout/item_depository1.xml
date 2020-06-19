@@ -1,53 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
     <com.lihang.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="10dp"
         app:hl_cornerRadius="3dp"
         app:hl_shadowBackColor="#fff"
         app:hl_shadowColor="#2A696969"
-        app:hl_shadowLimit="4dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        app:hl_shadowLimit="4dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:id="@+id/text_store"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:gravity="center"
-                android:layout_alignParentLeft="true"
                 android:text="可用CC"
                 android:textColor="@color/black33"
                 android:textSize="@dimen/ctv_sizen_14"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:text="306"
-                android:textColor="#878787"
-                android:textSize="@dimen/ctv_sizen_12" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/dive_line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:text="可用CC"
+                    android:textColor="@color/black33"
+                    android:textSize="@dimen/ctv_sizen_14"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:text="306"
+                    android:textColor="#878787"
+                    android:textSize="@dimen/ctv_sizen_12" />
+
+            </RelativeLayout>
 
 
-        </RelativeLayout>
+        </LinearLayout>
     </com.lihang.ShadowLayout>
 
 </LinearLayout>
