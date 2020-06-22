@@ -44,12 +44,9 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.ocr.VehicleKeyboardHelper;
 import com.car.notver.ocr.camera.CameraActivity;
-import com.car.notver.ui.activity.ClientActivity;
-import com.car.notver.ui.activity.CommodityActivity;
 import com.car.notver.ui.activity.DepositoryActivity;
 import com.car.notver.ui.activity.DepositoryActivity1;
 import com.car.notver.ui.activity.DepositoryActivity2;
-import com.car.notver.ui.activity.FrontActivity;
 import com.car.notver.ui.activity.KeepActivity;
 import com.car.notver.ui.activity.MassageActivity;
 import com.car.notver.util.Constants;
@@ -83,7 +80,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private List<Bespoke> bespokes = new ArrayList<>();
     private List<CustomerInfo> infos = new ArrayList<>();
     private TableAdapter tableAdapter;
-    private TextView iv_code, text_tab1, text_tab2, text_tab3, text_tab4, text_num, text_couster, text_master, text_tab5,text_client;
+    private TextView iv_code, text_tab1, text_tab2, text_tab3, text_tab4, text_num, text_couster, text_master, text_tab5, text_client;
     private static final int REQUEST_CODE_LICENSE_PLATE = 122;
     public EditText cardNum;
     private View view1, view2, view3, view4, view5;
@@ -203,6 +200,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
 
+    /****清除焦点****/
     public void clealFocus() {
         VehicleKeyboardHelper.hideCustomInput(cardNum);
         cardNum.clearFocus();
@@ -217,12 +215,14 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         clealFocus();
         String sign = "";
         if (!Utility.isEmpty(project)) {
-            sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + "&project=" + project + Constants.SECREKEY;
+            sign = "filter=1&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + "&project=" + project + Constants.SECREKEY;
         } else {
-            sign = "memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+            sign = "filter=1&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         }
+        LogUtils.e("sign="+sign);
         showProgressDialog(getActivity(), false);
         Map<String, String> params = okHttpModel.getParams();
+        params.put("filter", "1");
         params.put("limit", limit + "");
         params.put("page", page + "");
         if (!Utility.isEmpty(project)) {
@@ -236,8 +236,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
 
-    /*******接受，拒绝预约列表
-     * @param status********/
+    /*******接受订单********/
     public void queryOrder(int status, String id) {
         String sign = "id=" + id + "&partnerid=" + Constants.PARTNERID + "&status=" + status + Constants.SECREKEY;
         showProgressDialog(getActivity(), false);
@@ -437,7 +436,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         clealFocus();
-        // 识别成功回调，车牌识别
         if (requestCode == REQUEST_CODE_LICENSE_PLATE && resultCode == Activity.RESULT_OK) {
             RecognizeService.recLicensePlate(getContext(), FileUtil.getSaveFile(getContext()).getAbsolutePath(), new RecognizeService.ServiceListener() {
                 @Override

@@ -65,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
 
     protected void setSystemInvadeBlack() {
         // 第二个参数是是否沉浸,第三个参数是状态栏字体是否为黑色。
+        StatusUtil.defaultColor_21=Color.parseColor("#FFFFFF");
         StatusUtil.setSystemStatus(this, false, true);
     }
 

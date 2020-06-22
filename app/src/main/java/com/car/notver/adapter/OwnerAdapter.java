@@ -130,12 +130,11 @@ public class OwnerAdapter extends AutoRVAdapter {
                     fragment.queryOrder(3, bespoke.getId());
                 }
             });
-            vh.getNoDataView(R.id.mNoDataView).setVisibility(View.GONE);
+            vh.getLinearLayout(R.id.ll_noView).setVisibility(View.GONE);
             vh.getShadowLayout(R.id.mShadowLayout).setVisibility(View.VISIBLE);
         } else {
-            vh.getNoDataView(R.id.mNoDataView).setVisibility(View.VISIBLE);
+            vh.getLinearLayout(R.id.ll_noView).setVisibility(View.VISIBLE);
             vh.getShadowLayout(R.id.mShadowLayout).setVisibility(View.GONE);
-            vh.getNoDataView(R.id.mNoDataView).textView.setText("暂无订单");
         }
 
 
