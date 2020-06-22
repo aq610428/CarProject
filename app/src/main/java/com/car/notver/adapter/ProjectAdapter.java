@@ -14,7 +14,7 @@ import java.util.Map;
  * @name:CommodityAdapter
  */
 public class ProjectAdapter extends AutoRVAdapter {
-    public List<PhotoInfo> infos;
+    public  List<PhotoInfo> infos;
     private Map<Integer, PhotoInfo> map;
 
     public ProjectAdapter(Context context, List<PhotoInfo> list) {
