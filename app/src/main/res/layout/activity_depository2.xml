@@ -12,11 +12,11 @@
     <RelativeLayout
         android:id="@+id/rl_tab"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="65dp"
         android:layout_marginRight="15dp"
-        android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content">
+        android:layout_marginBottom="8dp">
 
 
         <com.car.notver.weight.ClearEditText
@@ -30,6 +30,7 @@
             android:drawablePadding="10dp"
             android:hint="请输入客户名称或手机号码"
             android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/ctv_sizen_13"
             android:visibility="visible" />
@@ -39,10 +40,10 @@
             android:id="@+id/text_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="10dp"
-            android:layout_alignParentRight="true"
             android:text="搜索"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/ctv_sizen_14" />
