@@ -82,11 +82,11 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
                 .setType(new boolean[]{true, true, true, true, true, false})
                 .setLabel("", "", "", "", "", "")
                 .isCenterLabel(true)
-                .setDividerColor(Color.BLUE)
-                .setContentSize(18)
+                .setDividerColor(Color.parseColor("#3F80F4"))
+                .setContentSize(17)
                 .setDate(selectedDate)
                 .setRangDate(startDate, endDate)
-                .setDecorView(null)
+                .setTextColorCenter(Color.parseColor("#3F80F4"))
                 .build();
     }
 

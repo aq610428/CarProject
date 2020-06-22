@@ -82,6 +82,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         StatusUtil.setUseStatusBarColor(getActivity(), Color.parseColor("#FFFFFF"));
+        StatusUtil.setSystemStatus(getActivity(), false, true);
         info = SaveUtils.getSaveInfo();
         if (info != null) {
             btn_next.setText("退出登录");

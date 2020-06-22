@@ -168,6 +168,7 @@ public class MallFragment extends BaseFragment implements OnRefreshListener, OnL
     public void onResume() {
         super.onResume();
         StatusUtil.setUseStatusBarColor(getActivity(), Color.parseColor("#FFFFFF"));
+        StatusUtil.setSystemStatus(getActivity(), false, true);
     }
 
     @Override

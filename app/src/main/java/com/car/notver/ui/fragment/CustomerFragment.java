@@ -309,6 +309,8 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         swipeToLoadLayout.setLoadingMore(false);
     }
 
+
+
     private void updateVew(JSONObject jsonObject) {
         if (jsonObject != null && !jsonObject.isNull("result")) {
             JSONObject jsonObject1 = jsonObject.optJSONObject("result");
@@ -482,6 +484,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     public void onResume() {
         super.onResume();
         StatusUtil.setUseStatusBarColor(getActivity(), Color.parseColor("#3F80F4"));
+        StatusUtil.setSystemStatus(getActivity(), false, false);
         info = SaveUtils.getSaveInfo();
         cardNum.setText("");
         clealFocus();

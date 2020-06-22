@@ -149,6 +149,7 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
     public void onResume() {
         super.onResume();
         StatusUtil.setUseStatusBarColor(getActivity(), Color.parseColor("#FFFFFF"));
+        StatusUtil.setSystemStatus(getActivity(), false, true);
     }
 
 
