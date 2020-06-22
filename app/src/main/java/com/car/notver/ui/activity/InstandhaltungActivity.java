@@ -154,7 +154,7 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
         stopProgressDialog();
     }
 
-
+    /*******门店列表******/
     public void showDialog() {
         Dialog dialog = new Dialog(this);
         View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout_list, null);
