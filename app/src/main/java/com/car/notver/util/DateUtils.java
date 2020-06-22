@@ -43,6 +43,12 @@ public class DateUtils {
         return format.format(date);
     }
 
+
+    public static String getTyTimes(Date date) {//可根据需要自行截取数据显示
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(date);
+    }
+
     public static String getNextDay(long endTime) {
         long second = (endTime - new Date().getTime()) / 1000;//获取所有秒数
         long minute1 = second / 60;//获得分钟数
