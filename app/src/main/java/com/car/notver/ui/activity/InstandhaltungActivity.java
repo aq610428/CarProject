@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,8 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
     private TimePickerView pvTime1;
     private Calendar startDate, endDate;
     private List<StoreInfo> infos = new ArrayList<>();
+    private Button btn_next;
+    private String storeId;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -51,6 +54,7 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
 
     @Override
     protected void initView() {
+        btn_next = getView(R.id.btn_next);
         text_store = getView(R.id.text_store);
         text_date = getView(R.id.text_date);
         title_text_tv = getView(R.id.title_text_tv);
@@ -59,6 +63,7 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
         title_text_tv.setText("设备维修");
         text_store.setOnClickListener(this);
         text_date.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
     }
 
     @Override
@@ -98,10 +103,13 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
             case R.id.text_date:
                 pvTime1.show();
                 break;
+            case R.id.btn_next:
+
+                break;
         }
     }
 
-
+    /*******门店列表******/
     private void qury() {
         String sign = "memberId=" + SaveUtils.getSaveInfo().getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         showProgressDialog(this, false);
@@ -113,31 +121,6 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
         params.put("partnerid", Constants.PARTNERID);
         params.put("sign", Md5Util.encode(sign));
         okHttpModel.get(Api.GET_INFO, params, Api.GET_INFOO_ID, this);
-    }
-
-
-    String storeId;
-
-    public void showDialog() {
-        Dialog dialog = new Dialog(this);
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout_list, null);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(view);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(manager);
-        OrderListAdapter adapter = new OrderListAdapter(this, infos);
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                storeId = infos.get(position).getId();
-                text_store.setText(infos.get(position).getName());
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
     }
 
     @Override
@@ -163,11 +146,34 @@ public class InstandhaltungActivity extends BaseActivity implements NetWorkListe
 
     @Override
     public void onFail() {
-
+        stopProgressDialog();
     }
 
     @Override
     public void onError(Exception e) {
+        stopProgressDialog();
+    }
 
+
+    public void showDialog() {
+        Dialog dialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout_list, null);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(view);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
+        OrderListAdapter adapter = new OrderListAdapter(this, infos);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                storeId = infos.get(position).getId();
+                text_store.setText(infos.get(position).getName());
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
