@@ -88,7 +88,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:padding="12dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
                 android:src="@mipmap/icon_pitch_nor" />
 
         </RelativeLayout>
