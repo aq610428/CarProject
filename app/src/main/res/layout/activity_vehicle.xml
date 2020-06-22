@@ -218,7 +218,7 @@
                     android:background="@null"
                     android:cursorVisible="true"
                     android:drawableRight="@mipmap/ic_right"
-                    android:drawablePadding="10dp"
+                    android:drawablePadding="5dp"
                     android:gravity="center|right"
                     android:hint="请选择车辆品牌型号"
                     android:paddingLeft="10dp"

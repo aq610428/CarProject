@@ -9,22 +9,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.car.notver.R;
 import com.car.notver.adapter.BrandAdapter;
 import com.car.notver.adapter.InventoryAdapter;
 import com.car.notver.adapter.RightAdapter;
-import com.car.notver.adapter.RightAdapter1;
 import com.car.notver.adapter.RightAdapter2;
 import com.car.notver.adapter.RightBrandAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.bean.Brand;
-import com.car.notver.bean.BrandInfo;
 import com.car.notver.bean.BrandVo;
 import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.YearCar;
@@ -33,16 +29,13 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.util.Constants;
 import com.car.notver.util.JsonParse;
-import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.CharacterParser;
 import com.car.notver.weight.PinyinComparator;
 import com.car.notver.weight.SideBar;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -289,7 +282,7 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.openDrawer(Gravity.END);
                 text_brandNmae.setText(brands.get(position).getFullName());
-                factory = brands.get(position - 1).getFullName();//厂商
+                factory = brands.get(position).getFullName();//厂商
                 queryFactory(list.get(position).getId());
             }
         });

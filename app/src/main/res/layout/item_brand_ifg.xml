@@ -29,6 +29,6 @@
             android:layout_marginLeft="5dp"
             android:gravity="center|left"
             android:textColor="@color/black33"
-            android:textSize="@dimen/ctv_sizen_12" />
+            android:textSize="@dimen/ctv_sizen_14" />
     </RelativeLayout>
 </LinearLayout>
