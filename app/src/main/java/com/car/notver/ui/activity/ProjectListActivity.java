@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +18,14 @@ import com.car.notver.bean.PhotoInfo;
 import com.car.notver.config.Api;
 import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
+import com.car.notver.util.BigDecimalUtils;
 import com.car.notver.util.Constants;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import org.json.JSONObject;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,12 +37,13 @@ import java.util.Map;
  * @name:商品管理
  */
 public class ProjectListActivity extends BaseActivity implements NetWorkListener {
-    private TextView title_text_tv, title_left_btn;
+    private TextView title_text_tv, title_left_btn, text_count;
     private RecyclerView rv_left, rv_right;
     private ProjectAdapter adapter;
     private LeftAdapter leftAdapter;
     private List<PhotoInfo> infoList = new ArrayList<>();
     private List<PhotoInfo> infos = new ArrayList<>();
+    private Button btn_next;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ public class ProjectListActivity extends BaseActivity implements NetWorkListener
 
     @Override
     protected void initView() {
+        btn_next = getView(R.id.btn_next);
+        text_count = getView(R.id.text_count);
         title_text_tv = getView(R.id.title_text_tv);
         title_left_btn = getView(R.id.title_left_btn);
         rv_left = getView(R.id.rv_left);
@@ -62,6 +68,8 @@ public class ProjectListActivity extends BaseActivity implements NetWorkListener
 
         LinearLayoutManager manager1 = new LinearLayoutManager(this);
         rv_left.setLayoutManager(manager1);
+
+        btn_next.setOnClickListener(this);
     }
 
     @Override
@@ -122,6 +130,25 @@ public class ProjectListActivity extends BaseActivity implements NetWorkListener
             case R.id.title_left_btn:
                 finish();
                 break;
+            case R.id.btn_next:
+                sumberOrder();
+                break;
+
+        }
+    }
+
+    /******提交商品*****/
+    private double total;
+    public void sumberOrder() {
+        total = 0;
+        if (adapter != null && adapter.map != null && adapter.map.size() > 0) {
+            for (Map.Entry<Integer, PhotoInfo> entry : adapter.map.entrySet()) {
+                PhotoInfo info = entry.getValue();
+                total = BigDecimalUtils.add(new BigDecimal(total), new BigDecimal(info.getPic())).doubleValue();
+            }
+            text_count.setText("合计：￥" + total);
+        }else{
+            text_count.setText("合计：￥0" );
         }
     }
 
@@ -139,7 +166,6 @@ public class ProjectListActivity extends BaseActivity implements NetWorkListener
         params.put("sign", Md5Util.encode(sign));
         okHttpModel.get(Api.GET_INFO, params, Api.GET_INFOO_ID, this);
     }
-
 
 
     @Override
