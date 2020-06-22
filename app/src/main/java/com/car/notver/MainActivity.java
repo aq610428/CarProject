@@ -12,7 +12,9 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
 import androidx.fragment.app.FragmentTabHost;
+
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CommonalityModel;
@@ -32,8 +34,11 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.SystemTools;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.UpdateManager;
+
 import org.json.JSONObject;
+
 import java.util.Map;
+
 import cn.jpush.android.api.JPushInterface;
 
 /*****
@@ -45,7 +50,7 @@ import cn.jpush.android.api.JPushInterface;
 public class MainActivity extends BaseActivity implements NetWorkListener {
     private Class fragments[] = {CustomerFragment.class, CarFragment.class, MallFragment.class, MeFragment.class};
     private int drawables[] = {R.drawable.shelf_drawable, R.drawable.chosen_drawable1, R.drawable.chosen_drawable, R.drawable.me_drawable};
-    private String textviewArray[] = {"首页", "资产", "功单", "我的"};
+    private String textviewArray[] = {"首页", "资产", "工单", "我的"};
     public FragmentTabHost mTabHost;
     private Verison verison;
     private UserInfo info;
@@ -53,7 +58,7 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
-        BaseApplication.activityTaskManager.putActivity("MainActivity",this);
+        BaseApplication.activityTaskManager.putActivity("MainActivity", this);
     }
 
 
