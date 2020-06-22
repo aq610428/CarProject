@@ -41,10 +41,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center|left"
+            android:paddingLeft="30dp"
             android:text="合计：￥3690"
             android:textColor="@color/colorAccent"
-            android:textSize="@dimen/ctv_sizen_14" />
+            android:textSize="@dimen/ctv_sizen_14"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_next"

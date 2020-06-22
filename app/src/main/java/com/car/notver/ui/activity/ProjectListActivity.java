@@ -12,9 +12,20 @@ import com.car.notver.adapter.LeftAdapter;
 import com.car.notver.adapter.ProjectAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
+import com.car.notver.bean.CommonalityModel;
 import com.car.notver.bean.PhotoInfo;
+import com.car.notver.config.Api;
+import com.car.notver.config.NetWorkListener;
+import com.car.notver.config.okHttpModel;
+import com.car.notver.util.Constants;
+import com.car.notver.util.Md5Util;
+import com.car.notver.util.SaveUtils;
+import com.car.notver.util.ToastUtil;
+import com.car.notver.util.Utility;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -22,7 +33,7 @@ import java.util.List;
  * @date: 2020/5/21
  * @name:商品管理
  */
-public class ProjectListActivity extends BaseActivity {
+public class ProjectListActivity extends BaseActivity implements NetWorkListener {
     private TextView title_text_tv, title_left_btn;
     private RecyclerView rv_left, rv_right;
     private ProjectAdapter adapter;
@@ -43,7 +54,7 @@ public class ProjectListActivity extends BaseActivity {
         rv_left = getView(R.id.rv_left);
         rv_right = getView(R.id.rv_right);
         title_left_btn.setOnClickListener(this);
-        title_text_tv.setText("商品管理");
+        title_text_tv.setText("选择商品");
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rv_right.setLayoutManager(manager);
@@ -114,4 +125,47 @@ public class ProjectListActivity extends BaseActivity {
         }
     }
 
+
+    /*******商品列表********/
+    public void query() {
+        String sign = "memberId=" + SaveUtils.getSaveInfo().getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        showProgressDialog(this, false);
+        Map<String, String> params = okHttpModel.getParams();
+        params.put("apptype", Constants.TYPE);
+        params.put("memberId", SaveUtils.getSaveInfo().getId() + "");
+        params.put("limit", "10");
+        params.put("page", "1");
+        params.put("partnerid", Constants.PARTNERID);
+        params.put("sign", Md5Util.encode(sign));
+        okHttpModel.get(Api.GET_INFO, params, Api.GET_INFOO_ID, this);
+    }
+
+
+
+    @Override
+    public void onSucceed(JSONObject object, int id, CommonalityModel commonality) {
+        if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
+            if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
+                switch (id) {
+                    case Api.GET_USER_VERSION_ID:
+                        ToastUtil.showToast(commonality.getErrorDesc());
+                        finish();
+                        break;
+                }
+            } else {
+                ToastUtil.showToast(commonality.getErrorDesc());
+            }
+        }
+        stopProgressDialog();
+    }
+
+    @Override
+    public void onFail() {
+        stopProgressDialog();
+    }
+
+    @Override
+    public void onError(Exception e) {
+        stopProgressDialog();
+    }
 }

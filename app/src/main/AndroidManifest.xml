@@ -107,6 +107,11 @@
         <activity
             android:name=".ui.activity.AgreementActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.InstandhaltungActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.activity.IndustryActivity"
             android:screenOrientation="portrait" />

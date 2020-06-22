@@ -49,6 +49,7 @@ import com.car.notver.ocr.camera.CameraActivity;
 import com.car.notver.ui.activity.DepositoryActivity;
 import com.car.notver.ui.activity.DepositoryActivity1;
 import com.car.notver.ui.activity.DepositoryActivity2;
+import com.car.notver.ui.activity.InstandhaltungActivity;
 import com.car.notver.ui.activity.KeepActivity;
 import com.car.notver.ui.activity.MassageActivity;
 import com.car.notver.ui.activity.ProjectListActivity;
@@ -182,7 +183,9 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                     intent = new Intent(getContext(), DepositoryActivity1.class);
                 } else if ("配件订购".equals(infos.get(position).getName())) {
                     intent = new Intent(getContext(), ProjectListActivity.class);
-                } else {
+                }  else if ("设备维修".equals(infos.get(position).getName())) {
+                    intent = new Intent(getContext(), InstandhaltungActivity.class);
+                }else {
                     intent = new Intent(getContext(), DepositoryActivity.class);
                 }
                 intent.putExtra("title", infos.get(position).getName());
