@@ -37,13 +37,13 @@ public class RightAdapter2 extends AutoRVAdapter {
 
     @Override
     public int onCreateViewLayoutID(int viewType) {
-        return R.layout.item_right;
+        return R.layout.item_right_brand;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
         BrandVo.ItemsBean inventory = inventories.get(position);
-        vh.getTextView(R.id.text_edition).setText(inventory.getFullName()+ "");
+        vh.getTextView(R.id.text_name).setText(inventory.getFullName()+ "");
     }
 
 

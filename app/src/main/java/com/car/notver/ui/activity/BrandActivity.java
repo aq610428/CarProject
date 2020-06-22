@@ -68,7 +68,6 @@ public class BrandActivity extends BaseActivity implements NetWorkListener {
     private RightAdapter rightAdapter;
     private DrawerLayout mDrawerLayout;
     private List<YearCar> brandList = new ArrayList<>();
-    private RightAdapter1 rightAdapter1;
     private RightAdapter2 rightAdapter2;
     private RightBrandAdapter brandAdapter;
 
