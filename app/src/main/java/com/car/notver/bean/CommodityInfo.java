@@ -14,9 +14,15 @@ public class CommodityInfo implements Serializable {
     private String originalPrice;
 
     public CommodityInfo(String name, String stock, String mechanical, String originalPrice) {
-        this.name=name;
-        this.stock=stock;
-        this.mechanical=mechanical;  this.originalPrice=originalPrice;
+        this.name = name;
+        this.stock = stock;
+        this.mechanical = mechanical;
+        this.originalPrice = originalPrice;
+    }
+
+
+    public CommodityInfo(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -50,7 +56,6 @@ public class CommodityInfo implements Serializable {
     public void setOriginalPrice(String originalPrice) {
         this.originalPrice = originalPrice;
     }
-
 
 
 }

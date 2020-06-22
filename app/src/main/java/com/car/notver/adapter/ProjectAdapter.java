@@ -2,59 +2,58 @@ package com.car.notver.adapter;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
-
 import com.car.notver.R;
-import com.car.notver.bean.KeepInfo;
-
+import com.car.notver.bean.PhotoInfo;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author: zt
- * @date: 2020/5/19
- * @name:ClientAdapter
+ * @date: 2020/5/21
+ * @name:CommodityAdapter
  */
 public class ProjectAdapter extends AutoRVAdapter {
-    private List<KeepInfo> data;
-    private Map<Integer, KeepInfo> map = new LinkedHashMap<>();
+    public List<PhotoInfo> infos;
+    private Map<Integer, PhotoInfo> map;
 
-    public ProjectAdapter(Context context, List<KeepInfo> list) {
+    public ProjectAdapter(Context context, List<PhotoInfo> list) {
         super(context, list);
-        this.data = list;
-        this.data = list;
+        this.infos = list;
+        map = new LinkedHashMap<>();
     }
 
     @Override
     public int onCreateViewLayoutID(int viewType) {
-        return R.layout.iem_project;
+        return R.layout.item_right;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
-        TextView textView = vh.getTextView(R.id.text_check);
-        KeepInfo info = data.get(position);
-        if (info.isTraveled()) {
-            textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_check_order, 0);
+        PhotoInfo info = infos.get(position);
+        vh.getTextView(R.id.text_Mechanical).setText(info.getTitle());
+        vh.getTextView(R.id.text_stock).setText("库存：" + info.getExplain());
+        vh.getTextView(R.id.text_price).setText("￥" + info.getPic());
+
+        if (info.isCherk()){
+            vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch);
         }else{
-            textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_pitch_nor, 0);
+            vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch_nor);
         }
-        textView.setOnClickListener(new View.OnClickListener() {
+
+        vh.getImageView(R.id.iv_select).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (info.isTraveled()){
-                    textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.icon_pitch_nor, 0);
+                if (info.isCherk()){
+                    info.setCherk(false);
                     map.remove(position);
-                    info.setTraveled(false);
+                    vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch_nor);
                 }else{
-                    info.setTraveled(true);
-                    textView.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.ic_check_order, 0);
-                    map.put(position, info);
+                    info.setCherk(true);
+                    map.put(position,info);
+                    vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch);
                 }
-                }
-
+            }
         });
     }
-
 }
