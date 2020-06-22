@@ -40,7 +40,7 @@ public class OwnerAdapter extends AutoRVAdapter {
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
         Bespoke bespoke = list.get(position);
-        if (bespoke!=null&&!Utility.isEmpty(bespoke.getId())){
+        if (bespoke != null && !Utility.isEmpty(bespoke.getId())) {
             String orderTime = bespoke.getOrderTime();
             if (!Utility.isEmpty(orderTime) && orderTime.length() > 5) {
                 String end = orderTime.substring(0, orderTime.length() - 5);
@@ -48,7 +48,7 @@ public class OwnerAdapter extends AutoRVAdapter {
                 vh.getTextView(R.id.tv_date).setText(end + "  " + start);
             }
             vh.getTextView(R.id.tv_make).setText(bespoke.getProject() + "");
-            vh.getTextView(R.id.tv_store).setText(bespoke.getStoreName()+ "");
+            vh.getTextView(R.id.tv_store).setText(bespoke.getStoreName() + "");
 
             vh.getTextView(R.id.tv_license).setText(bespoke.getCarcard() + "");
             vh.getTextView(R.id.tv_phone).setText(bespoke.getMobile() + "");
@@ -132,9 +132,10 @@ public class OwnerAdapter extends AutoRVAdapter {
             });
             vh.getNoDataView(R.id.mNoDataView).setVisibility(View.GONE);
             vh.getShadowLayout(R.id.mShadowLayout).setVisibility(View.VISIBLE);
-        }else{
+        } else {
             vh.getNoDataView(R.id.mNoDataView).setVisibility(View.VISIBLE);
             vh.getShadowLayout(R.id.mShadowLayout).setVisibility(View.GONE);
+            vh.getNoDataView(R.id.mNoDataView).textView.setText("暂无订单");
         }
 
 

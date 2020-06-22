@@ -34,7 +34,7 @@
                 android:id="@+id/text_version"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
                 android:gravity="center|left"
                 android:text="最新版本: v1.0.3"
                 android:textColor="@color/black33"
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:paddingTop="6dp"
                 android:text="更新内容:"
                 android:textColor="@color/black33"
                 android:textSize="15sp" />
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingExtra="3dp"
-                android:paddingTop="14dp"
+                android:paddingTop="6dp"
                 android:paddingBottom="14dp"
                 android:text="更新版本"
                 android:textColor="@color/black33"

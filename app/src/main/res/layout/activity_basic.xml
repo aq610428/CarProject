@@ -26,7 +26,7 @@
                 android:lineSpacingExtra="5dp"
                 android:lineSpacingMultiplier="1"
                 android:text="一、如何接受预约？
-\n启动app，打开首页点击预约按钮,点击接受预约即可接受卡贝用户发出的预约订单.
+\n启动app，打开首页点击预约按钮,点击接受预约即可接受用户发出的预约订单.
   \n1. 预约订单中，可拨打电话联系客户咨询预约相关信息.
   \n2. 预约订单中，可查看当前订单的状态.
 \n二、如何开单？

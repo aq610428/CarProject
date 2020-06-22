@@ -106,7 +106,7 @@ public class MallFragment extends BaseFragment implements OnRefreshListener, OnL
         swipeToLoadLayout = getView(rootView, R.id.swipeToLoadLayout);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
-        text_top_name.setText("清单");
+        text_top_name.setText("功单");
 
         View vHead = View.inflate(getContext(), R.layout.header_view, null);
         recyclerView = getView(vHead, R.id.recyclerView);

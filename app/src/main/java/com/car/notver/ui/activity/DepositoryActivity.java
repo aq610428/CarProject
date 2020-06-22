@@ -114,6 +114,9 @@ public class DepositoryActivity extends BaseActivity implements OnRefreshListene
             }
         });
         btn_code.setOnClickListener(this);
+
+
+
         text_search.setOnClickListener(this);
     }
 

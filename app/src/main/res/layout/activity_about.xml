@@ -43,7 +43,7 @@
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 android:paddingRight="20dp"
-                android:text="暂无新版本"
+                android:text="检测新版本"
                 android:textColor="#232323"
                 android:textSize="@dimen/ctv_sizen_14" />
 

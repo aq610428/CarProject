@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.car.notver.MainActivity;
 import com.car.notver.R;
 import com.car.notver.bean.Verison;
 import com.car.notver.util.BigDecimalUtils;
@@ -19,7 +17,6 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
-
 import java.io.File;
 import java.math.BigDecimal;
 
@@ -43,13 +40,14 @@ public class UpdateManager {
         Dialog dialog = new Dialog(activity);
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_generals_up, null);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
         dialog.show();
         dialog.getWindow().setContentView(view);
         TextView text__center = view.findViewById(R.id.text__center);
         TextView text_cancel = view.findViewById(R.id.text_cancel);
         TextView text_version = view.findViewById(R.id.text_version);
         TextView dialog_content = view.findViewById(R.id.dialog_content);
-        text_version.setText("最新版本v: " + verison.getVersionNo());
+        text_version.setText("最新版本：v" + verison.getVersionNo());
         dialog_content.setText(verison.getVersionContent());
         if ("1".equals(verison.getIsForceUpdate()+"")) {
             text_cancel.setVisibility(View.VISIBLE);
