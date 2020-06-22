@@ -32,8 +32,10 @@
                 <TextView
                     android:id="@+id/text_store"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center|left"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="可用CC"
                     android:textColor="@color/black33"
                     android:textSize="@dimen/ctv_sizen_14"
