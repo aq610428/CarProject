@@ -14,7 +14,7 @@ import java.util.Map;
  * @name:CommodityAdapter
  */
 public class ProjectAdapter extends AutoRVAdapter {
-    public  List<PhotoInfo> infos;
+    public List<PhotoInfo> infos;
     private Map<Integer, PhotoInfo> map;
 
     public ProjectAdapter(Context context, List<PhotoInfo> list) {
@@ -31,26 +31,33 @@ public class ProjectAdapter extends AutoRVAdapter {
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
         PhotoInfo info = infos.get(position);
-        vh.getTextView(R.id.text_Mechanical).setText(info.getTitle());
+        vh.getTextView(R.id.text_name).setText(info.getTitle());
+        vh.getTextView(R.id.text_Mechanical).setText("型号：" + info.getId());
         vh.getTextView(R.id.text_stock).setText("库存：" + info.getExplain());
-        vh.getTextView(R.id.text_price).setText("￥" + info.getPic());
+        vh.getTextView(R.id.text_price).setText("价格￥" + info.getPic());
 
-        if (info.isCherk()){
+        if (info.isCherk()) {
             vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch);
-        }else{
+        } else {
             vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch_nor);
+        }
+
+        if (position==infos.size()-1){
+            vh.getTextView(R.id.text_empty).setVisibility(View.VISIBLE);
+        }else{
+            vh.getTextView(R.id.text_empty).setVisibility(View.GONE);
         }
 
         vh.getImageView(R.id.iv_select).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (info.isCherk()){
+                if (info.isCherk()) {
                     info.setCherk(false);
                     map.remove(position);
                     vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch_nor);
-                }else{
+                } else {
                     info.setCherk(true);
-                    map.put(position,info);
+                    map.put(position, info);
                     vh.getImageView(R.id.iv_select).setImageResource(R.mipmap.icon_pitch);
                 }
             }
