@@ -14,7 +14,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_left"
-            android:layout_width="100dp"
+            android:layout_width="90dp"
             android:layout_height="match_parent"
             android:background="#F8FAFF" />
 

@@ -100,6 +100,10 @@
         <activity
             android:name=".ui.activity.AccountActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.ProjectListActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.AgreementActivity"
             android:screenOrientation="portrait" />

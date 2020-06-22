@@ -27,8 +27,8 @@ public class ProjectListActivity extends BaseActivity {
     private RecyclerView rv_left, rv_right;
     private ProjectAdapter adapter;
     private LeftAdapter leftAdapter;
+    private List<PhotoInfo> infoList = new ArrayList<>();
     private List<PhotoInfo> infos = new ArrayList<>();
-    private List<PhotoInfo> commodityInfos = new ArrayList<>();
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
@@ -55,19 +55,19 @@ public class ProjectListActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        commodityInfos.add(new PhotoInfo("机油"));
-        commodityInfos.add(new PhotoInfo("三滤"));
-        commodityInfos.add(new PhotoInfo("刹车片"));
-        commodityInfos.add(new PhotoInfo("汽油格"));
-        commodityInfos.add(new PhotoInfo("发动机皮条"));
-        commodityInfos.add(new PhotoInfo("紧张轮"));
-        commodityInfos.add(new PhotoInfo("正时皮带"));
-        commodityInfos.add(new PhotoInfo("电瓶"));
-        commodityInfos.add(new PhotoInfo("火花塞"));
-        commodityInfos.add(new PhotoInfo("气门杆"));
-        commodityInfos.add(new PhotoInfo("发动机皮带"));
-        commodityInfos.add(new PhotoInfo("火花塞"));
-        commodityInfos.add(new PhotoInfo("水箱"));
+        infoList.add(new PhotoInfo("机油"));
+        infoList.add(new PhotoInfo("三滤"));
+        infoList.add(new PhotoInfo("刹车片"));
+        infoList.add(new PhotoInfo("汽油格"));
+        infoList.add(new PhotoInfo("发动机皮条"));
+        infoList.add(new PhotoInfo("紧张轮"));
+        infoList.add(new PhotoInfo("正时皮带"));
+        infoList.add(new PhotoInfo("电瓶"));
+        infoList.add(new PhotoInfo("火花塞"));
+        infoList.add(new PhotoInfo("气门杆"));
+        infoList.add(new PhotoInfo("发动机皮带"));
+        infoList.add(new PhotoInfo("火花塞"));
+        infoList.add(new PhotoInfo("水箱"));
 
 
         infos.add(new PhotoInfo("机油", "36", "A20718000109", "108"));
@@ -90,7 +90,7 @@ public class ProjectListActivity extends BaseActivity {
             }
         });
 
-        leftAdapter = new LeftAdapter(this, commodityInfos);
+        leftAdapter = new LeftAdapter(this, infoList);
         rv_left.setAdapter(leftAdapter);
         leftAdapter.setSelectedItem(0);
         leftAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -60,8 +60,8 @@ public class ProjectActivity extends BaseActivity {
         keepInfos.add(new KeepInfo("米其林轮胎", "GHLT", "366"));
         keepInfos.add(new KeepInfo("米其林轮胎", "GHLT", "366"));
         keepInfos.add(new KeepInfo("米其林轮胎", "GHLT", "366"));
-        projectAdapter = new ProjectAdapter(this, keepInfos);
-        swipe_target.setAdapter(projectAdapter);
+//        projectAdapter = new ProjectAdapter(this, keepInfos);
+//        swipe_target.setAdapter(projectAdapter);
 
     }
 

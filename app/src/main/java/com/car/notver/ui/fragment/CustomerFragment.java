@@ -17,12 +17,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -49,6 +51,7 @@ import com.car.notver.ui.activity.DepositoryActivity1;
 import com.car.notver.ui.activity.DepositoryActivity2;
 import com.car.notver.ui.activity.KeepActivity;
 import com.car.notver.ui.activity.MassageActivity;
+import com.car.notver.ui.activity.ProjectListActivity;
 import com.car.notver.util.Constants;
 import com.car.notver.util.FileUtil;
 import com.car.notver.util.JsonParse;
@@ -59,11 +62,14 @@ import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.RecognizeService;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import crossoverone.statuslib.StatusUtil;
 
 /****
@@ -172,10 +178,12 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                if (!"客户管理".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), DepositoryActivity.class);
-                } else {
+                if ("客户管理".equals(infos.get(position).getName())) {
                     intent = new Intent(getContext(), DepositoryActivity1.class);
+                } else if ("配件订购".equals(infos.get(position).getName())) {
+                    intent = new Intent(getContext(), ProjectListActivity.class);
+                } else {
+                    intent = new Intent(getContext(), DepositoryActivity.class);
                 }
                 intent.putExtra("title", infos.get(position).getName());
                 startActivity(intent);
@@ -219,7 +227,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         } else {
             sign = "filter=1&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         }
-        LogUtils.e("sign="+sign);
+        LogUtils.e("sign=" + sign);
         showProgressDialog(getActivity(), false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("filter", "1");
