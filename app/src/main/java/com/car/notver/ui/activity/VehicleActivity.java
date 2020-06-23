@@ -23,6 +23,7 @@ import com.car.notver.ocr.VehicleKeyboardHelper1;
 import com.car.notver.util.Constants;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
+import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 
@@ -86,13 +87,13 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
             model = clientVo.getModel();
             yearmodel = clientVo.getYearmodel();
             btn_next.setText("确认修改");
-            storeid=clientVo.getStoreid();
-            storeMemberId=clientVo.getStoreMemberId();
-            memberId=clientVo.getMemberid();
+            storeid = clientVo.getStoreid();
+            storeMemberId = clientVo.getStoreMemberId();
+            memberId = clientVo.getMemberid();
         } else if (userInfo != null) {
-            storeid=userInfo.getStoreid();
-            storeMemberId=userInfo.getStoreMemberId();
-            memberId=userInfo.getId();
+            storeid = userInfo.getStoreid();
+            storeMemberId = userInfo.getStoreMemberId();
+            memberId = userInfo.getId();
         }
     }
 
@@ -108,6 +109,12 @@ public class VehicleActivity extends BaseActivity implements NetWorkListener {
             ToastUtil.showToast("请输入车牌号码");
             return;
         }
+
+        if (!SystemTools.isCarnumberNO(carcard)) {
+            ToastUtil.showToast("车牌号码不合法");
+            return;
+        }
+
         String sign = "";
         if (!Utility.isEmpty(business)) {
             sign = "business=" + business;

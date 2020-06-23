@@ -41,23 +41,11 @@ import java.util.List;
  */
 public final class SystemTools {
 
-    /**
-     * 使用迭代器可，正确无误的删除
-     *
-     * @param list
-     * @param element
-     * @return
-     */
-    public static List iteratorRemove(List list, Object element) {
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext()) {
-            Object cur = iterator.next();
-            if (cur.equals(element)) {
-                // 注意！！！这里时Iterator.remove()!!!而不是list.remove()!!!
-                iterator.remove();
-            }
-        }
-        return list;
+    /******车牌号码检测*****/
+    public static boolean isCarnumberNO(String carnumber) {
+        String carnumRegex = "[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}";
+        if (TextUtils.isEmpty(carnumber)) return false;
+        else return carnumber.matches(carnumRegex);
     }
 
     public static List<CustomerInfo> getListCustomerInfo() {
@@ -83,58 +71,6 @@ public final class SystemTools {
         infos.add(new CustomerInfo("保险数据", R.mipmap.icon_automobile));
         infos.add(new CustomerInfo("行驶排行", R.mipmap.icon_record));
         return infos;
-    }
-
-
-    /**
-     * 获取指定文件大小
-     * @param f
-     * @return
-     * @throws Exception
-     */
-    public static long getFileSize(File file) {
-        long size = 0;
-        try {
-            if (file.exists()) {
-                FileInputStream fis = null;
-                fis = new FileInputStream(file);
-                size = fis.available();
-            } else {
-                file.createNewFile();
-                Log.e("获取文件大小", "文件不存在!");
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return size;
-    }
-
-
-    /**
-     * 转换文件大小
-     * @param fileS
-     * @return
-     */
-    public static String FormetFileSize(long fileS) {
-        DecimalFormat df = new DecimalFormat("#.00");
-        String fileSizeString = "";
-        String wrongSize = "0B";
-        if (fileS == 0) {
-            return wrongSize;
-        }
-        if (fileS < 1024) {
-            fileSizeString = df.format((double) fileS) + "B";
-        } else if (fileS < 1048576) {
-            fileSizeString = df.format((double) fileS / 1024) + "KB";
-        } else if (fileS < 1073741824) {
-            fileSizeString = df.format((double) fileS / 1048576) + "MB";
-        } else {
-            fileSizeString = df.format((double) fileS / 1073741824) + "GB";
-        }
-        return fileSizeString;
     }
 
 
