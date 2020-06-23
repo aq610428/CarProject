@@ -79,6 +79,43 @@
             android:layout_height="0.6dp"
             android:background="@color/dive_line" />
 
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_check_op"
+                android:drawablePadding="6dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center"
+                android:text="卡贝"
+                android:textColor="@color/black9c"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+
+            <TextView
+                android:id="@+id/text_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_nor_check"
+                android:drawablePadding="6dp"
+                android:layout_marginLeft="60dp"
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/text_bar"
+                android:gravity="center"
+                android:text="红盒子"
+                android:textColor="@color/black9c"
+                android:textSize="@dimen/ctv_sizen_14" />
+
+
+        </RelativeLayout>
+
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"

@@ -1,8 +1,6 @@
 package com.car.notver.adapter;
 
-import android.content.Context;
 import android.view.View;
-
 import com.car.notver.R;
 import com.car.notver.bean.KeepInfo;
 import com.car.notver.ui.activity.DepositoryActivity;

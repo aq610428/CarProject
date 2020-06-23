@@ -37,7 +37,7 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity implements NetWorkListener {
     private Button btn_next;
     private EditText et_username, et_password;
-    private TextView text_register, btn_forget;
+    private TextView text_register, btn_forget,text_bar,text_red;
     private LinearLayout ll_agreement;
     private View et_line_1,et_line_2;
 
@@ -50,6 +50,8 @@ public class LoginActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initView() {
+        text_red= getView(R.id.text_red);
+        text_bar= getView(R.id.text_bar);
         et_line_2= getView(R.id.et_line_2);
         et_line_1= getView(R.id.et_line_1);
         ll_agreement= getView(R.id.ll_agreement);
@@ -102,6 +104,8 @@ public class LoginActivity extends BaseActivity implements NetWorkListener {
 
             }
         });
+        text_red.setOnClickListener(this);
+        text_bar.setOnClickListener(this);
     }
 
     @Override
@@ -113,6 +117,17 @@ public class LoginActivity extends BaseActivity implements NetWorkListener {
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()) {
+            case R.id.text_bar:
+                Constants.TYPE="9";
+                text_bar.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_check_op,0,0,0);
+                text_red.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_nor_check,0,0,0);
+                break;
+            case R.id.text_red:
+                Constants.TYPE="2";
+                text_red.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_check_op,0,0,0);
+                text_bar.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_nor_check,0,0,0);
+                break;
+
             case R.id.btn_next:
                 checkPhone();
                 break;

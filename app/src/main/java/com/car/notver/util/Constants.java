@@ -22,6 +22,6 @@ public class Constants {
     public static final String PARTNERID = "761ea3b34cc74aa58ac74d5e60048997";//区分动画
     public static final String SECREKEY = "f6af9cb871dd4237a4b89b8f5bbf8456";//区分动画
     public static final String APPTYPE = "apptype";//区分权限
-    public static final String TYPE = "9";//区分权限
+    public static String TYPE = "9";//区分权限
 
 }
