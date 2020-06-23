@@ -94,6 +94,10 @@
         <activity
             android:name=".ui.activity.BasicOtherActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.activity.PrivacyActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.activity.MassageActivity"
             android:screenOrientation="portrait" />

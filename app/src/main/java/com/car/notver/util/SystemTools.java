@@ -58,8 +58,8 @@ public final class SystemTools {
         infos.add(new CustomerInfo("保养开单", R.mipmap.ic_sale));
 //        infos.add(new CustomerInfo("车检开单", R.mipmap.ic_drive));
         infos.add(new CustomerInfo("客户管理", R.mipmap.ic_administration));
-//        infos.add(new CustomerInfo("配件订购", R.mipmap.ic_wares));
-//        infos.add(new CustomerInfo("设备维修", R.mipmap.ic_front));
+        infos.add(new CustomerInfo("配件订购", R.mipmap.ic_wares));
+        infos.add(new CustomerInfo("设备维修", R.mipmap.ic_front));
 //        infos.add(new CustomerInfo("保养建议", R.mipmap.ic_suggest));
         return infos;
     }
