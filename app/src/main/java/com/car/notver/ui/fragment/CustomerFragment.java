@@ -230,7 +230,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         } else {
             sign = "filter=1&memberId=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
         }
-        LogUtils.e("sign=" + sign);
         showProgressDialog(getActivity(), false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("filter", "1");

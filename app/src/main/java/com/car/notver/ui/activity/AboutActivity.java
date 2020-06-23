@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
@@ -23,7 +24,9 @@ import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.UpdateManager;
+
 import org.json.JSONObject;
+
 import java.util.Map;
 
 /**
@@ -32,14 +35,14 @@ import java.util.Map;
  * @name:关于我们
  */
 public class AboutActivity extends BaseActivity implements NetWorkListener {
-    private TextView title_text_tv, title_left_btn,text_edition;
+    private TextView title_text_tv, title_left_btn, text_edition;
     private RelativeLayout rl_edition, rl_tab;
     private Verison verison;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_about);
-        BaseApplication.activityTaskManager.putActivity("AboutActivity",this);
+        BaseApplication.activityTaskManager.putActivity("AboutActivity", this);
     }
 
     @Override
@@ -53,6 +56,7 @@ public class AboutActivity extends BaseActivity implements NetWorkListener {
         title_text_tv.setText("关于我们");
         rl_edition.setOnClickListener(this);
         rl_tab.setOnClickListener(this);
+        text_edition.setText("当前版本 v" + SystemTools.getAppVersionName(this));
     }
 
     @Override
