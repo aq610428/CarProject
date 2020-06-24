@@ -1,6 +1,7 @@
 package com.car.notver.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.car.notver.R;
@@ -25,6 +26,12 @@ public class PrivacyActivity extends BaseActivity {
         title_left_btn = getView(R.id.title_left_btn);
         title_left_btn.setOnClickListener(this);
         title_text_tv.setText("用户隐私");
+    }
+
+    @Override
+    public void onClick(View v) {
+        super.onClick(v);
+        finish();
     }
 
     @Override
