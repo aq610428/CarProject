@@ -9,12 +9,10 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -43,14 +41,10 @@ import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.EmptyDataView;
-import com.car.notver.weight.NoDataView;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import crossoverone.statuslib.StatusUtil;
 
 /****
@@ -106,7 +100,7 @@ public class MallFragment extends BaseFragment implements OnRefreshListener, OnL
         swipeToLoadLayout = getView(rootView, R.id.swipeToLoadLayout);
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
-        text_top_name.setText("功单");
+        text_top_name.setText("工单");
 
         View vHead = View.inflate(getContext(), R.layout.header_view, null);
         recyclerView = getView(vHead, R.id.recyclerView);

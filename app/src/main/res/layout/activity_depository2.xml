@@ -28,6 +28,8 @@
             android:cursorVisible="true"
             android:drawableLeft="@mipmap/icon_search"
             android:drawablePadding="10dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:hint="请输入客户名称或手机号码"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
