@@ -132,10 +132,8 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
         tv_home.setTextColor(Color.parseColor("#666666"));
         TextView tv_order = mTabHost.getTabWidget().getChildAt(1).findViewById(R.id.textview);
         tv_order.setTextColor(Color.parseColor("#666666"));
-
         TextView tv_mine2 = mTabHost.getTabWidget().getChildAt(2).findViewById(R.id.textview);
         tv_mine2.setTextColor(Color.parseColor("#666666"));
-
 
         TextView tv_mine3 = mTabHost.getTabWidget().getChildAt(3).findViewById(R.id.textview);
         tv_mine3.setTextColor(Color.parseColor("#666666"));

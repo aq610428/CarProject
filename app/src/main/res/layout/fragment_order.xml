@@ -142,6 +142,7 @@
                             android:background="@mipmap/btn_sumber_mine"
                             android:gravity="center"
                             android:text="积分兑换"
+                            android:textStyle="bold"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/ctv_sizen_15" />
                     </LinearLayout>

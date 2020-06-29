@@ -95,7 +95,6 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
      * @param ********/
     public void query() {
         String sign = "partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
-        showProgressDialog(getActivity(), false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("apptype", Constants.TYPE);
         params.put("partnerid", Constants.PARTNERID);
@@ -107,7 +106,6 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
      * @param ********/
     public void queryList() {
         String sign = "memberid=" + info.getId() + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
-        showProgressDialog(getActivity(), false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("memberid", info.getId() + "");
         params.put("apptype", Constants.TYPE);
@@ -140,7 +138,6 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
                 }
             }
         }
-        stopProgressDialog();
         swipeToLoadLayout.setRefreshing(false);
     }
 
@@ -163,13 +160,11 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
 
     @Override
     public void onFail() {
-        stopProgressDialog();
         swipeToLoadLayout.setRefreshing(false);
     }
 
     @Override
     public void onError(Exception e) {
-        stopProgressDialog();
         swipeToLoadLayout.setRefreshing(false);
     }
 

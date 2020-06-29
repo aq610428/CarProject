@@ -1,6 +1,7 @@
 package com.car.notver.ui.activity;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,8 @@ import com.car.notver.util.QRCodeUtil;
 import com.car.notver.util.SaveUtils;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
+import com.google.zxing.qrcode.encoder.QRCode;
+
 import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

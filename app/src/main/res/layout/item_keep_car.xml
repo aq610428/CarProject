@@ -40,7 +40,7 @@
                 android:layout_toRightOf="@+id/iv_logo"
                 android:gravity="center"
                 android:text="CAR"
-                android:textColor="@color/black33"
+                android:textColor="@color/black"
                 android:textSize="@dimen/ctv_sizen_13" />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="0.0015"
-                android:textColor="@color/black33"
+                android:textColor="@color/black7e"
                 android:textSize="@dimen/ctv_sizen_13" />
 
 
