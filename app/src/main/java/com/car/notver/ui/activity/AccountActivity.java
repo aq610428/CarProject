@@ -1,15 +1,15 @@
 package com.car.notver.ui.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -26,9 +26,7 @@ import com.car.notver.util.Constants;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.NoDataView;
-
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +37,7 @@ import java.util.Map;
  * @name:账户信息
  */
 public class AccountActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
-    private TextView title_text_tv, title_left_btn;
+    private TextView title_text_tv, title_left_btn, title_right_btn;
     private SwipeToLoadLayout swipeToLoadLayout;
     private RecyclerView swipe_target;
     private List<ClientVo> list = new ArrayList<>();
@@ -54,6 +52,7 @@ public class AccountActivity extends BaseActivity implements OnRefreshListener, 
 
     @Override
     protected void initView() {
+        title_right_btn = getView(R.id.title_right_btn);
         mNoDataView = getView(R.id.mNoDataView);
         swipe_target = getView(R.id.swipe_target);
         swipeToLoadLayout = getView(R.id.swipeToLoadLayout);
@@ -64,6 +63,8 @@ public class AccountActivity extends BaseActivity implements OnRefreshListener, 
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         mNoDataView.textView.setText("暂无服务项目，快去添加吧~");
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
+        title_right_btn.setOnClickListener(this);
     }
 
     @Override
@@ -76,6 +77,15 @@ public class AccountActivity extends BaseActivity implements OnRefreshListener, 
         list.add(new ClientVo("西丽汽车维修中心", "更换电瓶", 900, 1000));
         giveAdapter = new GiveAdapter(this, list);
         swipe_target.setAdapter(giveAdapter);
+        giveAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ClientVo clientVo = list.get(position);
+                Intent intent = new Intent(AccountActivity.this, AddressActivity.class);
+                intent.putExtra("clientVo", clientVo);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -84,6 +94,9 @@ public class AccountActivity extends BaseActivity implements OnRefreshListener, 
         switch (v.getId()) {
             case R.id.title_left_btn:
                 finish();
+                break;
+            case R.id.title_right_btn:
+                startActivity(new Intent(this, AddressActivity.class));
                 break;
 
         }
