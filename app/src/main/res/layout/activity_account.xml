@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_blg"
@@ -7,217 +8,32 @@
 
     <include layout="@layout/activity_title" />
 
-    <androidx.core.widget.NestedScrollView
+    <com.aspsine.swipetoloadlayout.SwipeToLoadLayout
+        android:id="@+id/swipeToLoadLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadingEdge="none"
-        android:scrollbars="none">
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp"
+        app:swipe_style="classic">
 
-        <LinearLayout
+        <include
+            android:id="@id/swipe_refresh_header"
+            layout="@layout/layout_google_hook_header" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/swipe_target"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content" />
 
-            <RelativeLayout
-                android:id="@+id/rl_photo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp">
-
-                <ImageView
-                    android:id="@+id/iv_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:src="@mipmap/ic_account" />
-
-                <TextView
-                    android:layout_width="120dp"
-                    android:layout_height="35dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="80dp"
-                    android:background="@drawable/store_shape"
-                    android:gravity="center"
-                    android:text="上传开户许可证"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/ctv_sizen_14" />
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@color/colorWhite"
-                    android:drawableLeft="@mipmap/ic_basic_msg"
-                    android:drawablePadding="10dp"
-                    android:gravity="center|left"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:text="企业对公账户"
-                    android:textColor="@color/black33"
-                    android:textSize="@dimen/ctv_sizen_14"
-                    android:textStyle="bold" />
+        <include
+            android:id="@id/swipe_load_more_footer"
+            layout="@layout/layout_google_hook_footer" />
+    </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:background="@color/dive_line" />
+    <com.car.notver.weight.NoDataView
+        android:id="@+id/mNoDataView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@color/colorWhite"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:paddingLeft="20dp"
-                        android:text="*"
-                        android:textColor="@color/google_red"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10dp"
-                        android:gravity="center|left"
-                        android:paddingLeft="10dp"
-                        android:text="开户名称"
-                        android:textColor="#898C8E"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <EditText
-                        android:id="@+id/et_cardNmae"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/colorWhite"
-                        android:hint="请输入开户名称"
-                        android:lines="1"
-                        android:textColor="@color/black33"
-                        android:textSize="@dimen/ctv_sizen_14" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/dive_line" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@color/colorWhite"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:paddingLeft="20dp"
-                        android:text="*"
-                        android:textColor="@color/google_red"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10dp"
-                        android:gravity="center|left"
-                        android:paddingLeft="10dp"
-                        android:text="开户银行"
-                        android:textColor="#898C8E"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <EditText
-                        android:id="@+id/et_blankNmae"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/colorWhite"
-                        android:hint="请输入开户银行"
-                        android:lines="1"
-                        android:textColor="@color/black33"
-                        android:textSize="@dimen/ctv_sizen_14" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/dive_line" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@color/colorWhite"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:paddingLeft="20dp"
-                        android:text="*"
-                        android:textColor="@color/google_red"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="10dp"
-                        android:gravity="center|left"
-                        android:paddingLeft="10dp"
-                        android:text="开户账户"
-                        android:textColor="#898C8E"
-                        android:textSize="@dimen/ctv_sizen_14" />
-
-                    <EditText
-                        android:id="@+id/et_account"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@color/colorWhite"
-                        android:hint="请输入对公账户"
-                        android:lines="1"
-                        android:inputType="number"
-                        android:textColor="@color/black33"
-                        android:textSize="@dimen/ctv_sizen_14" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/next_shape"
-                android:gravity="center"
-                android:text="下一步"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/ctv_sizen_15" />
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-</LinearLayout>
+</RelativeLayout>

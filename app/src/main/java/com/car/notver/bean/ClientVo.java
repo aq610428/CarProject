@@ -67,6 +67,14 @@ public class ClientVo implements Serializable {
     private String stringCreateTime;
     private String stringUpdateTime;
 
+
+    public ClientVo(String storeName,String username,double totalmileage,double initmileage){
+        this.storeName=storeName;
+        this.username=username;
+        this.totalmileage=totalmileage;
+        this.initmileage=initmileage;
+    }
+
     public String getId() {
         return id;
     }

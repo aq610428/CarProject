@@ -46,6 +46,8 @@ import com.car.notver.config.NetWorkListener;
 import com.car.notver.config.okHttpModel;
 import com.car.notver.ocr.VehicleKeyboardHelper;
 import com.car.notver.ocr.camera.CameraActivity;
+import com.car.notver.ui.activity.AboutActivity;
+import com.car.notver.ui.activity.AccountActivity;
 import com.car.notver.ui.activity.DepositoryActivity;
 import com.car.notver.ui.activity.DepositoryActivity1;
 import com.car.notver.ui.activity.DepositoryActivity2;
@@ -179,15 +181,26 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                if ("客户管理".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), DepositoryActivity1.class);
-                } else if ("配件订购".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), ProjectListActivity.class);
-                }  else if ("设备维修".equals(infos.get(position).getName())) {
-                    intent = new Intent(getContext(), InstandhaltungActivity.class);
-                }else {
-                    intent = new Intent(getContext(), DepositoryActivity.class);
+                switch (infos.get(position).getName()){
+                    case "客户管理":
+                        intent = new Intent(getContext(), DepositoryActivity1.class);
+                        break;
+                    case "配件订购":
+                        intent = new Intent(getContext(), ProjectListActivity.class);
+                        break;
+                    case "设备维修":
+                        intent = new Intent(getContext(), InstandhaltungActivity.class);
+                        break;
+                    case "服务项目":
+                        intent = new Intent(getContext(), AccountActivity.class);
+                        break;
+                    case "维修开单":
+                    case "洗车开单":
+                    case "保养开单":
+                        intent = new Intent(getContext(), DepositoryActivity.class);
+                        break;
                 }
+
                 intent.putExtra("title", infos.get(position).getName());
                 startActivity(intent);
             }
@@ -307,7 +320,6 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
         swipeToLoadLayout.setRefreshing(false);
         swipeToLoadLayout.setLoadingMore(false);
     }
-
 
 
     private void updateVew(JSONObject jsonObject) {

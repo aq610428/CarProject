@@ -1,59 +1,81 @@
 package com.car.notver.ui.activity;
 
-import android.Manifest;
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.Window;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
+import com.aspsine.swipetoloadlayout.OnRefreshListener;
+import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.car.notver.R;
+import com.car.notver.adapter.GiveAdapter;
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
-import com.car.notver.util.ImageFactory;
-import com.car.notver.util.LogUtils;
-import com.car.notver.weight.FinishActivityManager;
-import com.car.notver.weight.MediaLoader;
-import com.yanzhenjie.album.Album;
-import com.yanzhenjie.album.AlbumConfig;
-import com.yanzhenjie.album.AlbumFile;
+import com.car.notver.bean.ClientVo;
+import com.car.notver.bean.CommonalityModel;
+import com.car.notver.config.Api;
+import com.car.notver.config.NetWorkListener;
+import com.car.notver.config.okHttpModel;
+import com.car.notver.util.Constants;
+import com.car.notver.util.Md5Util;
+import com.car.notver.util.Utility;
+import com.car.notver.weight.NoDataView;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author: zt
  * @date: 2020/5/15
  * @name:账户信息
  */
-public class AccountActivity extends BaseActivity {
+public class AccountActivity extends BaseActivity implements OnRefreshListener, OnLoadMoreListener, NetWorkListener {
     private TextView title_text_tv, title_left_btn;
-    private RelativeLayout rl_photo;
-    private ImageView iv_photo;
-    private Button btn_next;
+    private SwipeToLoadLayout swipeToLoadLayout;
+    private RecyclerView swipe_target;
+    private List<ClientVo> list = new ArrayList<>();
+    private GiveAdapter giveAdapter;
+    private NoDataView mNoDataView;
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_account);
-        BaseApplication.activityTaskManager.putActivity("AccountActivity",this);
+        BaseApplication.activityTaskManager.putActivity("AccountActivity", this);
     }
 
     @Override
     protected void initView() {
-        btn_next = getView(R.id.btn_next);
+        mNoDataView = getView(R.id.mNoDataView);
+        swipe_target = getView(R.id.swipe_target);
+        swipeToLoadLayout = getView(R.id.swipeToLoadLayout);
         title_text_tv = getView(R.id.title_text_tv);
         title_left_btn = getView(R.id.title_left_btn);
-        rl_photo = getView(R.id.rl_photo);
-        iv_photo = getView(R.id.iv_photo);
         title_left_btn.setOnClickListener(this);
-        btn_next.setOnClickListener(this);
-        rl_photo.setOnClickListener(this);
-        title_text_tv.setText("账户信息");
+        title_text_tv.setText(getIntent().getStringExtra("title"));
+        swipeToLoadLayout.setOnLoadMoreListener(this);
+        swipeToLoadLayout.setOnRefreshListener(this);
+        mNoDataView.textView.setText("暂无服务项目，快去添加吧~");
     }
 
     @Override
     protected void initData() {
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        swipe_target.setLayoutManager(layoutManager);
+        list.add(new ClientVo("西丽汽车维修中心", "洗车", 100, 100));
+        list.add(new ClientVo("西丽汽车维修中心", "保养", 1100, 2000));
+        list.add(new ClientVo("西丽汽车维修中心", "维修", 3600, 3300));
+        list.add(new ClientVo("西丽汽车维修中心", "更换电瓶", 900, 1000));
+        giveAdapter = new GiveAdapter(this, list);
+        swipe_target.setAdapter(giveAdapter);
     }
 
     @Override
@@ -63,53 +85,86 @@ public class AccountActivity extends BaseActivity {
             case R.id.title_left_btn:
                 finish();
                 break;
-            case R.id.rl_photo:
-                requestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 3);
-                break;
-            case R.id.btn_next:
-                startActivity(new Intent(this, IndustryActivity.class));
-                break;
+
         }
     }
 
-    @Override
-    public void permissinSucceed(int code) {
-        super.permissinSucceed(code);
-        selectPhoto();
+
+    /*******查询
+     * @param ********/
+    public void delete(String id) {
+        String sign = "id=" + id + "&partnerid=" + Constants.PARTNERID + Constants.SECREKEY;
+        showProgressDialog(this, false);
+        Map<String, String> params = okHttpModel.getParams();
+        params.put("apptype", Constants.TYPE);
+        params.put("id", id + "");
+        params.put("partnerid", Constants.PARTNERID);
+        params.put("sign", Md5Util.encode(sign));
+        okHttpModel.get(Api.GET_DELETE, params, Api.GET_DELETE_ID, this);
     }
 
 
-    private Bitmap bitmap;
-    private void selectPhoto() {
-        Album.initialize(AlbumConfig.newBuilder(this)
-                .setAlbumLoader(new MediaLoader())
-                .build());
-        ArrayList<AlbumFile> albumFiles = new ArrayList<>();
-        Album.image(this) // Image selection.
-                .multipleChoice()
-                .camera(true)
-                .columnCount(4)
-                .selectCount(1)
-                .checkedList(albumFiles)
-                .onResult(result -> {
-                    if (result != null && result.size() > 0) {
-                        String path = result.get(0).getPath();
-                        bitmap = ImageFactory.getBitmap(path);
-                        if (bitmap != null) {
-                            iv_photo.setImageBitmap(bitmap);
-                        }
-                    }
-                })
-                .onCancel(result -> LogUtils.e("已"))
-                .start();
+    @Override
+    public void onLoadMore() {
+
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (bitmap != null && !bitmap.isRecycled()) {
-            bitmap.recycle();
-            bitmap = null;
+    public void onRefresh() {
+
+    }
+
+    @Override
+    public void onSucceed(JSONObject object, int id, CommonalityModel commonality) {
+        if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
+            if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
+                switch (id) {
+                    case Api.GET_USER_LIST_ID:
+
+                        break;
+                }
+            }
         }
+        stopProgressDialog();
+        swipeToLoadLayout.setRefreshing(false);
+        swipeToLoadLayout.setLoadingMore(false);
+    }
+
+    @Override
+    public void onFail() {
+        stopProgressDialog();
+        swipeToLoadLayout.setRefreshing(false);
+        swipeToLoadLayout.setLoadingMore(false);
+    }
+
+    @Override
+    public void onError(Exception e) {
+        stopProgressDialog();
+        swipeToLoadLayout.setRefreshing(false);
+        swipeToLoadLayout.setLoadingMore(false);
+    }
+
+
+    public void showDelete(String id) {
+        Dialog dialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_layout1, null);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(view);
+        ((TextView) view.findViewById(R.id.title)).setText("温馨提示");
+        ((TextView) view.findViewById(R.id.message)).setText("确定是否删除?");
+        view.findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        view.findViewById(R.id.confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(id);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

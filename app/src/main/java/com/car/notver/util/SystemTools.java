@@ -60,7 +60,7 @@ public final class SystemTools {
         infos.add(new CustomerInfo("客户管理", R.mipmap.ic_administration));
         infos.add(new CustomerInfo("配件订购", R.mipmap.ic_wares));
         infos.add(new CustomerInfo("设备维修", R.mipmap.ic_front));
-//        infos.add(new CustomerInfo("保养建议", R.mipmap.ic_suggest));
+        infos.add(new CustomerInfo("服务项目", R.mipmap.ic_suggest));
         return infos;
     }
 
