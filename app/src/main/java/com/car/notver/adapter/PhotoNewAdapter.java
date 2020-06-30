@@ -2,15 +2,12 @@ package com.car.notver.adapter;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import com.car.notver.R;
 import com.car.notver.bean.FileInfo;
 import com.car.notver.glide.GlideUtils;
 import com.car.notver.ui.activity.PhotoActivity;
 import com.car.notver.util.MeasureWidthUtils;
-
 import java.util.List;
 
 /**
@@ -41,7 +38,7 @@ public class PhotoNewAdapter extends AutoRVAdapter {
         layoutParams.width = (width-60)/2;
         layoutParams.height = RelativeLayout.LayoutParams.MATCH_PARENT;
         imageView.setLayoutParams(layoutParams);
-        GlideUtils.setImageUrl(infos.get(position).getPhotoFile(), imageView);
+        GlideUtils.CreateImageRound(infos.get(position).getPhotoFile(), imageView,8);
         vh.getTextView(R.id.text_jcompany).setText(infos.get(position).getTitle());
         vh.getImageView(R.id.iv_delete).setOnClickListener(new View.OnClickListener() {
             @Override
