@@ -68,7 +68,7 @@
 
             <TextView
                 android:id="@+id/text_Increase"
-                android:layout_width="60dp"
+                android:layout_width="65dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
