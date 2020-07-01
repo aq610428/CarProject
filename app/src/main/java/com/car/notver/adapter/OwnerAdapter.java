@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
-
 import com.car.notver.R;
 import com.car.notver.bean.Bespoke;
-import com.car.notver.ocr.VehicleKeyboardHelper;
 import com.car.notver.ui.activity.OrderActivity;
 import com.car.notver.ui.fragment.CustomerFragment;
 import com.car.notver.util.Utility;
-
 import java.util.List;
 
 /**

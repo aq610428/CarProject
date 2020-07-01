@@ -62,6 +62,7 @@ public class MassageActivity extends BaseActivity implements OnLoadMoreListener,
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         mNoDataView.textView.setText("暂无消息");
+
     }
 
     @Override
@@ -129,7 +130,7 @@ public class MassageActivity extends BaseActivity implements OnLoadMoreListener,
 
 
     private void setAdapter(List<Massage> voList) {
-        swipe_target.setVisibility(View.VISIBLE);
+        swipe_target.setVisibility(View.GONE);
         mNoDataView.setVisibility(View.GONE);
         if (!isRefresh) {
             list.clear();
