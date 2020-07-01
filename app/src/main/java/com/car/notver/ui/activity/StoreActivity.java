@@ -168,6 +168,7 @@ public class StoreActivity extends BaseActivity implements OnLoadMoreListener, N
             infos.clear();
             infos.addAll(voList);
             adapter = new StoreAdapter(this, infos);
+            adapter.setHasStableIds(true);
             swipe_target.setAdapter(adapter);
         } else {
             infos.addAll(voList);

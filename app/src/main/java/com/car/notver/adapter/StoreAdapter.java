@@ -48,7 +48,6 @@ public class StoreAdapter extends AutoRVAdapter {
             vh.getTextView(R.id.text_verify).setText("审核不通过");
             vh.getLinearLayout(R.id.ll_tab).setVisibility(View.VISIBLE);
             vh.getTextView(R.id.text_verify).setBackgroundResource(R.drawable.store_shape_item);
-            ;
             vh.getTextView(R.id.text_reviewContent).setText(info.getReviewContent() + "");
         }
         vh.getTextView(R.id.text_name).setText(infos.get(position).getName());

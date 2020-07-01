@@ -45,7 +45,6 @@ import cn.jpush.android.api.JPushInterface;
  *
  *  惠养车
  *
- *
  */
 public class MainActivity extends BaseActivity implements NetWorkListener {
     private Class fragments[] = {CustomerFragment.class, CarFragment.class, MallFragment.class, MeFragment.class};
