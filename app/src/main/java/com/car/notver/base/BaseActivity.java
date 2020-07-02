@@ -7,9 +7,7 @@
 package com.car.notver.base;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -23,18 +21,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.car.notver.R;
 import com.car.notver.util.LogUtils;
 import com.car.notver.weight.BaseProgressDialog;
 import java.util.ArrayList;
 import java.util.List;
-
 import crossoverone.statuslib.StatusUtil;
 
 
@@ -171,7 +166,6 @@ public abstract class BaseActivity extends AppCompatActivity implements OnClickL
                 permissinSucceed(REQUEST_CODE);
             } else {
                 permissionFailing(REQUEST_CODE);
-//                showFaiingDialog();
             }
         }
     }
