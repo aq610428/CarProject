@@ -63,7 +63,7 @@ public class AccountActivity extends BaseActivity implements OnRefreshListener, 
         swipeToLoadLayout.setOnLoadMoreListener(this);
         swipeToLoadLayout.setOnRefreshListener(this);
         mNoDataView.textView.setText("暂无服务项目，快去添加吧~");
-        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_add_store, 0, 0, 0);
         title_right_btn.setOnClickListener(this);
     }
 

@@ -116,7 +116,7 @@ public class DepositoryActivity1 extends BaseActivity implements OnRefreshListen
 
             }
         });
-        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store, 0, 0, 0);
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_add_store, 0, 0, 0);
         title_right_btn.setOnClickListener(this);
         btn_code.setOnClickListener(this);
         text_search.setOnClickListener(this);

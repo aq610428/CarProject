@@ -80,7 +80,7 @@ public class StoreActivity extends BaseActivity implements OnLoadMoreListener, N
         LinearLayoutManager manager = new LinearLayoutManager(this);
         swipe_target.setLayoutManager(manager);
         mNoDataView.textView.setText("您还没有添加门店");
-        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_add_store,0,0,0);
+        title_right_btn.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_add_store,0,0,0);
     }
 
     @Override
