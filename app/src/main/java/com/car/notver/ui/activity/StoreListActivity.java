@@ -3,7 +3,6 @@ package com.car.notver.ui.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +10,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.maps.LocationSource;
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity;
@@ -44,20 +41,15 @@ import com.lzy.okgo.model.Response;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
 import com.yanzhenjie.album.AlbumFile;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
-
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
-
 import static com.car.notver.util.LocationUtils.getDefaultOption;
 
 /**

@@ -12,9 +12,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
-
 import androidx.fragment.app.FragmentTabHost;
-
 import com.car.notver.base.BaseActivity;
 import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CommonalityModel;
@@ -34,11 +32,8 @@ import com.car.notver.util.SaveUtils;
 import com.car.notver.util.SystemTools;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.UpdateManager;
-
 import org.json.JSONObject;
-
 import java.util.Map;
-
 import cn.jpush.android.api.JPushInterface;
 
 /*****

@@ -106,7 +106,6 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
             };
             needCheckBackLocation = true;
         }
-
     }
 
     /*************************************** 权限检查******************************************************/

@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:layout_marginTop="50dp"
         app:swipe_style="classic">
 
         <include
@@ -169,6 +169,38 @@
 
                         </LinearLayout>
                     </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/rl_store"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="30dp"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@mipmap/ic_rectangle" />
+
+
+                        <TextView
+                            android:id="@+id/text_add"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawableLeft="@mipmap/icon_add_store"
+                            android:drawablePadding="5dp"
+                            android:paddingLeft="10dp"
+                            android:text="门店申请进驻"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/ctv_sizen_13" />
+
+                    </RelativeLayout>
+
+
                 </RelativeLayout>
 
 
@@ -344,8 +376,8 @@
                     android:id="@+id/mRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorWhite"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="8dp"
+                    android:background="@color/colorWhite" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

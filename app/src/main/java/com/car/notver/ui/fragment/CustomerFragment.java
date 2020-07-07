@@ -17,12 +17,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
@@ -52,6 +54,7 @@ import com.car.notver.ui.activity.InstandhaltungActivity;
 import com.car.notver.ui.activity.KeepActivity;
 import com.car.notver.ui.activity.MassageActivity;
 import com.car.notver.ui.activity.ProjectListActivity;
+import com.car.notver.ui.activity.StoreListActivity;
 import com.car.notver.util.Constants;
 import com.car.notver.util.FileUtil;
 import com.car.notver.util.JsonParse;
@@ -62,11 +65,14 @@ import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.RecognizeService;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import crossoverone.statuslib.StatusUtil;
 
 /****
@@ -97,6 +103,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     private RelativeLayout ll_top;
     private NestedScrollView nestedScrollView;
     private DynamicReceiver dynamicReceiver;
+    private RelativeLayout rl_store;
 
 
     @Nullable
@@ -121,6 +128,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
     }
 
     private void initView() {
+        rl_store= getView(rootView, R.id.rl_store);
         text_client = getView(rootView, R.id.text_client);
         ll_tab1 = getView(rootView, R.id.ll_tab1);
         text_msg = getView(rootView, R.id.text_msg);
@@ -175,7 +183,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = null;
-                switch (infos.get(position).getName()){
+                switch (infos.get(position).getName()) {
                     case "客户管理":
                         intent = new Intent(getContext(), DepositoryActivity1.class);
                         break;
@@ -207,6 +215,7 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
                 clealFocus();
             }
         });
+        rl_store.setOnClickListener(this);
     }
 
 
@@ -348,6 +357,11 @@ public class CustomerFragment extends BaseFragment implements View.OnClickListen
             case R.id.ll_tab1:
                 startActivity(new Intent(getContext(), DepositoryActivity1.class));
                 break;
+
+            case R.id.rl_store:
+                startActivity(new Intent(getContext(), StoreListActivity.class));
+                break;
+
 
             case R.id.ll_top:
                 clealFocus();
