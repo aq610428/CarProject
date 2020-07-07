@@ -130,7 +130,7 @@ public class MassageActivity extends BaseActivity implements OnLoadMoreListener,
 
 
     private void setAdapter(List<Massage> voList) {
-        swipe_target.setVisibility(View.GONE);
+        swipe_target.setVisibility(View.VISIBLE);
         mNoDataView.setVisibility(View.GONE);
         if (!isRefresh) {
             list.clear();

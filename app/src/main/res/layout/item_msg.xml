@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
-            android:gravity="center"
+            android:gravity="center|left"
             android:text="已审核"
             android:textColor="#717171"
             android:textSize="@dimen/ctv_sizen_14" />
