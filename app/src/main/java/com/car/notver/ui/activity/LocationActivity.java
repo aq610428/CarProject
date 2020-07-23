@@ -297,7 +297,6 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
                     PreferenceUtils.setPrefString(this, "district", amapLocation.getDistrict());
                     PreferenceUtils.setPrefString(this, "provider", amapLocation.getProvince());
                 }
-
                 if (!mFirstFix) {
                     mFirstFix = true;
                     addMarker(latLng);//添加定位图标

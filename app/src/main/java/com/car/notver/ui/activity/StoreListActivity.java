@@ -10,10 +10,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.model.LatLng;
 import com.bigkoo.pickerview.TimePickerView;
 import com.car.notver.R;
 import com.car.notver.base.BaseActivity;
@@ -31,6 +33,7 @@ import com.car.notver.util.DateUtils;
 import com.car.notver.util.LogUtils;
 import com.car.notver.util.Md5Util;
 import com.car.notver.util.SaveUtils;
+import com.car.notver.util.SystemTools;
 import com.car.notver.util.ToastUtil;
 import com.car.notver.util.Utility;
 import com.car.notver.weight.MediaLoader;
@@ -41,15 +44,19 @@ import com.lzy.okgo.model.Response;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
 import com.yanzhenjie.album.AlbumFile;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
+
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
+
 import static com.car.notver.util.LocationUtils.getDefaultOption;
 
 /**
@@ -64,9 +71,9 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
     private Calendar startDate, endDate;
     private Button btn_next;
     private RelativeLayout rl_photo;
-    private ImageView iv_photo,iv_address;
+    private ImageView iv_photo, iv_address;
     private String result;
-    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile,et_address;
+    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile, et_address;
     private UserInfo userInfo;
 
 
@@ -75,7 +82,6 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         setContentView(R.layout.activity_store);
         BaseApplication.activityTaskManager.putActivity("StoreListActivity", this);
         userInfo = SaveUtils.getSaveInfo();
-        initLocation();
     }
 
     @Override
@@ -133,6 +139,9 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
                 .setRangDate(startDate, endDate)
                 .setDecorView(null)
                 .build();
+
+
+        initLocation();
     }
 
 
@@ -176,7 +185,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         String name = PreferenceUtils.getPrefString(this, "name", "");
         String lat1 = PreferenceUtils.getPrefString(this, "lat", "");
         String lon1 = PreferenceUtils.getPrefString(this, "lon", "");
-        if (Utility.isEmpty(province)){
+        if (Utility.isEmpty(province)) {
             city = PreferenceUtils.getPrefString(this, "city", "");
             area = PreferenceUtils.getPrefString(this, "district", "");
             province = PreferenceUtils.getPrefString(this, "provider", "");
@@ -184,8 +193,9 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
 
         if (!Utility.isEmpty(name) && !Utility.isEmpty(lat1)) {
             et_address.setText(name + "");
-            lat = BigDecimalUtils.subLastBit(Double.parseDouble(lat1), 6).doubleValue();
-            lon = BigDecimalUtils.subLastBit(Double.parseDouble(lon1), 6).doubleValue();
+            LatLng latLng = SystemTools.getLatLng(Double.parseDouble(lat1), Double.parseDouble(lon1), this);
+            lat = BigDecimalUtils.subLastBit(latLng.latitude, 6).doubleValue();
+            lon = BigDecimalUtils.subLastBit(latLng.longitude, 6).doubleValue();
             PreferenceUtils.setPrefString(this, "name", "");
             PreferenceUtils.setPrefString(this, "lat", "");
             PreferenceUtils.setPrefString(this, "lon", "");
@@ -252,8 +262,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             params.put("province", province + "");
             params.put("rescuePhone", mobile);
 
-            params.put("sign", Md5Util.encode(sign));
-            LogUtils.e("sign="+sign);
+            params.put("sign", Md5Util.encode(sign) + "111");
             okHttpModel.get(Api.GET_STOREINFO, params, Api.GET_STOREINFO_ID, this);
         }
     }
@@ -293,7 +302,6 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
     public void permissinSucceed(int code) {
         super.permissinSucceed(code);
         selectPhoto();
-
     }
 
     private void selectPhoto() {
@@ -339,6 +347,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
                         // TODO 当压缩过程出现问题时调用
                     }
                 }).launch();
+
     }
 
 
@@ -375,8 +384,6 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
     }
 
 
-
-
     /**
      * 初始化定位
      *
@@ -388,11 +395,9 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
     private AMapLocationClientOption locationOption = null;
 
     private void initLocation() {
-        //初始化client
         locationClient = new AMapLocationClient(this.getApplicationContext());
         locationOption = getDefaultOption();
         locationClient.setLocationListener(locationListener);
-        locationOption.setOnceLocation(true);
         locationClient.startLocation();
     }
 
@@ -405,11 +410,24 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
                 city = location.getCity();
                 area = location.getDistrict();
                 locationClient.stopLocation();
+                lat = location.getLatitude();
+                lon = location.getLongitude();
+                locationClient.stopLocation();
             }
-
         }
     };
 
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        PreferenceUtils.setPrefString(this, "name", "");
+        PreferenceUtils.setPrefString(this, "lat", "");
+        PreferenceUtils.setPrefString(this, "lon", "");
+        PreferenceUtils.setPrefString(this, "city", "");
+        PreferenceUtils.setPrefString(this, "district", "");
+        PreferenceUtils.setPrefString(this, "provider", "");
+    }
 
     @Override
     public void onFail() {

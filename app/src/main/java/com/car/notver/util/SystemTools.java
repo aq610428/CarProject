@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.amap.api.location.CoordinateConverter;
+import com.amap.api.location.DPoint;
+import com.amap.api.maps.model.LatLng;
 import com.car.notver.R;
 import com.car.notver.base.BaseApplication;
 import com.car.notver.bean.CustomerInfo;
@@ -63,6 +66,25 @@ public final class SystemTools {
         infos.add(new CustomerInfo("服务项目", R.mipmap.ic_suggest));
         return infos;
     }
+
+
+    public static LatLng getLatLng(double lat, double lon, Activity activity) {
+        LatLng latLng = null;
+        try {
+            CoordinateConverter converter = new CoordinateConverter(activity);
+            converter.from(CoordinateConverter.CoordType.GPS);
+            DPoint dPoint = new DPoint();
+            dPoint.setLatitude(lat);
+            dPoint.setLongitude(lon);
+            converter.coord(dPoint);
+            DPoint desLatLng = converter.convert();
+            latLng = new LatLng(desLatLng.getLatitude(), desLatLng.getLongitude());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return latLng;
+    }
+
 
 
     public static List<CustomerInfo> getListCustomerMe() {

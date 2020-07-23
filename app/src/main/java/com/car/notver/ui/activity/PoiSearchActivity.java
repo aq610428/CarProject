@@ -1,20 +1,17 @@
 package com.car.notver.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.amap.api.services.core.PoiItem;
 import com.car.notver.R;
 import com.car.notver.adapter.PoiSearchAdapter;
 import com.car.notver.base.BaseActivity;
+import com.car.notver.util.LogUtils;
 import com.car.notver.weight.PreferenceUtils;
-
 import java.util.List;
 
 /**
@@ -65,9 +62,19 @@ public class PoiSearchActivity extends BaseActivity {
             poiSearchAdapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "name", poiItems.get(position).getTitle());
-                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "lat", poiItems.get(position).getLatLonPoint().getLatitude() + "");
-                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "lon", poiItems.get(position).getLatLonPoint().getLongitude() + "");
+                    String provider=poiItems.get(position).getProvinceName();
+                    String city=poiItems.get(position).getCityName();
+                    String district=poiItems.get(position).getDirection();
+                    String name=poiItems.get(position).getTitle();
+                    double lat=poiItems.get(position).getLatLonPoint().getLatitude();
+                    double lon=poiItems.get(position).getLatLonPoint().getLongitude();
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "provider",provider);
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "city", city);
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "district", district);
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "name",name );
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "lat",  lat+ "");
+                    PreferenceUtils.setPrefString(PoiSearchActivity.this, "lon", lon + "");
+                    LogUtils.e("provider="+provider+"city="+city+"district="+district+name+lat+lon);
                     finish();
                 }
             });

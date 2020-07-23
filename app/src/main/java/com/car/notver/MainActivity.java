@@ -48,11 +48,24 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
     public FragmentTabHost mTabHost;
     private Verison verison;
     private UserInfo info;
+    private static String BACK_LOCATION_PERMISSION = "android.permission.ACCESS_BACKGROUND_LOCATION";
+    protected String[] needPermissions = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_PHONE_STATE,
+            BACK_LOCATION_PERMISSION
+    };
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         BaseApplication.activityTaskManager.putActivity("MainActivity", this);
+
+        if (!checkPermissions(needPermissions)){
+            requestPermission(needPermissions, 4);
+        }
     }
 
 
