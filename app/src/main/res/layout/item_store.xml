@@ -69,10 +69,7 @@
             android:orientation="vertical"
             android:visibility="visible">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/dive_line" />
+
 
 
             <LinearLayout
@@ -96,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center|left"
-                    android:text="已审核ddddddd"
+                    android:text="已审核"
                     android:textColor="@color/google_red"
                     android:textSize="@dimen/ctv_sizen_13"
                     android:visibility="visible" />

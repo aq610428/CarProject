@@ -7,8 +7,8 @@ android {
         applicationId "com.car.notver"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 8
-        versionName "1.0.7"
+        versionCode 12
+        versionName "1.0.11"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         flavorDimensions "versionCode"
         multiDexEnabled true

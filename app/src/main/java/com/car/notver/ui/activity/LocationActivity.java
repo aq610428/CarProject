@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,8 +49,6 @@ import com.car.notver.util.Utility;
 import com.car.notver.weight.ClearEditText;
 import com.car.notver.weight.PreferenceUtils;
 import com.car.notver.weight.SensorEventHelper;
-
-import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +60,7 @@ import java.util.List;
  */
 public class LocationActivity extends BaseActivity implements LocationSource, AMapLocationListener, AMap.OnMarkerClickListener,
         PoiSearch.OnPoiSearchListener, AMap.OnMapClickListener, GeocodeSearch.OnGeocodeSearchListener {
-    private TextView title_text_tv, title_left_btn, text_edition, text_address, text_ok;
+    private TextView title_text_tv, title_left_btn, text_edition, text_ok;
     private AMap aMap;
     private MapView mapView;
     private OnLocationChangedListener mListener;
@@ -70,6 +69,7 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
     private boolean mFirstFix = false;
     private SensorEventHelper mSensorHelper;
     private ClearEditText et_map;
+    private EditText text_address;
     private Marker mLocMarker;
     private LatLng latLng;
     private RelativeLayout rl_tab;
@@ -124,6 +124,7 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
         et_map = getView(R.id.et_map);
         text_edition.setOnClickListener(this);
         text_ok.setOnClickListener(this);
+        rl_tab.setOnClickListener(this);
     }
 
 
@@ -180,7 +181,7 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
                     } catch (Throwable e) {
 
                     }
-                }else{
+                } else {
                     init();
                 }
             }
@@ -218,8 +219,8 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
                 String provider = PreferenceUtils.getPrefString(this, "provider", "");
                 String city = PreferenceUtils.getPrefString(this, "city", "");
                 String district = PreferenceUtils.getPrefString(this, "district", "");
-                if (latLng != null&&!Utility.isEmpty(provider)&&!Utility.isEmpty(city)&&!Utility.isEmpty(district)) {
-                    PreferenceUtils.setPrefString(this, "name", address);
+                if (latLng != null && !Utility.isEmpty(provider) && !Utility.isEmpty(city) && !Utility.isEmpty(district)) {
+                    PreferenceUtils.setPrefString(this, "name", text_address.getText().toString().trim());
                     PreferenceUtils.setPrefString(this, "lat", latLng.latitude + "");
                     PreferenceUtils.setPrefString(this, "lon", latLng.longitude + "");
                     finish();
@@ -292,7 +293,7 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
         if (mListener != null && amapLocation != null) {
             if (amapLocation != null && amapLocation.getErrorCode() == 0) {
                 LatLng latLng = new LatLng(amapLocation.getLatitude(), amapLocation.getLongitude());
-                if (!Utility.isEmpty(amapLocation.getCity())){
+                if (!Utility.isEmpty(amapLocation.getCity())) {
                     PreferenceUtils.setPrefString(this, "city", amapLocation.getCity());
                     PreferenceUtils.setPrefString(this, "district", amapLocation.getDistrict());
                     PreferenceUtils.setPrefString(this, "provider", amapLocation.getProvince());
@@ -323,6 +324,7 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
             mLocationOption = new AMapLocationClientOption();
             //设置定位监听
             mlocationClient.setLocationListener(this);
+            mLocationOption.setOnceLocation(true);
             //设置为高精度定位模式
             mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
             //设置定位参数
@@ -369,15 +371,36 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
         if (rcode == AMapException.CODE_AMAP_SUCCESS) {
             if (result != null) {
                 List<PoiItem> poiItems = result.getPois();
-                Intent intent = new Intent(this, PoiSearchActivity.class);
-                intent.putExtra("poiItems", (Serializable) poiItems);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(this, PoiSearchActivity.class);
+//                intent.putExtra("poiItems", (Serializable) poiItems);
+//                startActivity(intent);
+//                finish();
+                updateView(poiItems);
             }
         } else {
             ToastUtil.showToast(rcode + "");
         }
     }
+
+    private void updateView(List<PoiItem> poiItems) {
+        for (int i = 0; i < poiItems.size(); i++) {
+            PoiItem poiItem = poiItems.get(i);
+            LatLonPoint lonPoint = poiItem.getLatLonPoint();
+            markerList(new LatLng(lonPoint.getLatitude(), lonPoint.getLongitude()));
+        }
+    }
+
+
+    public void markerList(LatLng latLng) {
+        MarkerOptions markerOption = new MarkerOptions().icon(BitmapDescriptorFactory
+                .defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                .position(latLng)
+                .draggable(true);
+        markerOption.draggable(true);//设置Marker可拖动
+        aMap.addMarker(markerOption);
+        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+    }
+
 
     @Override
     public void onPoiItemSearched(PoiItem item, int rCode) {
@@ -421,12 +444,15 @@ public class LocationActivity extends BaseActivity implements LocationSource, AM
     public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int rCode) {
         if (rCode == 1000 && regeocodeResult != null) {
             address = regeocodeResult.getRegeocodeAddress().getFormatAddress() + "";
-            if (!Utility.isEmpty(regeocodeResult.getRegeocodeAddress().getCity())){
-                PreferenceUtils.setPrefString(this, "city",regeocodeResult.getRegeocodeAddress().getCity());
-                PreferenceUtils.setPrefString(this, "district", regeocodeResult.getRegeocodeAddress().getDistrict());
-                PreferenceUtils.setPrefString(this, "provider", regeocodeResult.getRegeocodeAddress().getProvince());
+            if (!Utility.isEmpty(regeocodeResult.getRegeocodeAddress().getProvince())) {
+                String provider=regeocodeResult.getRegeocodeAddress().getProvince();
+                String city=regeocodeResult.getRegeocodeAddress().getCity();
+                String district=regeocodeResult.getRegeocodeAddress().getDistrict();
+                PreferenceUtils.setPrefString(this, "city", city);
+                PreferenceUtils.setPrefString(this, "district", district);
+                PreferenceUtils.setPrefString(this, "provider", provider);
             }
-            LogUtils.e("address=" + address+regeocodeResult.getRegeocodeAddress().getCity()+ regeocodeResult.getRegeocodeAddress().getProvince());
+
             text_address.setText(address + "");
             rl_tab.setVisibility(View.VISIBLE);
         }

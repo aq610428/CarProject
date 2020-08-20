@@ -77,9 +77,7 @@ public class CarFragment extends BaseFragment implements NetWorkListener, OnRefr
         btn_next.setOnClickListener(this);
         text_right_name.setOnClickListener(this);
         info = SaveUtils.getSaveInfo();
-        if (info != null) {
-            query();
-        }
+        query();
         queryList();
     }
 

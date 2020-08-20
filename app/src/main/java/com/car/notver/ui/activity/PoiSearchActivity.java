@@ -64,7 +64,7 @@ public class PoiSearchActivity extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String provider=poiItems.get(position).getProvinceName();
                     String city=poiItems.get(position).getCityName();
-                    String district=poiItems.get(position).getDirection();
+                    String district=poiItems.get(position).getAdName();
                     String name=poiItems.get(position).getTitle();
                     double lat=poiItems.get(position).getLatLonPoint().getLatitude();
                     double lon=poiItems.get(position).getLatLonPoint().getLongitude();
@@ -74,7 +74,6 @@ public class PoiSearchActivity extends BaseActivity {
                     PreferenceUtils.setPrefString(PoiSearchActivity.this, "name",name );
                     PreferenceUtils.setPrefString(PoiSearchActivity.this, "lat",  lat+ "");
                     PreferenceUtils.setPrefString(PoiSearchActivity.this, "lon", lon + "");
-                    LogUtils.e("provider="+provider+"city="+city+"district="+district+name+lat+lon);
                     finish();
                 }
             });

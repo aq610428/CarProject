@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -44,19 +43,15 @@ import com.lzy.okgo.model.Response;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
 import com.yanzhenjie.album.AlbumFile;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
-
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
-
 import static com.car.notver.util.LocationUtils.getDefaultOption;
 
 /**
@@ -67,14 +62,15 @@ import static com.car.notver.util.LocationUtils.getDefaultOption;
 public class StoreListActivity extends BaseActivity implements NetWorkListener {
     private TimePickerView pvTime1;
     private TextView text_cover, text_start, text_end;
-    private TextView title_text_tv, title_left_btn;
+    private TextView title_text_tv, title_left_btn,et_address;
     private Calendar startDate, endDate;
     private Button btn_next;
     private RelativeLayout rl_photo;
     private ImageView iv_photo, iv_address;
     private String result;
-    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile, et_address;
+    private EditText et_cardNmae, et_contacts, et_phone, et_brand, et_work, et_mobile;
     private UserInfo userInfo;
+    private RelativeLayout rl_tabs;
 
 
     @Override
@@ -86,6 +82,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
 
     @Override
     protected void initView() {
+        rl_tabs= getView(R.id.rl_tabs);
         iv_address = getView(R.id.iv_address);
         et_work = getView(R.id.et_work);
         et_mobile = getView(R.id.et_mobile);
@@ -108,7 +105,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         rl_photo.setOnClickListener(this);
         title_text_tv.setText("添加门店");
         title_left_btn.setOnClickListener(this);
-        iv_address.setOnClickListener(this);
+        rl_tabs.setOnClickListener(this);
     }
 
 
@@ -168,7 +165,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             case R.id.title_left_btn:
                 finish();
                 break;
-            case R.id.iv_address:
+            case R.id.rl_tabs:
                 Intent intent = new Intent(this, LocationActivity.class);
                 startActivityForResult(intent, 100);
                 break;
@@ -185,12 +182,11 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         String name = PreferenceUtils.getPrefString(this, "name", "");
         String lat1 = PreferenceUtils.getPrefString(this, "lat", "");
         String lon1 = PreferenceUtils.getPrefString(this, "lon", "");
-        if (Utility.isEmpty(province)) {
+        if (!Utility.isEmpty(PreferenceUtils.getPrefString(this, "provider", ""))){
             city = PreferenceUtils.getPrefString(this, "city", "");
             area = PreferenceUtils.getPrefString(this, "district", "");
             province = PreferenceUtils.getPrefString(this, "provider", "");
         }
-
         if (!Utility.isEmpty(name) && !Utility.isEmpty(lat1)) {
             et_address.setText(name + "");
             LatLng latLng = SystemTools.getLatLng(Double.parseDouble(lat1), Double.parseDouble(lon1), this);
@@ -207,8 +203,8 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
         String contacts = et_contacts.getText().toString();
         String phone = et_phone.getText().toString();
         String start = text_start.getText().toString();
-        String end = text_end.getText().toString();
-        String address = et_address.getText().toString();
+        String end = text_end.getText().toString().trim();
+        String address = et_address.getText().toString().trim();
 
         String brand = et_brand.getText().toString();
         String work = et_work.getText().toString();
@@ -262,7 +258,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             params.put("province", province + "");
             params.put("rescuePhone", mobile);
 
-            params.put("sign", Md5Util.encode(sign) + "111");
+            params.put("sign", Md5Util.encode(sign));
             okHttpModel.get(Api.GET_STOREINFO, params, Api.GET_STOREINFO_ID, this);
         }
     }
@@ -409,7 +405,6 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
                 province = location.getProvince();
                 city = location.getCity();
                 area = location.getDistrict();
-                locationClient.stopLocation();
                 lat = location.getLatitude();
                 lon = location.getLongitude();
                 locationClient.stopLocation();
