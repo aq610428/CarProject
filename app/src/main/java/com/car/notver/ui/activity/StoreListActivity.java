@@ -375,6 +375,7 @@ public class StoreListActivity extends BaseActivity implements NetWorkListener {
             public void onError(Response<String> response) {
                 super.onError(response);
                 stopProgressDialog();
+                ToastUtil.showToast(response.getException().getMessage()+"");
             }
         });
     }
