@@ -4,6 +4,8 @@ import android.content.Context;
 import com.car.notver.R;
 import com.car.notver.bean.Bespoke;
 import com.car.notver.bean.CustomerInfo;
+import com.car.notver.util.Utility;
+
 import java.util.List;
 
 /**
@@ -30,7 +32,7 @@ public class TableAdapter extends AutoRVAdapter {
     @Override
     public void onBindViewHolder(ViewHolder vh, int position) {
         CustomerInfo info=list.get(position);
-        vh.getTextView(R.id.text_rescue).setText(info.getName());
+        vh.getTextView(R.id.text_rescue).setText(!Utility.isEmpty(info.getName())? info.getName():"匿名");
         vh.getTextView(R.id.text_rescue).setCompoundDrawablesWithIntrinsicBounds(0,info.getDrawable(),0,0);
     }
 }

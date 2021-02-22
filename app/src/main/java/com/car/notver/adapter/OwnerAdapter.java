@@ -45,7 +45,7 @@ public class OwnerAdapter extends AutoRVAdapter {
                 vh.getTextView(R.id.tv_date).setText(end + "  " + start);
             }
             vh.getTextView(R.id.tv_make).setText(bespoke.getProject() + "");
-            vh.getTextView(R.id.tv_store).setText(bespoke.getStoreName() + "");
+            vh.getTextView(R.id.tv_store).setText(!Utility.isEmpty(bespoke.getStoreName())? bespoke.getStoreName():"匿名");
 
             vh.getTextView(R.id.tv_license).setText(bespoke.getCarcard() + "");
             vh.getTextView(R.id.tv_phone).setText(bespoke.getMobile() + "");

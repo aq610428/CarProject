@@ -47,36 +47,19 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
     private String textviewArray[] = {"首页", "资产", "工单", "我的"};
     public FragmentTabHost mTabHost;
     private Verison verison;
-    private UserInfo info;
-    private static String BACK_LOCATION_PERMISSION = "android.permission.ACCESS_BACKGROUND_LOCATION";
-    protected String[] needPermissions = {
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.READ_PHONE_STATE,
-            BACK_LOCATION_PERMISSION
-    };
 
     @Override
     protected void initCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         BaseApplication.activityTaskManager.putActivity("MainActivity", this);
-
-        if (!checkPermissions(needPermissions)){
-            requestPermission(needPermissions, 4);
-        }
     }
 
 
     @Override
     protected void initView() {
         mTabHost = getView(R.id.mTabHost);
-        info = SaveUtils.getSaveInfo();
-        if (info != null) {
-            queryPush();
-            query();
-        }
+        queryPush();
+        query();
     }
 
 
@@ -119,15 +102,6 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
         setCurrentTab(0);
         mTabHost.setOnTabChangedListener(l);
         mTabHost.getTabWidget().setDividerDrawable(null);
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        super.onClick(v);
-        switch (v.getId()) {
-
-        }
     }
 
 
@@ -266,12 +240,12 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
      * @param ********/
     public void queryPush() {
         String registrationID = JPushInterface.getRegistrationID(this);
-        String sign = "memberid=" + info.getId() + "&partnerid=" + Constants.PARTNERID + "&registerid=" + registrationID + Constants.SECREKEY;
+        String sign = "memberid=" + SaveUtils.getSaveInfo().getId() + "&partnerid=" + Constants.PARTNERID + "&registerid=" + registrationID + Constants.SECREKEY;
         showProgressDialog(this, false);
         Map<String, String> params = okHttpModel.getParams();
         params.put("apptype", Constants.TYPE);
         params.put("partnerid", Constants.PARTNERID);
-        params.put("memberid", info.getId() + "");
+        params.put("memberid",  SaveUtils.getSaveInfo().getId() + "");
         params.put("registerid", registrationID + "");
         params.put("sign", Md5Util.encode(sign));
         okHttpModel.get(Api.GET_PUSH_VERSION, params, Api.GET_PUSH_VERSION_ID, this);
@@ -283,9 +257,6 @@ public class MainActivity extends BaseActivity implements NetWorkListener {
         if (object != null && commonality != null && !Utility.isEmpty(commonality.getStatusCode())) {
             if (Constants.SUCESSCODE.equals(commonality.getStatusCode())) {
                 switch (id) {
-                    case Api.GET_PUSH_VERSION_ID:
-
-                        break;
                     case Api.GET_INTERGRAL_VERSION_ID:
                         verison = JsonParse.getVerisonUserInfo(object);
                         if (verison != null) {

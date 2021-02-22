@@ -38,7 +38,7 @@
                     android:gravity="center|left"
                     android:text="2020年5月15日 09:00—18:00"
                     android:textColor="#212121"
-                    android:textSize="@dimen/ctv_sizen_13" />
+                    android:textSize="@dimen/ctv_sizen_14" />
 
                 <TextView
                     android:id="@+id/tv_make"
@@ -82,7 +82,7 @@
                             android:gravity="center|left"
                             android:text="门店名称"
                             android:textColor="#212121"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                         <TextView
                             android:id="@+id/tv_store"
@@ -92,7 +92,7 @@
                             android:gravity="center|left"
                             android:text="粤B-157R9"
                             android:textColor="#929292"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                     </LinearLayout>
 
@@ -107,7 +107,7 @@
                             android:gravity="center|left"
                             android:text="车牌号码"
                             android:textColor="#212121"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                         <TextView
                             android:id="@+id/tv_license"
@@ -117,7 +117,7 @@
                             android:gravity="center|left"
                             android:text="粤B-157R9"
                             android:textColor="#929292"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                     </LinearLayout>
 
@@ -132,7 +132,7 @@
                             android:gravity="center|left"
                             android:text="电话号码"
                             android:textColor="@color/black33"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                         <TextView
                             android:id="@+id/tv_phone"
@@ -142,7 +142,7 @@
                             android:gravity="center|left"
                             android:text="18988246540"
                             android:textColor="#929292"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                     </LinearLayout>
 
@@ -158,7 +158,7 @@
                             android:gravity="center|left"
                             android:text="预约时间"
                             android:textColor="@color/black33"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                         <TextView
                             android:id="@+id/text_order_date"
@@ -168,7 +168,7 @@
                             android:gravity="center|left"
                             android:text="18988246540"
                             android:textColor="#929292"
-                            android:textSize="@dimen/ctv_sizen_13" />
+                            android:textSize="@dimen/ctv_sizen_14" />
 
                     </LinearLayout>
                 </LinearLayout>
